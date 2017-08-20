@@ -1,0 +1,35 @@
+#header {
+
+    .navbar-wrap {
+    	background: $rbi-nav-bg;
+
+        .navbar-brand {
+            overflow: hidden;
+
+            .navbar-item .logo {
+        		max-height: 4rem;
+
+                @include mobile() {
+                    max-height: 3rem;
+                }
+            }
+        }
+
+    	.navbar-item {
+    		font-family: 'Titillium Web', Lato, sans-serif;
+    	}
+
+    	.navbar-burger {
+    		span {
+    			background-color: #bdbdbd;
+    		}
+    		&:hover {
+    			background-color: transparent;
+    		}
+    		&.is-active span {
+    			background-color: #bdbdbd;
+    		}
+    	}
+    }
+
+}

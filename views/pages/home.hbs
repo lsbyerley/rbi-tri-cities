@@ -1,0 +1,163 @@
+<section class="hero is-home">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-vcentered">
+                <div class="column">
+                    <h1 class="title is-spaced">RBI Tri-Cities</h1>
+                    <h2 class="subtitle">Premier baseball training facilitiy</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <div class="columns">
+            <div class="column is-4 pricing-component">
+                <div class="pricing-header">
+                    <div class="pricing-title">Private Lessons</div>
+                    <div class="pricing-teaser">starting at</div>
+                    <div class="pricing-cost"><i class="fa fa-usd"></i><div class="cost">40</div></div>
+                    <div class="pricing-desc">One 30 minute lesson for members</div>
+                </div>
+                <div class="pricing-attrs">
+                    <div class="attr"><i class="fa fa-check"></i><div class="text">One-on-one instruction for hitting, pitching or defense with a qualified instructors</div></div>
+                    <div class="attr"><i class="fa fa-check"></i><div class="text">Multiplayer options also available including our new HitFit sessions</div></div>
+                    <div class="attr"><i class="fa fa-check"></i><div class="text">Lessons are typically done on a weekly basis for each player, though scheduling can be flexible</div></div>
+                </div>
+            </div>
+            <div class="column is-4 pricing-component">
+                <div class="pricing-header">
+                    <div class="pricing-title">Memberships</div>
+                    <div class="pricing-teaser">starting at</div>
+                    <div class="pricing-cost"><i class="fa fa-usd"></i><div class="cost">35</div></div>
+                    <div class="pricing-desc">per month to use the facility</div>
+                </div>
+                <div class="pricing-attrs">
+                    <div class="attr"><i class="fa fa-check"></i><div class="text">Access to all facility cages, mounds & equipment</div></div>
+                    <div class="attr"><i class="fa fa-check"></i><div class="text">$5 off lessons with all of our qualified instructors</div></div>
+                    <div class="attr"><i class="fa fa-check"></i><div class="text">Discounts available for affiliated team players and members' siblings</div></div>
+                </div>
+            </div>
+            <div class="column is-4 pricing-component">
+                <div class="pricing-header">
+                    <div class="pricing-title">Team Practices</div>
+                    <div class="pricing-teaser">starting at</div>
+                    <div class="pricing-cost"><i class="fa fa-usd"></i><div class="cost">50</div></div>
+                    <div class="pricing-desc">per hour per team</div>
+                </div>
+                <div class="pricing-attrs">
+                    <div class="attr"><i class="fa fa-check"></i><div class="text">Team practice packages with pre-reserved practice space through the offseason</div></div>
+                    <div class="attr"><i class="fa fa-check"></i><div class="text">Individual team practice slots also available</div></div>
+                    <div class="attr"><i class="fa fa-check"></i><div class="text">Affiliated teams will have discounted individal membership options among other benefits</div></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="section social">
+    <div class="container">
+
+        <div class="columns">
+            <div class="column is-half">
+                <h3 class="title has-text-centered">Tweets</h3>
+                {{# tweets }}
+                    <article class="media tweet">
+                        <div class="media-content">
+                            <div class="content">
+                                <p>{{{ text }}}</p>
+                            </div>
+                            <div class="level">
+                                <div class="level-left">
+                                    <div class="level-item">
+                                        <span class="icon">
+                                            <i class="fa fa-heart"></i>
+                                        </span>
+                                        {{ favorites }}
+                                    </div>
+                                    <div class="level-item">
+                                        <span class="icon">
+                                            <i class="fa fa-retweet"></i>
+                                        </span>
+                                        {{ retweets }}
+                                    </div>
+                                </div>
+                                <div class="level-right">
+                                    <div class="level-item">{{ date }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                {{/ tweets }}
+            </div>
+            <div class="column is-half">
+                <h3 class="title has-text-centered">Instagram</h3>
+                <div class="columns is-multiline">
+                    {{# instagramPics }}
+                        <div class="column is-4">
+                            <div class="card instagram">
+                                <div class="card-image">
+                                    <figure class="image">
+                                        <a href="{{ link }}" target="_blank">
+                                            <img src="{{ images.standard_resolution.url }}"/>
+                                        </a>
+                                    </figure>
+                                </div>
+                                <footer class="card-footer">
+                                    <div class="card-footer-item">
+                                        <span class="icon">
+                                            <i class="fa fa-heart"></i>
+                                        </span>
+                                        {{ likes.count }} Likes
+                                    </div>
+                                </footer>
+                            </div>
+                        </div>
+                    {{/ instagramPics }}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="section events">
+    <div class="container">
+
+        <h1 class="title has-text-centered section-title">Upcoming Events</h1>
+        <hr>
+
+        <div class="columns">
+            {{#if events}}
+                {{# events }}
+                    <div class="column">
+                        <div class="card event">
+                            <div class="card-header">
+                                <div class="card-header-title">{{ fields.eventName }}</div>
+                            </div>
+                            <div class="card-content">
+                                <div class="content">
+                                    <div class="title is-6 date">{{{formatDate date=fields.startDate format='MMMM D, YYYY - h:mm a'}}}</div>
+                                    <p>{{ fields.introText }}</p>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <a class="card-footer-item" href="/event/{{ sys.id }}">More Info</a>
+                                {{#if fields.registrationLink}}
+                                    <a class="card-footer-item" href="{{ fields.registrationLink }}" target="_blank">Register</a>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                {{/ events }}
+            {{else}}
+                <div class="no-events">There are no upcoming events at this time</div>
+            {{/if}}
+        </div>
+
+    </div>
+</section>

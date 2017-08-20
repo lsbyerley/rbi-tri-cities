@@ -1,0 +1,40 @@
+<header id="header">
+
+	<div class="navbar-wrap">
+		<div class="container">
+			<nav class="navbar is-transparent">
+				<div class="navbar-brand">
+					<a class="navbar-item" href="/">
+						<img class="logo" src="/images/rbi-tri-cities-logo.png" alt="RBI Tri-Cities">
+					</a>
+					<div class="navbar-burger" data-target="navMenu">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+				<div id="navMenu" class="navbar-menu">
+					<div class="navbar-start"></div>
+					<div class="navbar-end">
+						{{# navLinks }}
+							{{#if link}}
+								<a href="{{ link }}" class="navbar-item {{#isNavItemActive ../reqPath link}}{{/isNavItemActive}}">{{ title }}</a>
+							{{/if}}
+							{{#if dropdown}}
+								<div class="navbar-item has-dropdown is-hoverable">
+									<div class="navbar-link">{{ title }}</div>
+									<div class="navbar-dropdown">
+										{{# dropdown }}
+											<a href="{{ link }}" class="navbar-item {{#isNavItemActive ../../reqPath link}}{{/isNavItemActive}}">{{ title }}</a>
+										{{/ dropdown }}
+									</div>
+								</div>
+							{{/if}}
+						{{/ navLinks }}
+					</div>
+				</div>
+			</nav>
+		</div>
+	</div>
+
+</header>

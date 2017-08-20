@@ -1,0 +1,103 @@
+
+#footer {
+    color: #fff;
+    font-size: 1rem;
+
+    .upper {
+        background: $black-ter;
+        padding: 3rem;
+
+        .columns {
+
+            .column {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .title {
+                    font-size: 1.25rem;
+                    color: #fff;
+                    border-bottom: 1px solid #e4e4e4;
+                    padding: 0 2rem;
+                    margin: .5rem;
+                }
+            }
+
+            .column.middle {
+                color: #fff;
+
+                .address, .phone, .email, .hours {
+                    position: relative;
+                    text-align: left;
+                    padding-left: 35px;
+                    margin-bottom: 10px;
+                    line-height: 20px;
+                    min-width: 200px;
+
+                    &::before {
+                        font-family: "FontAwesome";
+                        font-size: 21px;
+                        height: 1.5rem;
+                        width: 1.5rem;
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                    }
+                }
+
+                .phone a {
+                    color: #fff;
+                }
+
+                .address::before {
+                    content: '\f041'; //fa-map-marker
+                    top: 10px;
+                }
+                .phone::before {
+                    content: '\f095'; //fa-phone
+                }
+                .email::before {
+                    content: '\f0e0'; //fa-envelope
+                }
+                .hours::before {
+                    content: '\f017'; //fa-clock-o
+                }
+            }
+
+            .column.social {
+                flex-direction: row;
+                justify-content: space-around;
+
+                .social-link {
+                    margin: 0 5px;
+
+                    &:hover {
+                        color: darken($rbi-red, 20%);
+                    }
+
+                    .fa {
+                        font-size: 2rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .lower {
+        background: $black;
+        color: #fff;
+        padding: 1rem;
+
+        .column {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+            .logo {
+                width: 3rem;
+                margin-right: 5px;
+            }
+        }
+    }
+}

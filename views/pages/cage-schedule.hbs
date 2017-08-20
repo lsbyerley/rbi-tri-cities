@@ -1,0 +1,36 @@
+<section class="section" id="about">
+    <div class="container">
+
+        <h1 class="title is-spaced">Cage Schedule</h1>
+        <h2 class="subtitle">{{ scheduleDate }}</h2>
+        <hr>
+
+        <div class="columns is-multiline">
+            {{# each cageSchedules}}
+                <div class="column is-4">
+                    <div class="panel cage-schedule">
+                        <div class="panel-heading has-text-centered">{{ name }}</div>
+                        {{#if appointments}}
+                            {{# each appointments}}
+                                <div class="panel-block reserved">
+                                    <span class="panel-icon">
+                                        <i class="fa fa-clock-o"></i>
+                                    </span>
+                                    {{ startTime }} - {{ endTime }}
+                                </div>
+                            {{/each}}
+                        {{else}}
+                            <div class="panel-block available">
+                                <span class="panel-icon">
+                                    <i class="fa fa-check"></i>
+                                </span>
+                                Available
+                            </div>
+                        {{/if}}
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+
+    </div>
+</section>

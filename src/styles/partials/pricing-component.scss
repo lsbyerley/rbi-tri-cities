@@ -1,0 +1,94 @@
+
+.pricing-component {
+
+	.pricing-header {
+		background-color: rgba(0, 0, 0, .1);
+		//background-image: -webkit-radial-gradient(center top, ellipse cover, $rbi-red 0%, $rbi-blue 100%);
+		padding: 1rem;
+		border-radius: 5px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		@include desktop() {
+			&:hover {
+				transform: scale(1.05);
+			}
+		}
+
+		.pricing-title {
+			color: $rbi-red;
+			font-size: 1.25rem;
+			text-align: center;
+			padding: 1rem 0 0 0;
+		}
+
+		.pricing-teaser {
+			color: #505050;
+			opacity: .75;
+			font-size: .9rem;
+			padding: .5rem 0;
+
+			+ .pricing-cost {
+				padding: 0;
+			}
+		}
+
+		.pricing-cost {
+			color: $rbi-blue;
+			font-size: 4rem;
+			line-height: 60px;
+			display: flex;
+			align-items: center;
+			padding: 1rem 0 0 0;
+
+			.fa {
+				opacity: .75;
+				font-size: 1.2rem;
+			}
+
+			.cost {
+				padding: 0 .5rem;
+			}
+		}
+
+		.pricing-desc {
+			color: #505050;
+			padding: 1rem 0 0 0;
+			opacity: .75;
+			font-size: .9rem;
+			height: 60px;
+		}
+	}
+
+	.pricing-attrs {
+		display: flex;
+		padding: 1rem;
+		flex-direction: column;
+		align-items: flex-start;
+
+		.attr {
+			font-size: .875rem;
+			margin: .5rem 0;
+			line-height: 1.5;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			width: 100%;
+
+			.fa {
+				color: #999;
+				font-size: 16px;
+				margin-right: .5rem;
+			}
+
+			.text {
+				border-bottom: 2px dotted rgb(222, 222, 222);
+				text-align: center;
+				flex-grow: 1;
+				padding-bottom: 5px;
+			}
+		}
+	}
+
+}

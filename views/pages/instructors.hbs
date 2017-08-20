@@ -1,0 +1,28 @@
+<section class="section" id="about">
+    <div class="container">
+
+        <h1 class="title is-spaced">Instructors</h1>
+        <h2 class="subtitle">Our list of certified instructors are available for individual lessons</h2>
+        <hr>
+
+        {{# instructors }}
+            <article class="media instructor">
+                <div class="media-left">
+                    <div class="image">
+                        <img class="headshot" src="{{ fields.headshot.fields.file.url }}" alt="{{ fields.headshot.fields.title }}">
+                    </div>
+                </div>
+                <div class="media-content">
+                    <div class="info">
+                        <div class="name">{{ fields.name }}</div>
+                        {{# each fields.specialties}}
+                            <span class="tag is-info">{{ . }}</span>
+                        {{/each}}
+                    </div>
+                    <div class="accolades">{{ fields.accolades }}</div>
+                </div>
+            </article>
+        {{/ instructors }}
+
+    </div>
+</section>

@@ -1,0 +1,36 @@
+<section class="section" id="camps-showcases">
+    <div class="container">
+
+        <h1 class="title is-spaced">Camps & Showcases</h1>
+        <h2 class="subtitle">Upcoming camps, tryouts, and showcases</h2>
+        <hr>
+
+        {{#if events}}
+            {{# events }}
+                <article class="media event">
+                    <div class="media-left">
+                        <div class="date">
+                            <span class="month">{{{formatDate date=fields.startDate format='MMM'}}}</span>
+                            <span class="day">{{{formatDate date=fields.startDate format='d'}}}</span>
+                            <span class="dayofweek">{{{formatDate date=fields.startDate format='ddd'}}}</span>
+                        </div>
+                    </div>
+                    <div class="media-content">
+                        <div class="info">
+                            {{#ifCond fields.eventCost '>' 0}}
+                                <span class="tag is-success">${{ fields.eventCost }}</span>
+                            {{else}}
+                                <span class="tag is-success">Free</span>
+                            {{/ifCond}}
+                            <a class="title name is-4" href="/event/{{ sys.id }}">{{ fields.eventName }}</a>
+                        </div>
+                        <div class="content">{{ fields.introText }}</div>
+                    </div>
+                </article>
+            {{/ events }}
+        {{else}}
+            <div class="no-events">No upcoming events at this time</div>
+        {{/if}}
+
+    </div>
+</section>

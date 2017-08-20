@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />
+    <title>{{ pageMeta.title }}</title>
+    <meta name="description" content="{{ pageMeta.description }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    {{#if is_dev }}
+        <link rel="stylesheet" href="/styles/main.css"/>
+    {{else}}
+        <link rel="stylesheet" href="/styles/main.min.css"/>
+    {{/if}}
+</head>
+<body>
+
+    {{> header }}
+
+    <div id="barba-wrapper">
+    	<div class="barba-container" data-namespace="{{ namespace }}">
+
+            {{{ body }}}
+
+        </div>
+    </div>
+
+    {{> footer }}
+
+    {{#if is_dev }}
+        <script src="/scripts/main.js"></script>
+        <script src="http://localhost:35729/livereload.js"></script>
+    {{else}}
+        <script src="/scripts/main.min.js"></script>
+    {{/if}}
+
+</body>
+</html>

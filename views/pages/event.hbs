@@ -1,0 +1,64 @@
+<section class="section" id="event">
+    <div class="container">
+
+        {{#if event}}
+            <h1 class="title is-spaced has-text-centered">{{ event.fields.eventName }}</h1>
+            <h2 class="subtitle has-text-centered">{{ event.fields.introText }}</h2>
+            <hr>
+            <div class="level event-details">
+                <div class="level-item has-text-centered">
+                    <!--<div>-->
+                        <p class="heading">Cost</p>
+                        <p class="title">
+                            {{#ifCond event.fields.eventCost '>' 0}}
+                                <span class="tag is-success">${{ event.fields.eventCost }}</span>
+                            {{else}}
+                                <span class="tag is-success">Free</span>
+                            {{/ifCond}}
+                        </p>
+                    <!--</div>-->
+                </div>
+                <div class="level-item has-text-centered">
+                    <!--<div>-->
+                        <p class="heading">Start Date</p>
+                        <p class="title is-6">{{{formatDate date=event.fields.startDate format='MMMM D, YYYY - h:mm a'}}}</p>
+                    <!--</div>-->
+                </div>
+                <div class="level-item has-text-centered">
+                    <!--<div>-->
+                        <p class="heading">End Date</p>
+                        <p class="title is-6">{{{formatDate date=event.fields.endDate format='MMMM D, YYYY - h:mm a'}}}</p>
+                    <!--</div>-->
+                </div>
+                {{#if event.fields.registrationLink}}
+                    <div class="level-item has-text-centered">
+                        <!--<div>-->
+                            <p class="heading">Registration</p>
+                            <a class="button is-info" href="{{ event.fields.registrationLink }}" target="_blank">Register</a>
+                        <!--</div>-->
+                    </div>
+                {{/if}}
+            </div>
+            <hr>
+            <div class="content">
+                {{ event.fields.eventDescription }}
+            </div>
+
+        {{else}}
+
+            <h1 class="title is-spaced has-text-centered" style="padding:2rem;">Sorry, that event doesn't exist.</h1>
+            <h2 class="subtitle is-5 has-text-centered">Check out our <a href="/camps-showcases">Camps and Showcases</a> page</h2>
+
+        {{/if}}
+
+    </div>
+</section>
+
+{{#if event}}
+    <section class="section" id="google-map-event">
+        <h4 class="title is-5">The Venue: {{ event.fields.venue.fields.venueName }}</h4>
+        <div class="map" data-longitude="{{ event.fields.venue.fields.venueLocation.lon }}" data-latitude="{{ event.fields.venue.fields.venueLocation.lat }}">
+            <div id="google-container"></div>
+        </div>
+    </section>
+{{/if}}
