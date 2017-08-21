@@ -72,7 +72,8 @@ a:hover {
 
     position: relative;
     background-color: $rbi-blue;
-    background-image: -webkit-radial-gradient(top,#cc0010,#092462); /*Safari 5.1-6*/
+    background: radial-gradient(top, $rbi-red, $rbi-blue);
+    background: -ms-radial-gradient(top, $rbi-red, $rbi-blue);
 
     .hero-body {
         padding: 6rem 0;
@@ -103,10 +104,6 @@ a:hover {
 
     .subtitle {
         font-size: 1.5rem;
-        //background-color: #666666;
-        //background-clip: text;
-        //color: transparent;
-        //text-shadow: 3px 3px 3px rgba(255, 255, 255, 0.5);
     }
 
     @include mobile() {
@@ -140,15 +137,6 @@ a:hover {
 	box-shadow: inset 0 0 20px rgba(0, 0, 0, .4);
 }
 
-@mixin radial-gradient($position, $shape, $from, $to) {
-	background: -moz-radial-gradient($position, $shape, $from 0%, $to 100%);
-	background: -webkit-radial-gradient($position, $shape, $from 0%, $to 100%);
-	background: -o-radial-gradient($position, $shape, $from 0%, $to 100%);
-	background: -ms-radial-gradient($position, $shape, $from 0%, $to 100%);
-	background: radial-gradient($position, $shape, $from 0%, $to 100%);
-	background: $from;
-}
-
 .section.events {
 
     .section-title {
@@ -165,8 +153,7 @@ a:hover {
     .card.event {
 
         .card-header {
-            background-image: -webkit-radial-gradient(center top, ellipse cover, $rbi-blue 0%, #0e0e0e 100%);
-            //@include radial-gradient(center top, ellipse cover, $rbi-blue, #0e0e0e);
+            background: linear-gradient(90deg, $rbi-blue, darken($rbi-blue, 10%));
             padding: 1rem 0;
 
             .card-header-title {
@@ -253,7 +240,7 @@ a:hover {
 .panel.cage-schedule {
 
     .panel-heading {
-        background-image: -webkit-radial-gradient(center top, ellipse cover, #092462 0%, #0e0e0e 100%);
+        background: linear-gradient(90deg, $rbi-blue, darken($rbi-blue, 10%));
         font-size: 1.5rem;
         text-transform: uppercase;
         color: white;

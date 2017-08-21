@@ -32,11 +32,11 @@ gulp.task('styles', () => {
     return gulp.src(`${global.srcPath}styles/main.scss`)
 	.pipe(sass())
 	.on('error', err => { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
-	.pipe(postcss([ autoprefixer() ]))
+	.pipe(postcss([ autoprefixer(global.AUTOPREFIXER_BROWSERS) ]))
 	.on('error', err => { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
 	.pipe(gulp.dest(`${global.buildPath}styles/`))
 	.pipe(rename({ suffix: '.min' }))
-	.pipe(minifycss({safe: true}))
+	.pipe(minifycss({autoprefixer: false}))
 	.on('error', err => { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
 	.pipe(gulp.dest(`${global.buildPath}styles/`));
 

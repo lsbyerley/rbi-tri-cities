@@ -30,11 +30,10 @@ bower_components
 .lock-wscript
 
 # Compiled scripts and styles
-public/scripts/main.css
-public/scripts/main.min.css
-public/scripts/main.css
+public/styles/main.css
+public/styles/main.min.css
 public/scripts/main.js
-public/styles/main.min.js
+public/scripts/main.min.js
 src/styles/scss-output.xml
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
