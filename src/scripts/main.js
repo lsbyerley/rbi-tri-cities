@@ -28,23 +28,6 @@ require('gsap/ScrollToPlugin');
 			});
 		}
 
-		// Toggles the dropdowns in the nav.
-		// var $navbarDropdowns = Array.prototype.slice.call(document.querySelectorAll('.navbar-item.has-dropdown'), 0);
-		// if ($navbarDropdowns.length > 0) {
-		    // $navbarDropdowns.forEach(function($el) {
-		        // $el.addEventListener('mouseenter', function() {
-					// console.log('she hover')
-					// var $nbdd = $(this).children('.navbar-dropdown');
-					// TweenLite.to($nbdd,  0.5, { display: 'block', opacity: 1 });
-				// })
-				// $el.addEventListener('mouseleave', function() {
-					// console.log('she leave')
-					// var $nbdd = $(this).children('.navbar-dropdown');
-					// TweenLite.to($nbdd,  0.5, { display: 'none', opacity: 0 });
-				// })
-			// });
-		// }
-
 	});
 
 	// Any click handlers inside the .barba-container need to be re-added every time a new view is loaded
@@ -62,6 +45,17 @@ require('gsap/ScrollToPlugin');
 	            div.onclick = insertYoutubeIframe;
 	            $el.appendChild(div);
 	        });
+		}
+
+		// When any? link is clicked, remove is-active class from .navbar-menu and .navbar-burger
+		var $links = Array.prototype.slice.call(document.querySelectorAll('a'), 0);
+		if ($links.length > 0) {
+			$links.forEach(function($el) {
+				$el.addEventListener('click', function() {
+					$('.navbar-menu').removeClass('is-active');
+					$('.navbar-burger').removeClass('is-active');
+				});
+			})
 		}
 
 		/*var $maps = Array.prototype.slice.call(document.querySelectorAll('#google-map-event .map'), 0);

@@ -63,7 +63,6 @@ module.exports = {
                 'sys.id': id
             })
             .then(function(response) {
-                console.log(JSON.stringify(response))
                 if (response.items) {
                     var event = response.items[0]
                     resolve(event)
