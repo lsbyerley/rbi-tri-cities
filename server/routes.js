@@ -7,7 +7,6 @@ module.exports = function(app, cache) {
 	app.get('/', cache(300), function(req, res) {
 		utils.homePageData()
 			.then(function(result) {
-				//console.log('here', result)
 				app.locals.tweets = result.tweets;
 				app.locals.instagramPics = result.instagramPics;
 				app.locals.events = result.events;
@@ -22,7 +21,7 @@ module.exports = function(app, cache) {
 		return res.render('pages/about.hbs');
 	});
 
-	app.get('/cage-schedule', cache(600), function(req, res) {
+	app.get('/cage-schedule', cache(300), function(req, res) {
 
 		// Get all Cages and Mounds
 		utils.getCageSchedule()
@@ -38,7 +37,7 @@ module.exports = function(app, cache) {
 
 	});
 
-	app.get('/camps-showcases', function(req, res) {
+	app.get('/camps-showcases', cache(300), function(req, res) {
 
 		utils.getEvents()
 			.then(function(events) {
@@ -52,7 +51,7 @@ module.exports = function(app, cache) {
 			})
 	});
 
-	app.get('/event/:id', function(req, res) {
+	app.get('/event/:id', cache(300), function(req, res) {
 
 		var id = req.params.id;
 		utils.getEvent(id)
@@ -87,7 +86,7 @@ module.exports = function(app, cache) {
 		return res.render('pages/high-school-leagues.hbs');
 	});
 
-	app.get('/instructors', cache(600), function(req, res) {
+	app.get('/instructors', cache(300), function(req, res) {
 
 		utils.getInstructors()
 			.then(function(instructors) {
