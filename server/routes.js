@@ -10,14 +10,11 @@ module.exports = function(app, cache) {
 				//console.log('here', result)
 				app.locals.tweets = result.tweets;
 				app.locals.instagramPics = result.instagramPics;
-				console.log('events', JSON.stringify(result.events[0]))
 				app.locals.events = result.events;
 				return res.render('pages/home.hbs');
 			})
 			.catch(function(err) {
-				//console.error(err)
 				return res.render('pages/home.hbs');
-				//res.status(500).render('pages/error.hbs');
 			})
 	});
 
