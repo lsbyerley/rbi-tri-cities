@@ -6,6 +6,19 @@
 
       .level {
         padding: 5px 1rem;
+
+        .social-link {
+
+            padding: .5rem;
+
+            &:hover {
+                color: #fff;
+            }
+        }
+      }
+
+      @include mobile() {
+        display: none;
       }
     }
 

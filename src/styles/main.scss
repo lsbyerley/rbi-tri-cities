@@ -19,7 +19,7 @@ $navbar-item-color: $white;
 $navbar-item-hover-color: $rbi-red;
 $navbar-item-hover-background-color: transparent;
 $navbar-item-active-color: $rbi-red;
-$navbar-dropdown-background-color: $rbi-nav-bg;
+$navbar-dropdown-background-color: rgba(0, 0, 0, .7);
 $navbar-dropdown-item-hover-color: $rbi-red;
 $navbar-dropdown-border-top: $rbi-nav-bg;
 
@@ -81,7 +81,6 @@ a:hover {
     background: -ms-radial-gradient(top, $rbi-red, $rbi-blue);*/
     background-image: url('/images/site-background.jpg');
     background-repeat: no-repeat;
-    background-position: center;
     background-size: 100% 700px;
 
     @include mobile() {
@@ -107,16 +106,17 @@ a:hover {
     .subtitle {
         text-align: center;
 		color: $white;
+        text-shadow: 1px 2px 1px #333;
 	}
 
     .title {
         font-size: 3rem;
-        text-shadow: 1px 2px 1px #000;
         text-transform: uppercase;
     }
 
     .subtitle {
-        font-size: 1.5rem;
+        font-size: 2rem;
+        color: #fff;
     }
 
     @include mobile() {
@@ -125,7 +125,7 @@ a:hover {
         }
 
         .subtitle {
-            font-size: 1rem;
+            font-size: 1.5rem;
         }
     }
 
