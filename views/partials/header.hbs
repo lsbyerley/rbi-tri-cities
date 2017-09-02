@@ -1,5 +1,28 @@
 <header id="header">
 
+	<div class="top">
+		<div class="level is-mobile">
+			<div class="level-left"></div>
+			<div class="level-right">
+				<a class="level-item is-hidden-desktop-only" href="https://twitter.com/rbitricities" target="_blank">
+					<span class="icon">
+					<i class="fa fa-twitter"></i>
+					</span>
+				</a>
+				<a class="level-item is-hidden-desktop-only" href="https://www.facebook.com/rbitricities" target="_blank">
+					<span class="icon">
+					<i class="fa fa-facebook"></i>
+					</span>
+				</a>
+				<a class="level-item is-hidden-desktop-only" href="https://www.instagram.com/rbitricities/" target="_blank">
+					<span class="icon">
+					<i class="fa fa-instagram"></i>
+					</span>
+				</a>
+			</div>
+		</div>
+	</div>
+
 	<div class="navbar-wrap">
 		<div class="container">
 			<nav class="navbar is-transparent">
@@ -14,8 +37,7 @@
 					</div>
 				</div>
 				<div id="navMenu" class="navbar-menu">
-					<div class="navbar-start"></div>
-					<div class="navbar-end">
+					<div class="navbar-start">
 						{{# navLinks }}
 							{{#if link}}
 								<a href="{{ link }}" class="navbar-item {{#isNavItemActive ../reqPath link}}{{/isNavItemActive}}">{{ title }}</a>
@@ -32,6 +54,7 @@
 							{{/if}}
 						{{/ navLinks }}
 					</div>
+					<div class="navbar-end"></div>
 				</div>
 			</nav>
 		</div>

@@ -60,6 +60,29 @@
 	function buildNavLinks(path) {
 		return [
 
+			{ title: 'Facility', dropdown: [
+				{ title: 'Memberships', link: '/memberships' },
+				{ title: 'Team Practices', link: '/team-practices' },
+				{ title: 'Cage Schedule', link: '/cage-schedule' }
+			] },
+			{ title: 'Player Development', dropdown: [
+				{ title: 'Private Lessons', link: '/private-lessons' },
+				{ title: 'Strength & Agility', link: '/strength-agility' },
+				{ title: 'College Signees', link: '/college-signees' }
+			] },
+			{ title: 'Camps & Events', link: '/camps-showcases' },
+			{ title: 'Teams', dropdown: [
+				{ title: 'Shop', link: '/equipment-apparel' }
+			] },
+			{ title: 'College Recruiting', dropdown: [] },
+			{ title: 'About Us', dropdown: [
+				{ title: 'About Us', link: '/about' },
+				{ title: 'Instructors', link: '/instructors' },
+				{ title: 'Contact', link: '/contact' }
+			] }
+
+			/*--------------
+
 			{ title: 'Members', dropdown: [
 				{ title: 'Pricing', link: '/memberships' },
 				{ title: 'Team Practices', link: '/team-practices' },
@@ -82,25 +105,8 @@
 				{ title: 'About Us', link: '/about' },
 				{ title: 'Instructors', link: '/instructors' },
 				{ title: 'Contact', link: '/contact' }
-			] }
+			] }*/
 
-			/*{ title: 'About', link: '/about' },
-			{ title: 'Cage Schedule', link: '/cage-schedule' },
-			{ title: 'Services', dropdown: [
-				{ title: 'Equipment & Apparel', link: '/equipment-apparel' },
-				{ title: 'High School Leagues', link: '/high-school-leagues' },
-				{ title: 'Instructors', link: '/instructors' },
-				{ title: 'Memberships', link: '/memberships' },
-				{ title: 'Private Lessons', link: '/private-lessons' },
-				{ title: 'Recruiting Videos', link: '/recruiting-videos' },
-				{ title: 'Strength & Agility', link: '/strength-agility' },
-				{ title: 'Swing Analytics', link: '/swing-analytics' },
-				{ title: 'Team Practices', link: '/team-practices' },
-				{ title: 'Youth Leagues', link: '/youth-leagues' }
-			] },
-			{ title: 'Camps & Showcases', link: '/camps-showcases' },
-			{ title: 'College Signees', link: '/college-signees' },
-			{ title: 'Contact', link: '/contact' }*/
 		];
 	}
 

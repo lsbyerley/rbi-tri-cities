@@ -64,7 +64,7 @@ require('gsap/ScrollToPlugin');
 				var lat = $el.dataset.latitude,
 					long = $el.dataset.longitude;
 
-				console.log('initmap', lat, long)
+				//console.log('initmap', lat, long)
 				venueMap.init(lat, long);
 			})
 		}*/
@@ -104,7 +104,7 @@ require('gsap/ScrollToPlugin');
 	var eventPage = Barba.BaseView.extend({
 		namespace: 'event',
 		onEnter: function() {
-			console.log('event page!');
+			//console.log('event page!');
 
 			var $maps = Array.prototype.slice.call(document.querySelectorAll('#google-map-event .map'), 0);
 			if ($maps.length > 0) {
@@ -127,15 +127,15 @@ require('gsap/ScrollToPlugin');
 	eventPage.init();
 
 	// Barba.js page transitions
+	Barba.Prefetch.init();
 	Barba.Pjax.start();
-	//Barba.Prefetch.init();
 	Barba.Dispatcher.on('linkClicked', function(HTMLElement, MouseEvent) {
 		updateActiveNavItems(HTMLElement);
 	});
 	Barba.Dispatcher.on('initStateChange', function(currentStatus) {
 		//if (!linkClicked) {
-			console.log('previous', Barba.HistoryManager.prevStatus());
-			console.log('current', Barba.HistoryManager.currentStatus());
+			//console.log('previous', Barba.HistoryManager.prevStatus());
+			//console.log('current', Barba.HistoryManager.currentStatus());
 		//}
 	});
 	Barba.Dispatcher.on('newPageReady', function(currentStatus, prevStatus, HTMLElementContainer, newPageRawHTML) {
@@ -152,7 +152,8 @@ require('gsap/ScrollToPlugin');
 
 	var FadeTransition = Barba.BaseTransition.extend({
 	    start: function() {
-	        // As soon the loading is finished and the old page is faded out, let's fade the new page
+			console.log(this)
+	        // this.newContainerLoading is a promise, when its done, fadeOut the old container
 	        Promise
 	            .all([this.newContainerLoading, this.fadeOut()])
 	            .then(this.fadeIn.bind(this));

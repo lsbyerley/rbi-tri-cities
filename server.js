@@ -24,21 +24,24 @@ app.set('port', process.env.PORT || 8080);
 
 var cache = function cache(duration) {
 	return function(req, res, next) {
-		var key = '__rbi-cache-express__' + req.originalUrl || req.url;
-		var cachedBody = mcache.get(key);
-		if (cachedBody) {
-			console.log('HITTIN CACHE');
-			res.send(cachedBody);
-			return;
-		} else {
-			console.log('FRESH RESPONSE');
-			res.sendResponse = res.send;
-			res.send = function(body) {
-				mcache.put(key, body, duration * 1000);
-				res.sendResponse(body);
-			};
-			next();
+		if (process.env.NODE_ENV !== 'development') { // only cache in prod
+			var key = '__rbi-cache-express__' + req.originalUrl || req.url;
+			var cachedBody = mcache.get(key);
+			if (cachedBody) {
+				console.log('HITTIN CACHE');
+				res.send(cachedBody);
+				return;
+			} else {
+				console.log('FRESH RESPONSE');
+				res.sendResponse = res.send;
+				res.send = function(body) {
+					mcache.put(key, body, duration * 1000);
+					res.sendResponse(body);
+				};
+				next();
+			}
 		}
+		next();
 	};
 };
 
@@ -54,7 +57,7 @@ app.use(function(req, res, next) {
 	//res.set('Expires','-1');
 
 	var contentSecurityPolicy = (process.env.NODE_ENV === 'development') ?
-		"script-src 'self' http://localhost:35729 https://maps.googleapis.com https://cdnjs.cloudflare.com" :
+		"script-src 'self' http://localhost:35729 https://maps.googleapis.com https://cdnjs.cloudflare.com https://api.github.com" :
 		"script-src 'self' https://maps.googleapis.com https://cdnjs.cloudflare.com";
 
 	res.set({

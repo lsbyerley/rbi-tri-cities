@@ -59,6 +59,47 @@
     </div>
 </section>
 
+<div class="section">
+    <hr>
+</div>
+
+<section class="section events">
+    <div class="container">
+
+        <h1 class="title has-text-centered section-title">Upcoming Events</h1>
+        <hr>
+
+        <div class="columns">
+            {{#if events}}
+                {{# events }}
+                    <div class="column">
+                        <div class="card event">
+                            <div class="card-header">
+                                <div class="card-header-title">{{ fields.eventName }}</div>
+                            </div>
+                            <div class="card-content">
+                                <div class="content">
+                                    <div class="title is-6 date">{{{formatDate date=fields.startDate format='MMMM D, YYYY - h:mm a'}}}</div>
+                                    <p>{{ fields.introText }}</p>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <a class="card-footer-item" href="/event/{{ sys.id }}">More Info</a>
+                                {{#if fields.registrationLink}}
+                                    <a class="card-footer-item" href="{{ fields.registrationLink }}" target="_blank">Register</a>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                {{/ events }}
+            {{else}}
+                <div class="no-events">There are no upcoming events at this time</div>
+            {{/if}}
+        </div>
+
+    </div>
+</section>
+
 <section class="section social">
     <div class="container">
 
@@ -120,43 +161,6 @@
                     {{/ instagramPics }}
                 </div>
             </div>
-        </div>
-
-    </div>
-</section>
-
-<section class="section events">
-    <div class="container">
-
-        <h1 class="title has-text-centered section-title">Upcoming Events</h1>
-        <hr>
-
-        <div class="columns">
-            {{#if events}}
-                {{# events }}
-                    <div class="column">
-                        <div class="card event">
-                            <div class="card-header">
-                                <div class="card-header-title">{{ fields.eventName }}</div>
-                            </div>
-                            <div class="card-content">
-                                <div class="content">
-                                    <div class="title is-6 date">{{{formatDate date=fields.startDate format='MMMM D, YYYY - h:mm a'}}}</div>
-                                    <p>{{ fields.introText }}</p>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <a class="card-footer-item" href="/event/{{ sys.id }}">More Info</a>
-                                {{#if fields.registrationLink}}
-                                    <a class="card-footer-item" href="{{ fields.registrationLink }}" target="_blank">Register</a>
-                                {{/if}}
-                            </div>
-                        </div>
-                    </div>
-                {{/ events }}
-            {{else}}
-                <div class="no-events">There are no upcoming events at this time</div>
-            {{/if}}
         </div>
 
     </div>

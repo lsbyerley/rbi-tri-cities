@@ -72,16 +72,24 @@ a:hover {
 @import './partials/googleMap';
 @import './partials/video-player';
 
-// TDOD: MOVE THESE STYLES TO SEPARATE FILES
+// TODO: MOVE THESE STYLES TO SEPARATE FILES
 .hero.is-home {
 
     position: relative;
-    background-color: $rbi-blue;
+    /*background-color: $rbi-blue;
     background: radial-gradient(top, $rbi-red, $rbi-blue);
-    background: -ms-radial-gradient(top, $rbi-red, $rbi-blue);
+    background: -ms-radial-gradient(top, $rbi-red, $rbi-blue);*/
+    background-image: url('/images/site-background.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 700px;
+
+    @include mobile() {
+        background-size: 100% 100%;
+    }
 
     .hero-body {
-        padding: 6rem 0;
+        padding: 10rem 0;
     }
 
     &::before {

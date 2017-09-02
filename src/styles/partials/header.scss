@@ -1,7 +1,16 @@
 #header {
+    background-color: #333;
+
+    .top {
+      background-color: rgba(0, 0, 0, .8);
+
+      .level {
+        padding: 5px 1rem;
+      }
+    }
 
     .navbar-wrap {
-    	background: $rbi-nav-bg;
+    	background-color: rgba(0, 0, 0, .5);
 
         .navbar-brand {
             overflow: hidden;
