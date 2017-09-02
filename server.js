@@ -24,24 +24,21 @@ app.set('port', process.env.PORT || 8080);
 
 var cache = function cache(duration) {
 	return function(req, res, next) {
-		if (process.env.NODE_ENV !== 'development') { // only cache in prod
-			var key = '__rbi-cache-express__' + req.originalUrl || req.url;
-			var cachedBody = mcache.get(key);
-			if (cachedBody) {
-				console.log('HITTIN CACHE');
-				res.send(cachedBody);
-				return;
-			} else {
-				console.log('FRESH RESPONSE');
-				res.sendResponse = res.send;
-				res.send = function(body) {
-					mcache.put(key, body, duration * 1000);
-					res.sendResponse(body);
-				};
-				next();
-			}
+		var key = '__rbi-cache-express__' + req.originalUrl || req.url;
+		var cachedBody = mcache.get(key);
+		if (cachedBody) {
+			console.log('HITTIN CACHE');
+			res.send(cachedBody);
+			return;
+		} else {
+			console.log('FRESH RESPONSE');
+			res.sendResponse = res.send;
+			res.send = function(body) {
+				mcache.put(key, body, duration * 1000);
+				res.sendResponse(body);
+			};
+			next();
 		}
-		next();
 	};
 };
 
