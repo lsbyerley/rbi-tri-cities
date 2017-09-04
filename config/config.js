@@ -61,23 +61,33 @@
 		return [
 
 			{ title: 'Facility', dropdown: [
+				{ title: 'About The Facility', link: '/our-facility' },
 				{ title: 'Memberships', link: '/memberships' },
 				{ title: 'Team Practices', link: '/team-practices' },
-				{ title: 'Cage Schedule', link: '/cage-schedule' }
+				{ title: 'Daily Cage Schedule', link: '/cage-schedule' }
 			] },
 			{ title: 'Player Development', dropdown: [
 				{ title: 'Private Lessons', link: '/private-lessons' },
-				{ title: 'Strength & Agility', link: '/strength-agility' },
+				{ title: 'Strength & Agility', link: '/strength-agility' }
+			] },
+			{ title: 'Camps & Events', dropdown: [
+				{ title: 'Upcoming Events', link: '/events' },
+				{ title: 'Annual Camps', link: '/annual-camps' }
+			] },
+			{ title: 'College Recruiting', dropdown: [
+				{ title: 'Recruiting Videos', link: '/recruiting-videos' },
+				{ title: 'Showcases', link: '/showcases' },
 				{ title: 'College Signees', link: '/college-signees' }
 			] },
-			{ title: 'Camps & Events', link: '/camps-showcases' },
-			{ title: 'Teams', dropdown: [
-				{ title: 'Shop', link: '/equipment-apparel' }
+			{ title: 'RBI Teams', dropdown: [
+				{ title: 'RBI Tri-Cities Teams', link: '/teams' },
+				{ title: 'RBI Pride Teams', link: '/equipment-apparel' },
+				{ title: 'Equipment Shop', link: '/shop' }
 			] },
-			{ title: 'College Recruiting', dropdown: [] },
-			{ title: 'About Us', dropdown: [
+			{ title: 'About', dropdown: [
 				{ title: 'About Us', link: '/about' },
 				{ title: 'Instructors', link: '/instructors' },
+				{ title: 'Directory', link: '/directory' },
 				{ title: 'Contact', link: '/contact' }
 			] }
 
