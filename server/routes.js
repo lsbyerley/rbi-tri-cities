@@ -1,6 +1,7 @@
 var async = require('async');
 var moment = require('moment');
 var utils = require('./utils.js');
+var marked = require('marked');
 
 module.exports = function(app, cache) {
 
@@ -56,9 +57,11 @@ module.exports = function(app, cache) {
 		var id = req.params.id;
 		utils.getEvent(id)
 			.then(function(event) {
-				//console.log('gotEvent', JSON.stringify(event));
-				app.locals.event = event;
 
+				var eventDesc = marked(event.fields.eventDescription);
+				app.locals.event = event;
+				app.locals.eventDesc = eventDesc;
+				
 				return res.render('pages/event.hbs');
 			})
 			.catch(function(err) {
