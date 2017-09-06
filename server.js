@@ -7,6 +7,9 @@ var env = (process.env.NODE_ENV === 'development') ? 'development' : 'production
 var mcache = require('memory-cache');
 var config;
 
+// for all dates
+process.env.TZ = 'America/New_York';
+
 var app = express();
 app.engine('.hbs', handlebars.create({
 	layoutsDir: 'views/layouts',
@@ -68,6 +71,7 @@ app.use(function(req, res, next) {
 	});
 
 	// Global hogan-express variables
+	console.log(req.path)
 	var namespace = (req.path === '/') ? 'home' : req.path;
 	namespace = namespace.replace('/', '');
 	if (namespace.includes('event/')) {

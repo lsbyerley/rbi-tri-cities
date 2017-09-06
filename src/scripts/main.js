@@ -58,17 +58,6 @@ require('gsap/ScrollToPlugin');
 			})
 		}
 
-		/*var $maps = Array.prototype.slice.call(document.querySelectorAll('#google-map-event .map'), 0);
-		if ($maps.length > 0) {
-			$maps.forEach(function($el) {
-				var lat = $el.dataset.latitude,
-					long = $el.dataset.longitude;
-
-				//console.log('initmap', lat, long)
-				venueMap.init(lat, long);
-			})
-		}*/
-
 	}
 
 	function insertYoutubeIframe() {
@@ -80,24 +69,15 @@ require('gsap/ScrollToPlugin');
 		this.parentNode.replaceChild(iframe, this);
 	}
 
-	function updateActiveNavItems(HTMLElement) {
-		var link = $(HTMLElement);
-		if ((link.hasClass('navbar-item') || link.hasClass('foot-link'))) {
-			$('.navbar-item').removeClass('is-active');
-			$('.foot-link').removeClass('is-active');
-			$('.navbar .navbar-burger').removeClass('is-active');
-			$('.navbar .navbar-menu').removeClass('is-active');
-			$('.navbar-item').each(function() {
-				if ( $(this)[0].pathname === link[0].pathname && link[0].pathname !== '/') {
-					$(this).addClass('is-active');
-				}
-			})
-			$('.foot-link').each(function() {
-				if ( $(this)[0].pathname === link[0].pathname && link[0].pathname !== '/') {
-					$(this).addClass('is-active');
-				}
-			})
-		}
+	function updateActiveNavItems(currentStatus) {
+		$('.navbar-item').each(function() {
+			if ( $(this)[0].href === currentStatus.url) {
+				$(this).addClass('is-active');
+				console.log('found!')
+				return;
+			}
+		});
+
 	}
 
 	// Custom about page event for Google Map
@@ -127,16 +107,16 @@ require('gsap/ScrollToPlugin');
 	eventPage.init();
 
 	// Barba.js page transitions
-	Barba.Prefetch.init();
+	//Barba.Prefetch.init();
 	Barba.Pjax.start();
 	Barba.Dispatcher.on('linkClicked', function(HTMLElement, MouseEvent) {
-		updateActiveNavItems(HTMLElement);
+		//updateActiveNavItems(HTMLElement);
 	});
 	Barba.Dispatcher.on('initStateChange', function(currentStatus) {
-		//if (!linkClicked) {
-			//console.log('previous', Barba.HistoryManager.prevStatus());
-			//console.log('current', Barba.HistoryManager.currentStatus());
-		//}
+		$('.navbar-item').removeClass('is-active');
+		$('.navbar .navbar-burger').removeClass('is-active');
+		$('.navbar .navbar-menu').removeClass('is-active');
+		updateActiveNavItems(currentStatus);
 	});
 	Barba.Dispatcher.on('newPageReady', function(currentStatus, prevStatus, HTMLElementContainer, newPageRawHTML) {
 		attachClickHandlers();
@@ -152,7 +132,6 @@ require('gsap/ScrollToPlugin');
 
 	var FadeTransition = Barba.BaseTransition.extend({
 	    start: function() {
-			console.log(this)
 	        // this.newContainerLoading is a promise, when its done, fadeOut the old container
 	        Promise
 	            .all([this.newContainerLoading, this.fadeOut()])

@@ -1,5 +1,12 @@
+// design from https://airtable.com/pricing
 
 .pricing-component {
+
+	@include desktop() {
+		a > .pricing-header:hover {
+			transform: scale(1.05);
+		}
+	}
 
 	.pricing-header {
 		background-color: rgba(0, 0, 0, .1);
@@ -9,12 +16,6 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-
-		@include desktop() {
-			&:hover {
-				transform: scale(1.05);
-			}
-		}
 
 		.pricing-title {
 			color: $rbi-red;

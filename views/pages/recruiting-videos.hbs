@@ -14,9 +14,87 @@
     </div>
 </section>
 
+<section class="section">
+    <div class="container">
+
+        <div class="columns">
+            <div class="column is-4 pricing-component">
+                <div class="pricing-header">
+                    <div class="pricing-title">Pitcher Only</div>
+                    <div class="pricing-cost"><i class="fa fa-usd"></i><div class="cost">300</div></div>
+                    <div class="pricing-desc">Per Video</div>
+                </div>
+            </div>
+            <div class="column is-4 pricing-component">
+                <div class="pricing-header">
+                    <div class="pricing-title">Position Player</div>
+                    <div class="pricing-cost"><i class="fa fa-usd"></i><div class="cost">350</div></div>
+                    <div class="pricing-desc">Per Video</div>
+                </div>
+            </div>
+            <div class="column is-4 pricing-component">
+                <div class="pricing-header">
+                    <div class="pricing-title">Position Player & Pitcher</div>
+                    <div class="pricing-cost"><i class="fa fa-usd"></i><div class="cost">365</div></div>
+                    <div class="pricing-desc">Per Video</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+
+        <div class="title is-5">Our Next Scheduled Video Shoot</div>
+        <hr>
+
+        <div class="columns">
+            <div class="column is-half video-shoot">
+
+                <div class="card">
+                    <header class="card-header">
+                        <p class="card-header-title">Baseball</p>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            <div class="date">{{{formatDate date=videoShoot.fields.baseballDateAndTime format='MMMM D, YYYY - h:mm a'}}}</div>
+                            <div class="location">{{videoShoot.fields.baseballShootLocation.fields.venueName}}</div>
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                        <a href="{{videoShoot.fields.baseballRegistrationLink}}" class="card-footer-item" target="_blank">Register</a>
+                    </footer>
+                </div>
+
+            </div>
+            <div class="column is-half video-shoot">
+
+                <div class="card">
+                    <header class="card-header">
+                        <p class="card-header-title">Softball</p>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            <div class="date">{{{formatDate date=videoShoot.fields.softballDateAndTime format='MMMM D, YYYY - h:mm a'}}}</div>
+                            <div class="location">{{videoShoot.fields.softballShootLocation.fields.venueName}}</div>
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                        <a href="{{videoShoot.fields.softballRegistrationLink}}" class="card-footer-item" target="_blank">Register</a>
+                    </footer>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
 <section class="section recruiting-video">
     <div class="container">
-        <div class="title has-text-centered">Featured Recruiting Video</div>
+        <div class="title has-text-centered">Check out the final product!</div>
         <div class="columns">
             <div class="column is-half is-offset-one-quarter">
                 <div class="youtube-player" data-id="0GIlPTagNyE"></div>

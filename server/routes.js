@@ -22,6 +22,10 @@ module.exports = function(app, cache) {
 		return res.render('pages/about.hbs');
 	});
 
+	app.get('/annual-camps', function(req, res) {
+		return res.render('pages/annual-camps.hbs');
+	});
+
 	app.get('/cage-schedule', cache(300), function(req, res) {
 
 		// Get all Cages and Mounds
@@ -38,18 +42,17 @@ module.exports = function(app, cache) {
 
 	});
 
-	app.get('/camps-showcases', cache(300), function(req, res) {
+	app.get('/college-signees', function(req, res) {
+		// google doc api?
+		return res.render('pages/college-signees.hbs');
+	});
 
-		utils.getEvents()
-			.then(function(events) {
-				app.locals.events = events;
-				return res.render('pages/camps-showcases.hbs');
-			})
-			.catch(function(err) {
-				console.error(err);
-				app.locals.events = [];
-				return res.render('pages/camps-showcases.hbs');
-			})
+	app.get('/contact', function(req, res) {
+		return res.render('pages/contact.hbs');
+	});
+
+	app.get('/directory', function(req, res) {
+		return res.render('pages/directory.hbs');
 	});
 
 	app.get('/event/:id', cache(300), function(req, res) {
@@ -61,7 +64,7 @@ module.exports = function(app, cache) {
 				var eventDesc = marked(event.fields.eventDescription);
 				app.locals.event = event;
 				app.locals.eventDesc = eventDesc;
-				
+
 				return res.render('pages/event.hbs');
 			})
 			.catch(function(err) {
@@ -72,17 +75,18 @@ module.exports = function(app, cache) {
 
 	});
 
-	app.get('/college-signees', function(req, res) {
-		// google doc api?
-		return res.render('pages/college-signees.hbs');
-	});
+	app.get('/events', cache(300), function(req, res) {
 
-	app.get('/contact', function(req, res) {
-		return res.render('pages/contact.hbs');
-	});
-
-	app.get('/equipment-apparel', function(req, res) {
-		return res.render('pages/equipment-apparel.hbs');
+		utils.getEvents()
+			.then(function(events) {
+				app.locals.events = events;
+				return res.render('pages/events.hbs');
+			})
+			.catch(function(err) {
+				console.error(err);
+				app.locals.events = [];
+				return res.render('pages/events.hbs');
+			})
 	});
 
 	app.get('/high-school-leagues', function(req, res) {
@@ -106,12 +110,43 @@ module.exports = function(app, cache) {
 		return res.render('pages/memberships.hbs');
 	});
 
+	app.get('/our-facility', function(req, res) {
+		return res.render('pages/our-facility.hbs');
+	});
+
 	app.get('/private-lessons', function(req, res) {
 		return res.render('pages/private-lessons.hbs');
 	});
 
+	app.get('/rbi-pride-teams', function(req, res) {
+		return res.render('pages/rbi-pride-teams.hbs');
+	});
+
+	app.get('/rbi-teams', function(req, res) {
+		return res.render('pages/rbi-teams.hbs');
+	});
+
 	app.get('/recruiting-videos', function(req, res) {
-		return res.render('pages/recruiting-videos.hbs');
+
+		utils.getUpcomingVideoShoots()
+			.then(function(videoShoot) {
+				app.locals.videoShoot = videoShoot;
+				console.log(videoShoot, videoShoot.fields.baseballShootLocation)
+				return res.render('pages/recruiting-videos.hbs');
+			})
+			.catch(function(err) {
+				console.error(err);
+				app.locals.videoShoot = {};
+				return res.render('pages/recruiting-videos.hbs');
+			})
+	});
+
+	app.get('/shop', function(req, res) {
+		return res.render('pages/shop.hbs');
+	});
+
+	app.get('/showcases', function(req, res) {
+		return res.render('pages/showcases.hbs');
 	});
 
 	app.get('/strength-agility', function(req, res) {

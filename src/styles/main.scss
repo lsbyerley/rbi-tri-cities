@@ -19,7 +19,7 @@ $navbar-item-color: $white;
 $navbar-item-hover-color: $rbi-red;
 $navbar-item-hover-background-color: transparent;
 $navbar-item-active-color: $rbi-red;
-$navbar-dropdown-background-color: rgba(0, 0, 0, .7);
+$navbar-dropdown-background-color: rgba(0, 0, 0, .8);
 $navbar-dropdown-item-hover-color: $rbi-red;
 $navbar-dropdown-border-top: $rbi-nav-bg;
 
@@ -135,17 +135,10 @@ section.section-spacer {
 
 }
 
-#four0four.section {
-
-    .icon {
-        &::before {
-            @include fa(1.5rem, 2rem);
-
-            margin-right: 10px;
-            content: '\f06a';
-            display: inline-block;
-            font-family: 'FontAwesome';
-        }
+#four0four.section, #error.section {
+    padding: 20vh 3rem;
+    @include mobile() {
+        padding: 10vh 3rem;
     }
 }
 
@@ -280,7 +273,7 @@ section.section-spacer {
     }
 }
 
-#camps-showcases.section {
+#events.section {
 
     .media.event {
 

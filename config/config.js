@@ -80,8 +80,8 @@
 				{ title: 'College Signees', link: '/college-signees' }
 			] },
 			{ title: 'RBI Teams', dropdown: [
-				{ title: 'RBI Tri-Cities Teams', link: '/teams' },
-				{ title: 'RBI Pride Teams', link: '/equipment-apparel' },
+				{ title: 'RBI Tri-Cities Teams', link: '/rbi-teams' },
+				{ title: 'RBI Pride Teams', link: '/rbi-pride-teams' },
 				{ title: 'Equipment Shop', link: '/shop' }
 			] },
 			{ title: 'About', dropdown: [

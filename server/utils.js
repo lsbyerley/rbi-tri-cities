@@ -57,7 +57,6 @@ module.exports = {
     getEvent: function(id) {
 
         return new Promise(function (resolve, reject) {
-
             contentful_client.getEntries({
                 content_type: 'events',
                 'sys.id': id
@@ -90,6 +89,29 @@ module.exports = {
                 //console.log(JSON.stringify(response.items));
                 var events = response.items;
                 resolve(events)
+            })
+            .catch(function(err) {
+                console.error(err)
+                reject(err)
+            })
+        });
+
+    },
+
+    getUpcomingVideoShoots: function() {
+
+        return new Promise(function (resolve, reject) {
+            contentful_client.getEntries({
+                content_type: 'videoShoots',
+                'sys.id': '3mN9xPIbao2AQcwKkg0omc'
+            })
+            .then(function(response) {
+                if (response.items) {
+                    var videoShoot = response.items[0]
+                    resolve(videoShoot)
+                } else {
+                    reject({})
+                }
             })
             .catch(function(err) {
                 console.error(err)
