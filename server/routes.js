@@ -143,7 +143,6 @@ module.exports = function(app, cache) {
 		utils.getUpcomingVideoShoots()
 			.then(function(videoShoot) {
 				app.locals.videoShoot = videoShoot;
-				console.log(videoShoot, videoShoot.fields.baseballShootLocation)
 				return res.render('pages/recruiting-videos.hbs');
 			})
 			.catch(function(err) {
