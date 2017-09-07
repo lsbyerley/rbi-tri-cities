@@ -107,7 +107,7 @@ require('gsap/ScrollToPlugin');
 	eventPage.init();
 
 	// Barba.js page transitions
-	//Barba.Prefetch.init();
+	Barba.Prefetch.init();
 	Barba.Pjax.start();
 	Barba.Dispatcher.on('linkClicked', function(HTMLElement, MouseEvent) {
 		//updateActiveNavItems(HTMLElement);

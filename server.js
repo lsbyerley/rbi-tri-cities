@@ -5,12 +5,14 @@ var bodyParser = require('body-parser');
 var compression = require('compression');
 var env = (process.env.NODE_ENV === 'development') ? 'development' : 'production';
 var mcache = require('memory-cache');
+var helmet = require('helmet')
 var config;
 
 // for all dates
 process.env.TZ = 'America/New_York';
 
 var app = express();
+app.use(helmet());
 app.engine('.hbs', handlebars.create({
 	layoutsDir: 'views/layouts',
 	partialsDir: 'views/partials',

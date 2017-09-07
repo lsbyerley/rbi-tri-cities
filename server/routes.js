@@ -26,6 +26,18 @@ module.exports = function(app, cache) {
 		return res.render('pages/annual-camps.hbs');
 	});
 
+	//need to figure out why cage-schedules is so slow
+	app.get('/api/cage-schedule', function(req, res) {
+		utils.getCageSchedule()
+			.then(function(result) {
+				res.send(result)
+			})
+			.catch(function(err) {
+				console.error(err)
+				res.status(500).render('pages/error.hbs');
+			})
+	});
+
 	app.get('/cage-schedule', cache(300), function(req, res) {
 
 		// Get all Cages and Mounds
