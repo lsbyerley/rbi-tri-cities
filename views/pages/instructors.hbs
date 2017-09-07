@@ -5,24 +5,35 @@
         <h2 class="subtitle">Our list of certified instructors are available for individual lessons</h2>
         <hr>
 
-        {{# instructors }}
-            <article class="media instructor">
-                <div class="media-left">
-                    <div class="image">
-                        <img class="headshot" src="{{ fields.headshot.fields.file.url }}" alt="{{ fields.headshot.fields.title }}">
-                    </div>
+        <div class="columns">
+            <div class="column is-8">
+                <div class="title is-5">Instructors</div>
+                {{#each instructors }}
+                    <article class="media instructor">
+                        <div class="media-left">
+                            <div class="image">
+                                <img class="headshot" src="{{ fields.headshot.fields.file.url }}" alt="{{ fields.headshot.fields.title }}">
+                            </div>
+                        </div>
+                        <div class="media-content">
+                            <div class="info">
+                                <div class="name">{{ fields.name }}</div>
+                                {{# each fields.specialties}}
+                                    <span class="tag is-info">{{ . }}</span>
+                                {{/each}}
+                            </div>
+                            <div class="accolades">{{ fields.accolades }}</div>
+                        </div>
+                    </article>
+                {{/each}}
+            </div>
+            <div class="column is-4">
+                <div class="title is-5">Directory</div>
+                <div class="panel">
+                    {{#each instructors }}
+                        <a class="panel-block">{{ fields.name }}</a>
+                    {{/each}}
                 </div>
-                <div class="media-content">
-                    <div class="info">
-                        <div class="name">{{ fields.name }}</div>
-                        {{# each fields.specialties}}
-                            <span class="tag is-info">{{ . }}</span>
-                        {{/each}}
-                    </div>
-                    <div class="accolades">{{ fields.accolades }}</div>
-                </div>
-            </article>
-        {{/ instructors }}
-
+            </div>
     </div>
 </section>

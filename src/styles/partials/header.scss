@@ -6,13 +6,22 @@
 
       .level {
         padding: 5px 1rem;
+        font-size: 12px;
 
-        .social-link {
+        .level-item {
 
-            padding: .5rem;
+            padding: .5rem 0;
+            font-size: 12px;
+            text-align: center;
+            vertical-align: top;
+            color: #d2d1d1;
+
+            .fa {
+                margin-right: 5px;
+            }
 
             &:hover {
-                color: #fff;
+                color: $rbi-red;
             }
         }
       }

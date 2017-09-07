@@ -138,7 +138,7 @@ module.exports = function(app, cache) {
 		return res.render('pages/rbi-teams.hbs');
 	});
 
-	app.get('/recruiting-videos', function(req, res) {
+	app.get('/recruiting-videos', cache(300), function(req, res) {
 
 		utils.getUpcomingVideoShoots()
 			.then(function(videoShoot) {

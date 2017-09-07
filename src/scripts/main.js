@@ -77,15 +77,12 @@ require('gsap/ScrollToPlugin');
 				return;
 			}
 		});
-
 	}
 
 	// Custom about page event for Google Map
 	var eventPage = Barba.BaseView.extend({
 		namespace: 'event',
 		onEnter: function() {
-			//console.log('event page!');
-
 			var $maps = Array.prototype.slice.call(document.querySelectorAll('#google-map-event .map'), 0);
 			if ($maps.length > 0) {
 				var $theMap = $maps[0];
@@ -110,7 +107,7 @@ require('gsap/ScrollToPlugin');
 	Barba.Prefetch.init();
 	Barba.Pjax.start();
 	Barba.Dispatcher.on('linkClicked', function(HTMLElement, MouseEvent) {
-		//updateActiveNavItems(HTMLElement);
+		
 	});
 	Barba.Dispatcher.on('initStateChange', function(currentStatus) {
 		$('.navbar-item').removeClass('is-active');

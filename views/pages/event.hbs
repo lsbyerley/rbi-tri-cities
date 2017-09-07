@@ -7,35 +7,27 @@
             <hr>
             <div class="level event-details">
                 <div class="level-item has-text-centered">
-                    <!--<div>-->
-                        <p class="heading">Cost</p>
-                        <p class="title">
-                            {{#ifCond event.fields.eventCost '>' 0}}
-                                <span class="tag is-success">${{ event.fields.eventCost }}</span>
-                            {{else}}
-                                <span class="tag is-success">Free</span>
-                            {{/ifCond}}
-                        </p>
-                    <!--</div>-->
+                    <p class="heading">Cost</p>
+                    <p class="title">
+                        {{#ifCond event.fields.eventCost '>' 0}}
+                            <span class="tag is-success">${{ event.fields.eventCost }}</span>
+                        {{else}}
+                            <span class="tag is-success">Free</span>
+                        {{/ifCond}}
+                    </p>
                 </div>
                 <div class="level-item has-text-centered">
-                    <!--<div>-->
-                        <p class="heading">Start Date</p>
-                        <p class="title is-6">{{{formatDate date=event.fields.startDate format='MMMM D, YYYY - h:mm a'}}}</p>
-                    <!--</div>-->
+                    <p class="heading">Start Date</p>
+                    <p class="title is-6">{{{formatDate date=event.fields.startDate format='MMMM D, YYYY - h:mm a'}}}</p>
                 </div>
                 <div class="level-item has-text-centered">
-                    <!--<div>-->
-                        <p class="heading">End Date</p>
-                        <p class="title is-6">{{{formatDate date=event.fields.endDate format='MMMM D, YYYY - h:mm a'}}}</p>
-                    <!--</div>-->
+                    <p class="heading">End Date</p>
+                    <p class="title is-6">{{{formatDate date=event.fields.endDate format='MMMM D, YYYY - h:mm a'}}}</p>
                 </div>
                 {{#if event.fields.registrationLink}}
                     <div class="level-item has-text-centered">
-                        <!--<div>-->
-                            <p class="heading">Registration</p>
-                            <a class="button is-info" href="{{ event.fields.registrationLink }}" target="_blank">Register</a>
-                        <!--</div>-->
+                        <p class="heading">Registration</p>
+                        <a class="button is-info" href="{{ event.fields.registrationLink }}" target="_blank">Register</a>
                     </div>
                 {{/if}}
             </div>
