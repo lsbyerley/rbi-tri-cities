@@ -73,8 +73,8 @@ app.use(function(req, res, next) {
 	});
 
 	// Global hogan-express variables
-	console.log(req.path)
-	var namespace = (req.path === '/') ? 'home' : req.path;
+	// 
+	var namespace = (req.path === '/' || req.path === '/robots.txt') ? 'home' : req.path;
 	namespace = namespace.replace('/', '');
 	if (namespace.includes('event/')) {
 		namespace = 'event';
