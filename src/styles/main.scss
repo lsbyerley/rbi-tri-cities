@@ -52,6 +52,10 @@ body {
   flex: 1 0 auto;
 }
 
+.margin-bottom {
+    margin-bottom: 1rem;
+}
+
 a:hover {
     transition: color .4s ease;
 }
@@ -386,6 +390,61 @@ section.section-spacer {
             font-size: 1rem;
             letter-spacing: 2px;
         }
+    }
+
+}
+
+.panel.contact {
+
+    .panel-block {
+        border: 0;
+
+        .icon {
+            margin-right: 10px;
+        }
+    }
+}
+
+.message.camp {
+
+    .message-header {
+        background-color: $primary;
+
+        .title {
+            color: #fff;
+        }
+    }
+
+    .message-body {
+
+        .meta {
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        p {
+            margin-top: 1rem;
+        }
+    }
+}
+
+.card.video-shoot {
+
+    .card-header-title {
+        justify-content: center;
+    }
+
+    .card-content {
+        text-align: center;
+    }
+
+    .tbd {
+        font-size: 3rem;
+        font-family: 'Titillium Web', Lato, sans-serif;
+    }
+
+    .date {
+        margin-bottom: 1rem;
     }
 
 }

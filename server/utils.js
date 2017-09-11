@@ -8,6 +8,7 @@ var twitterText = require('twitter-text');
 var twemoji = require('twemoji');
 var Contentful = require('contentful');
 var config = require('./config');
+var request = require('request');
 //https://jelled.com/instagram/access-token
 
 var contentful_client = Contentful.createClient({
@@ -265,6 +266,33 @@ module.exports = {
                 $dateCreated: 'ASC'
             }
         }
+
+    },
+
+    getCollegeSignees: function() {
+
+        return new Promise(function (resolve, reject) {
+
+            var url = 'https://spreadsheets.google.com/feeds/list/1bl9c_HhR5OpKpjTq9ZVno592ML02ouiO-w22Gg3IMkQ/1/public/values?alt=json';
+
+    		request.get({ url: url, json: true, headers: {'User-Agent': 'request'} }, (err, res, data) => {
+    			if (err || res.statusCode !== 200) {
+    				reject(err)
+    			} else {
+    				var entries = data.feed.entry;
+    				var signees = _.map(entries, function(entry) {
+                        return {
+                            name: entry.gsx$name.$t,
+                            highSchool: entry.gsx$highschool.$t,
+                            college: entry.gsx$college.$t,
+                            year: entry.gsx$yearsigned.$t
+                        }
+                    })
+                    resolve(signees);
+    			}
+    		});
+
+        });
 
     }
 

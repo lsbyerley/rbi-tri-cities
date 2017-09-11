@@ -54,9 +54,16 @@ module.exports = function(app, cache) {
 
 	});
 
-	app.get('/college-signees', function(req, res) {
-		// google doc api?
-		return res.render('pages/college-signees.hbs');
+	app.get('/college-signees', cache(300), function(req, res) {
+		utils.getCollegeSignees()
+			.then(function(signees) {
+				app.locals.signees = signees;
+				return res.render('pages/college-signees.hbs');
+			})
+			.catch(function(err) {
+				console.error(err)
+				res.status(500).render('pages/error.hbs');
+			})
 	});
 
 	app.get('/contact', function(req, res) {
@@ -126,8 +133,8 @@ module.exports = function(app, cache) {
 		return res.render('pages/our-facility.hbs');
 	});
 
-	app.get('/private-lessons', function(req, res) {
-		return res.render('pages/private-lessons.hbs');
+	app.get('/private-instruction', function(req, res) {
+		return res.render('pages/private-instruction.hbs');
 	});
 
 	app.get('/rbi-pride-teams', function(req, res) {

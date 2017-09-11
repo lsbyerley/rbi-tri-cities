@@ -2,12 +2,13 @@
     <div class="container">
 
         <h1 class="title is-spaced">Recruiting Videos</h1>
-        <h2 class="subtitle">Get an offer from the school of your dreams</h2>
         <hr>
 
         <div class="content">
             <p>RBI Tri-Cities has decided to take an active role in helping create video content for our players to use to promote themselves to college recruiters. We have partnered up with professional filmographers to create these high quality videos. Each video will be posted to RBI's Instagram and Youtube Channel and each player will receive a link they can use to send to the schools of their choice.</p>
-            <p>At each video shoot, we recommend players wear gear from their summer travel teams or high school programs and come ready to roll. RBI's staff will direct the action and make sure to get quality reps offensively, defensively, running, and on the mound. After the shoot is complete, we work with our professional filmographers to pick and choose which swings, throws and defensive plays look most attractive on camera to the recruiters eye.</p>
+
+            <p>At each video shoot, we recommend players wear gear from their summer travel teams or high school programs and come ready to roll. RBI's staff will direct the action and make sure to get quality reps offensively, defensively, running, and on the mound. After the shoot is complete, we work with our professional filmographers to pick and choose which swings, throws and defensive plays look most attractive on camera to the recruiter's eye.</p>
+
             <p>Our goal is to narrow the action down to a 2-3 minute video that shows you at your best. These videos are recommended for players in 9th-12 grades.</p>
         </div>
 
@@ -47,21 +48,29 @@
 <section class="section">
     <div class="container">
 
-        <div class="title is-5">Our Next Scheduled Video Shoot</div>
+        <div class="title is-5 has-text-centered">Our Next Scheduled Video Shoot</div>
         <hr>
 
         <div class="columns">
-            <div class="column is-half video-shoot">
+            <div class="column is-half">
 
-                <div class="card">
+                <div class="card video-shoot">
                     <header class="card-header">
                         <p class="card-header-title">Baseball</p>
                     </header>
                     {{#if videoShoot.fields.baseballActive}}
                         <div class="card-content">
-                            <div class="content">
-                                <div class="date">{{{formatDate date=videoShoot.fields.baseballDateAndTime format='MMMM D, YYYY - h:mm a'}}}</div>
-                                <div class="location">{{videoShoot.fields.baseballShootLocation.fields.venueName}}</div>
+                            <div class="date">
+                                <span class="icon">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                                {{{formatDate date=videoShoot.fields.baseballDateAndTime format='MMMM D, YYYY - h:mm a'}}}
+                            </div>
+                            <div class="location">
+                                <span class="icon">
+                                    <i class="fa fa-map-marker"></i>
+                                </span>
+                                {{videoShoot.fields.baseballShootLocation.fields.venueName}}
                             </div>
                         </div>
                         {{#if videoShoot.fields.baseballRegistrationLink}}
@@ -79,17 +88,25 @@
                 </div>
 
             </div>
-            <div class="column is-half video-shoot">
+            <div class="column is-half">
 
-                <div class="card">
+                <div class="card video-shoot">
                     <header class="card-header">
                         <p class="card-header-title">Softball</p>
                     </header>
                     {{#if videoShoot.fields.softballActive}}
                         <div class="card-content">
-                            <div class="content">
-                                <div class="date">{{{formatDate date=videoShoot.fields.softballDateAndTime format='MMMM D, YYYY - h:mm a'}}}</div>
-                                <div class="location">{{videoShoot.fields.softballShootLocation.fields.venueName}}</div>
+                            <div class="date">
+                                <span class="icon">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                                {{{formatDate date=videoShoot.fields.softballDateAndTime format='MMMM D, YYYY - h:mm a'}}}
+                            </div>
+                            <div class="location">
+                                <span class="icon">
+                                    <i class="fa fa-map-marker"></i>
+                                </span>
+                                {{videoShoot.fields.softballShootLocation.fields.venueName}}
                             </div>
                         </div>
                         {{#if videoShoot.fields.softballRegistrationLink}}

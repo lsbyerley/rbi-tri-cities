@@ -2,10 +2,39 @@
     <div class="container">
 
         <h1 class="title is-spaced">College Signees</h1>
-        
         <hr>
 
-        <p>This page is currently under construction!</p>
+        <div class="content">
+
+            <p>Many of the players that come through our doors aspire to play baseball or softball in college, receive a scholarship, and continue their careers on the diamond. This is no minor accomplishment. We are extremely proud of those that have met this goal, and are grateful to have been a part of their story. Whether they took private lessons from our instructors, were RBI members, or played for an RBI team, the below is a growing list of players that have signed to play collegiately. Congrats guys and girls!!!</p>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>High School</th>
+                        <th>College</th>
+                        <th>Year Signed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#if signees}}
+                        {{# signees }}
+                            <tr>
+                                <td>{{ name }}</td>
+                                <td>{{ highSchool }}</td>
+                                <td>{{ college }}</td>
+                                <td>{{ year }}</td>
+                            </tr>
+                        {{/signees}}
+                    {{else}}
+                        <tr></tr>
+                    {{/if}}
+                </tbody>
+            </table>
+
+
+        </div>
 
     </div>
 </section>

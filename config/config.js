@@ -8,55 +8,6 @@
 		};
 	}
 
-	function buildPageMeta(path) {
-		var title = "RBI Tri-Cities",
-			description = "Indoor Baseball & Softball Facility offering professional instruction on hitting, pitching & defense as well as memberships, camps & clinics.";
-
-		switch (path) {
-			case '/about':
-				title = "About | " + title;
-				description = "page meta description";
-				break;
-			case '/contact':
-				title = "Contact | " + title;
-				description = "page meta description";
-				break;
-			case '/fundraising':
-				title = "Fundraising | " + title;
-				description = "page meta description";
-				break;
-			case '/instructors':
-				title = "Instructors | " + title;
-				description = "page meta description";
-				break;
-			case '/lessons':
-				title = "Lessons | " + title;
-				description = "page meta description";
-				break;
-			case '/members':
-				title = "Members | " + title;
-				description = "page meta description";
-				break;
-			case '/rbiron':
-				title = "RBIron Strength and Agility Classes | " + title;
-				description = "page meta description";
-				break;
-			case '/signees':
-				title = "Collegiate Signees | " + title;
-				description = "page meta description";
-				break;
-			case '/teams':
-				title = "Teams | " + title;
-				description = "page meta description";
-				break;
-		}
-
-		return {
-			title: title,
-			description: description
-		};
-	}
-
 	function buildNavLinks(path) {
 		return [
 
@@ -67,7 +18,7 @@
 				{ title: 'Daily Cage Schedule', link: '/cage-schedule' }
 			] },
 			{ title: 'Player Development', dropdown: [
-				{ title: 'Private Lessons', link: '/private-lessons' },
+				{ title: 'Private Instruction', link: '/private-instruction' },
 				{ title: 'Strength & Agility', link: '/strength-agility' }
 			] },
 			{ title: 'Camps & Events', dropdown: [
@@ -91,33 +42,92 @@
 				{ title: 'Contact', link: '/contact' }
 			] }
 
-			/*--------------
-
-			{ title: 'Members', dropdown: [
-				{ title: 'Pricing', link: '/memberships' },
-				{ title: 'Team Practices', link: '/team-practices' },
-				{ title: 'Cage Schedule', link: '/cage-schedule' }
-			] },
-			{ title: 'Lessons', dropdown: [
-				{ title: 'Private Lessons', link: '/private-lessons' },
-				{ title: 'Swing Analytics', link: '/swing-analytics' }
-			] },
-			{ title: 'Events', dropdown: [
-				{ title: 'Camps & Showcases', link: '/camps-showcases' },
-				{ title: 'High School Leagues', link: '/high-school-leagues' },
-				{ title: 'Youth Leagues', link: '/youth-leagues' }
-			] },
-			{ title: 'Recruiting Videos', link: '/recruiting-videos' },
-			{ title: 'College Signees', link: '/college-signees' },
-			{ title: 'Strength & Agility', link: '/strength-agility' },
-			{ title: 'Shop', link: '/equipment-apparel' },
-			{ title: 'More', dropdown: [
-				{ title: 'About Us', link: '/about' },
-				{ title: 'Instructors', link: '/instructors' },
-				{ title: 'Contact', link: '/contact' }
-			] }*/
-
 		];
+	}
+
+	function buildPageMeta(path) {
+		var title = "RBI Tri-Cities",
+			description = "Indoor Baseball & Softball Facility offering professional instruction on hitting, pitching & defense as well as memberships, camps, and clinics in Johnson City, TN";
+
+		switch (path) {
+			case '/our-facility':
+				title = "Our Facility | " + title;
+				//description = "";
+				break;
+			case '/memberships':
+				title = "Memberships | " + title;
+				//description = "";
+				break;
+			case '/team-practices':
+				title = "Team Practices | " + title;
+				//description = "";
+				break;
+			case '/cage-schedule':
+				title = "Cage Schedule | " + title;
+				//description = "";
+				break;
+			case '/private-instruction':
+				title = "Private Instruction | " + title;
+				//description = "";
+				break;
+			case '/strength-agility':
+				title = "RBIron Strength and Agility | " + title;
+				//description = "";
+				break;
+			case '/events':
+				title = "Events | " + title;
+				//description = "";
+				break;
+			case '/annual-camps':
+				title = "Annual Camps | " + title;
+				//description = "";
+				break;
+			case '/recruiting-videos':
+				title = "Recruiting Videos | " + title;
+				//description = "";
+				break;
+			case '/showcases':
+				title = "Showcases | " + title;
+				//description = "";
+				break;
+			case '/college-signees':
+				title = "College Signees | " + title;
+				//description = "";
+				break;
+			case '/rbi-teams':
+				title = "RBI Teams | " + title;
+				//description = "";
+				break;
+			case '/rbi-pride-teams':
+				title = "RBI Pride Teams | " + title;
+				//description = "";
+				break;
+			case '/shop':
+				title = "Equipment Shop | " + title;
+				//description = "";
+				break;
+			case '/about':
+				title = "About Us | " + title;
+				//description = "";
+				break;
+			case '/instructors':
+				title = "Instructors | " + title;
+				//description = "";
+				break;
+			case '/directory':
+				title = "Staff Directory | " + title;
+				//description = "";
+				break;
+			case '/contact':
+				title = "Contact Us | " + title;
+				//description = "";
+				break;
+		}
+
+		return {
+			title: title,
+			description: description
+		};
 	}
 
 	module.exports = config;
