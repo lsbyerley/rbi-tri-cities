@@ -23,7 +23,8 @@
 			] },
 			{ title: 'Camps & Events', dropdown: [
 				{ title: 'Upcoming Events', link: '/events' },
-				{ title: 'Annual Camps', link: '/annual-camps' }
+				{ title: 'Annual Camps', link: '/annual-camps' },
+				{ title: 'Showcases', link: '/showcases' }
 			] },
 			{ title: 'College Recruiting', dropdown: [
 				{ title: 'Recruiting Videos', link: '/recruiting-videos' },

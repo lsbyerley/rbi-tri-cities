@@ -449,3 +449,25 @@ section.section-spacer {
     }
 
 }
+
+.no-margin, .field.no-margin {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#private-lesson-signup {
+    .hero-body {
+        padding: 1rem;
+    }
+
+    @include mobile() {
+        .column.is-left {
+            .title,
+            .subtitle {
+                text-align: center;
+            }
+        }
+    }
+}
