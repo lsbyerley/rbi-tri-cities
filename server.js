@@ -3,6 +3,7 @@ var handlebars = require('express-handlebars');
 var http_module = require('http');
 var bodyParser = require('body-parser');
 var compression = require('compression');
+var expressValidator = require('express-validator');
 var env = (process.env.NODE_ENV === 'development') ? 'development' : 'production';
 var mcache = require('memory-cache');
 var helmet = require('helmet')
@@ -13,6 +14,14 @@ process.env.TZ = 'America/New_York';
 
 var app = express();
 app.use(helmet());
+app.use(compression());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(expressValidator());
+app.use(express.static(__dirname + '/public'));
+app.set('view engine', '.hbs');
+app.set('views', __dirname + '/views');
+app.set('port', process.env.PORT || 8080);
 app.engine('.hbs', handlebars.create({
 	layoutsDir: 'views/layouts',
 	partialsDir: 'views/partials',
@@ -20,12 +29,6 @@ app.engine('.hbs', handlebars.create({
 	helpers: new require('./server/hbsHelpers')(),
 	extname: '.hbs'
 }).engine)
-app.set('view engine', '.hbs');
-app.use(bodyParser.json());
-app.use(compression());
-app.use(express.static(__dirname + '/public'));
-app.set('views', __dirname + '/views');
-app.set('port', process.env.PORT || 8080);
 
 var cache = function cache(duration) {
 	return function(req, res, next) {
@@ -59,8 +62,8 @@ app.use(function(req, res, next) {
 	//res.set('Expires','-1');
 
 	var contentSecurityPolicy = (process.env.NODE_ENV === 'development') ?
-		"script-src 'self' http://localhost:35729 https://maps.googleapis.com https://cdnjs.cloudflare.com https://api.github.com" :
-		"script-src 'self' https://maps.googleapis.com https://cdnjs.cloudflare.com";
+		"script-src 'self' http://localhost:35729 maps.googleapis.com cdnjs.cloudflare.com www.google-analytics.com" :
+		"script-src 'self' maps.googleapis.com cdnjs.cloudflare.com www.google-analytics.com";
 
 	res.set({
 		'Access-Control-Allow-Origin': '*',
@@ -73,7 +76,6 @@ app.use(function(req, res, next) {
 	});
 
 	// Global hogan-express variables
-	// 
 	var namespace = (req.path === '/' || req.path === '/robots.txt') ? 'home' : req.path;
 	namespace = namespace.replace('/', '');
 	if (namespace.includes('event/')) {

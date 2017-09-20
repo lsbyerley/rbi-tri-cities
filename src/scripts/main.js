@@ -58,6 +58,9 @@ require('gsap/ScrollToPlugin');
 			})
 		}
 
+		// Private instruction form submissions
+		//var $piForms = Array.prototype.slice.call(document.querySelectorAll(''), 0);
+
 	}
 
 	function insertYoutubeIframe() {
@@ -73,7 +76,6 @@ require('gsap/ScrollToPlugin');
 		$('.navbar-item').each(function() {
 			if ( $(this)[0].href === currentStatus.url) {
 				$(this).addClass('is-active');
-				console.log('found!')
 				return;
 			}
 		});
@@ -107,7 +109,7 @@ require('gsap/ScrollToPlugin');
 	Barba.Prefetch.init();
 	Barba.Pjax.start();
 	Barba.Dispatcher.on('linkClicked', function(HTMLElement, MouseEvent) {
-		
+
 	});
 	Barba.Dispatcher.on('initStateChange', function(currentStatus) {
 		$('.navbar-item').removeClass('is-active');

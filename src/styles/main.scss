@@ -457,9 +457,18 @@ section.section-spacer {
     margin-right: 0;
 }
 
-#private-lesson-signup {
+#private-lesson-signup,
+#recruiting-video-signup {
     .hero-body {
-        padding: 1rem;
+        //padding: 1rem; take out after form is added
+    }
+
+    a {
+        color: lighten($rbi-red, 10%);
+        &:hover {
+            color: lighten($rbi-red, 10%);
+            text-decoration: underline;
+        }
     }
 
     @include mobile() {

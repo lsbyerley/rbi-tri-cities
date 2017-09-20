@@ -2,8 +2,44 @@ var async = require('async');
 var moment = require('moment');
 var utils = require('./utils.js');
 var marked = require('marked');
+var sendmail = require('sendmail')();
+//var mailgun = require('mailgun-js')({ apiKey: api_key, domain: domain })
 
 module.exports = function(app, cache) {
+
+	app.post('/private-instruction-request', function(req, res) {
+
+		console.log(req.body)
+
+		req.checkBody("playerName", "Player name is required").notEmpty();
+		req.checkBody("parentEmail", "Invalid email address").isEmail();
+		req.checkBody("parentPhone", "Invalid phone number").isMobilePhone('en-US');
+		req.checkBody("rbi_b1e623405f2c_23909403", "Missing check").exists();
+		req.sanitize('playerName').escape();
+		req.sanitize('playerName').trim();
+
+		req.getValidationResult().then(function(result) {
+			if (!result.isEmpty()) {
+				var errors = result.array().map(function (elem) {
+					return elem.msg;
+		        });
+				return res.send({success: false, errors: errors})
+			} else {
+				// validation ok
+				sendmail({
+					from: 'no-reply@rbitricities.com',
+					to: 'lsbyerley@gmail.com',
+					subject: 'RBI Private Instruction Request',
+					html: 'Mail of test sendmail',
+				}, function(err, reply) {
+					console.log(err && err.stack);
+					console.dir(reply);
+				});
+				return res.send({success: true, errors: []})
+			}
+		})
+
+	})
 
 	app.get('/', cache(300), function(req, res) {
 		utils.homePageData()
