@@ -459,6 +459,7 @@ section.section-spacer {
 
 #private-lesson-signup,
 #recruiting-video-signup {
+    background: linear-gradient(90deg, $rbi-blue, darken($rbi-blue, 10%));
     .hero-body {
         //padding: 1rem; take out after form is added
     }

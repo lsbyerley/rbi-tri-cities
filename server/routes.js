@@ -2,7 +2,7 @@ var async = require('async');
 var moment = require('moment');
 var utils = require('./utils.js');
 var marked = require('marked');
-var sendmail = require('sendmail')();
+//var sendmail = require('sendmail')(); // will move to mailgun
 //var mailgun = require('mailgun-js')({ apiKey: api_key, domain: domain })
 
 module.exports = function(app, cache) {
@@ -26,7 +26,7 @@ module.exports = function(app, cache) {
 				return res.send({success: false, errors: errors})
 			} else {
 				// validation ok
-				sendmail({
+				/*sendmail({
 					from: 'no-reply@rbitricities.com',
 					to: 'lsbyerley@gmail.com',
 					subject: 'RBI Private Instruction Request',
@@ -34,7 +34,7 @@ module.exports = function(app, cache) {
 				}, function(err, reply) {
 					console.log(err && err.stack);
 					console.dir(reply);
-				});
+				});*/
 				return res.send({success: true, errors: []})
 			}
 		})
