@@ -1,7 +1,7 @@
-var async = require('async');
-var moment = require('moment');
-var utils = require('./utils.js');
-var marked = require('marked');
+const async = require('async');
+const moment = require('moment');
+const utils = require('./utils.js');
+const marked = require('marked');
 //var sendmail = require('sendmail')(); // will move to mailgun
 //var mailgun = require('mailgun-js')({ apiKey: api_key, domain: domain })
 

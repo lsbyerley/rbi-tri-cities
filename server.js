@@ -1,13 +1,13 @@
-var express = require('express');
-var handlebars = require('express-handlebars');
-var http_module = require('http');
-var bodyParser = require('body-parser');
-var compression = require('compression');
-var expressValidator = require('express-validator');
-var env = (process.env.NODE_ENV === 'development') ? 'development' : 'production';
-var mcache = require('memory-cache');
-var helmet = require('helmet')
-var config;
+const express = require('express');
+const handlebars = require('express-handlebars');
+const http_module = require('http');
+const bodyParser = require('body-parser');
+const compression = require('compression');
+const expressValidator = require('express-validator');
+const env = (process.env.NODE_ENV === 'development') ? 'development' : 'production';
+const mcache = require('memory-cache');
+const helmet = require('helmet')
+let config;
 
 // for all dates
 process.env.TZ = 'America/New_York';
@@ -30,7 +30,7 @@ app.engine('.hbs', handlebars.create({
 	extname: '.hbs'
 }).engine)
 
-var cache = function cache(duration) {
+const cache = function cache(duration) {
 	return function(req, res, next) {
 		var key = '__rbi-cache-express__' + req.originalUrl || req.url;
 		var cachedBody = mcache.get(key);
@@ -52,7 +52,7 @@ var cache = function cache(duration) {
 
 app.use(function(req, res, next) {
 
-	config = require('./config/config')(req.path);
+	config = require('./server/locals')(req.path);
 
 	// Set secure http header settings from https://www.smashingmagazine.com/2017/04/secure-web-app-http-headers/
 	// https://www.html5rocks.com/en/tutorials/security/content-security-policy/
@@ -61,7 +61,7 @@ app.use(function(req, res, next) {
 	//res.set('Pragma','no-cache');
 	//res.set('Expires','-1');
 
-	var contentSecurityPolicy = (process.env.NODE_ENV === 'development') ?
+	const contentSecurityPolicy = (process.env.NODE_ENV === 'development') ?
 		"script-src 'self' http://localhost:35729 maps.googleapis.com cdnjs.cloudflare.com www.google-analytics.com" :
 		"script-src 'self' maps.googleapis.com cdnjs.cloudflare.com www.google-analytics.com";
 
@@ -76,7 +76,7 @@ app.use(function(req, res, next) {
 	});
 
 	// Global hogan-express variables
-	var namespace = (req.path === '/' || req.path === '/robots.txt') ? 'home' : req.path;
+	let namespace = (req.path === '/' || req.path === '/robots.txt') ? 'home' : req.path;
 	namespace = namespace.replace('/', '');
 	if (namespace.includes('event/')) {
 		namespace = 'event';
@@ -94,7 +94,7 @@ app.use(function(req, res, next) {
 // App Routes
 require('./server/routes.js')(app, cache);
 
-var http = http_module.Server(app)
+const http = http_module.Server(app)
 http.listen(app.get('port'), function() {
 	console.info('Server Running in ' + env + ' mode');
 	console.info('Listening at http://localhost:%s', app.get('port'));

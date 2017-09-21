@@ -188,6 +188,7 @@ section.section-spacer {
         .card-header {
             background: linear-gradient(90deg, $rbi-blue, darken($rbi-blue, 10%));
             padding: 1rem 0;
+            font-size: 1.25rem;
 
             .card-header-title {
                 color: $white;

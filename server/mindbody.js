@@ -1,8 +1,8 @@
-var soap = require('soap');
-var moment = require('moment');
-var appointmentService = "https://api.mindbodyonline.com/0_5/AppointmentService.asmx";
-var siteService = "https://api.mindbodyonline.com/0_5/SiteService.asmx";
-var config = require('./config');
+const soap = require('soap');
+const moment = require('moment');
+const appointmentService = "https://api.mindbodyonline.com/0_5/AppointmentService.asmx";
+const siteService = "https://api.mindbodyonline.com/0_5/SiteService.asmx";
+const config = require('./config');
 
 var sourceCredentials = {
     "SourceName": "RBITriCities",

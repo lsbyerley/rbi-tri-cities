@@ -1,14 +1,14 @@
-var async = require('async');
-var _ = require('lodash');
-var mindbody = require('./mindbody.js');
-var moment = require('moment');
-var Twitter = require('twitter');
-var Instagram = require('node-instagram').default;
-var twitterText = require('twitter-text');
-var twemoji = require('twemoji');
-var Contentful = require('contentful');
-var config = require('./config');
-var request = require('request');
+const async = require('async');
+const _ = require('lodash');
+const mindbody = require('./mindbody.js');
+const moment = require('moment');
+const Twitter = require('twitter');
+const Instagram = require('node-instagram').default;
+const twitterText = require('twitter-text');
+const twemoji = require('twemoji');
+const Contentful = require('contentful');
+const config = require('./config');
+const request = require('request');
 //https://jelled.com/instagram/access-token
 
 var contentful_client = Contentful.createClient({
