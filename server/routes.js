@@ -118,6 +118,8 @@ module.exports = function(app, cache) {
 
 				var eventDesc = marked(event.fields.eventDescription);
 				app.locals.event = event;
+				app.locals.pageMeta.title = event.fields.eventName + ' | Event | RBI Tri-Cities';
+				app.locals.pageMeta.description = event.fields.introText;
 				app.locals.eventDesc = eventDesc;
 
 				return res.render('pages/event.hbs');
