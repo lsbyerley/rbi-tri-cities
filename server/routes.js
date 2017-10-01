@@ -2,18 +2,21 @@ const async = require('async');
 const moment = require('moment');
 const utils = require('./utils.js');
 const marked = require('marked');
-//var sendmail = require('sendmail')(); // will move to mailgun
-//var mailgun = require('mailgun-js')({ apiKey: api_key, domain: domain })
+const config = require('./config');
+var mailgun = require('mailgun-js')({
+	apiKey: config.mailgun.api_key,
+	domain: (process.env.NODE_ENV === 'development') ? config.mailgun.api_sandbox_domain : config.mailgun.api_domain
+})
 
 module.exports = function(app, cache) {
 
 	app.post('/private-instruction-request', function(req, res) {
 
-		console.log(req.body)
+		return res.json({status: 500, errors: ['error'], message: "There was a problem sending your request, please contact us by phone at 423-202-3228"})
 
-		req.checkBody("playerName", "Player name is required").notEmpty();
+		/*req.checkBody("playerName", "Player name is required").notEmpty();
 		req.checkBody("parentEmail", "Invalid email address").isEmail();
-		req.checkBody("parentPhone", "Invalid phone number").isMobilePhone('en-US');
+		req.checkBody("parentPhone", "Invalid phone number").isMobilePhone('any');
 		req.checkBody("rbi_b1e623405f2c_23909403", "Missing check").exists();
 		req.sanitize('playerName').escape();
 		req.sanitize('playerName').trim();
@@ -23,21 +26,34 @@ module.exports = function(app, cache) {
 				var errors = result.array().map(function (elem) {
 					return elem.msg;
 		        });
-				return res.send({success: false, errors: errors})
+				return res.json({status: 400, errors: errors, message: "There was a problem sending your request, please contact us by phone at 423-202-3228"})
 			} else {
-				// validation ok
-				/*sendmail({
-					from: 'no-reply@rbitricities.com',
-					to: 'lsbyerley@gmail.com',
-					subject: 'RBI Private Instruction Request',
-					html: 'Mail of test sendmail',
-				}, function(err, reply) {
-					console.log(err && err.stack);
-					console.dir(reply);
-				});*/
-				return res.send({success: true, errors: []})
+
+				// validation ok, send the email
+				var message = 'The following information was just submitted for a private instruction: \n\n' +
+				'Player Name: ' + req.body.playerName + '\n\n' +
+				'Parent Phone: ' + req.body.parentPhone + '\n\n' +
+				'Parent Email: ' + req.body.parentEmail + '\n\n';
+
+				var sendTo = (process.env.NODE_ENV === 'development') ? 'lsbyerley@gmail.com' : 'rbifrontdesk@gmail.com';
+
+		        var mailgun_data = {
+		          from: 'RBI Tri-Cities <no-reply@rbitricities.com>',
+		          to: sendTo,
+		          subject: 'Private Instruction Form Submission',
+		          text: message
+		        }
+
+		        mailgun.messages().send(mailgun_data, function (error, body) {
+					 if (error) {
+						 return res.json({status: 500, errors: ['error'], message: "There was a problem sending your request, please contact us by phone at 423-202-3228"})
+					 } else {
+						 return res.json({status: 200, errors: [], message: "Thank you! Your private instruction request has been received, we will be in touch with you shortly!"})
+					 }
+		        })
+
 			}
-		})
+		})*/
 
 	})
 

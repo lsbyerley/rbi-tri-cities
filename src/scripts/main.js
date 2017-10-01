@@ -6,6 +6,7 @@ var loadScript = require('./util/loadScript.js');
 
 // Greensock Animation Library
 require('gsap').TweenLite;
+require('gsap').TimelineLite;
 require('gsap/CSSPlugin');
 require('gsap/ScrollToPlugin');
 
@@ -59,7 +60,47 @@ require('gsap/ScrollToPlugin');
 		}
 
 		// Private instruction form submissions
-		//var $piForms = Array.prototype.slice.call(document.querySelectorAll(''), 0);
+		var $piForms = Array.prototype.slice.call(document.querySelectorAll('#private-instruction-form'), 0);
+		if ($piForms.length > 0) {
+			console.log('beforeform')
+			document.getElementById('private-instruction-form').addEventListener("submit", function(e) {
+				console.log('afterformsubmit')
+				e.preventDefault()
+
+				/*var form = e.target
+	        	var formData = $(form).serialize();
+				var request = new XMLHttpRequest();
+				var successNote = $('#private-instruction-signup .notification.is-success');
+				var errorNote = $('#private-instruction-signup .notification.is-danger');
+
+				request.open(form.method, form.action)
+				request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	        	request.send(formData)
+
+				request.onreadystatechange = function(){
+
+					if (request.readyState === 4) {
+						var response = JSON.parse(request.responseText)
+
+						// Form good, email sent
+						if (request.status === 200 && response.status === 200) {
+
+							successNote.html(response.message)
+
+							TweenLite.to(form, 0.5, {height:0})
+							TweenLite.fromTo(successNote, 0.5, {opacity:0}, {opacity:1, display:'block'}).delay(0.5)
+
+						} else {
+							errorNote.html(response.message)
+
+							TweenLite.to(form, 0.5, {height:0})
+							TweenLite.fromTo(errorNote , 0.5, {opacity:0}, {opacity:1, display:'block'}).delay(0.5)
+						}
+					}
+				}*/
+
+			});
+		}
 
 	}
 

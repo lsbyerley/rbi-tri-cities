@@ -17,6 +17,11 @@ module.exports = {
             }
         }
     },
+    mailgun: {
+        api_key: process.env.MAILGUN_API_KEY,
+        api_domain: process.env.MAILGUN_API_DOMAIN,
+        api_sandbox_domain: process.env.MAILGUN_API_SANDBOX_DOMAIN
+    },
     contentful: {
         space_id: process.env.CONTENTFUL_SPACE_ID,
         access_token: process.env.CONTENFUL_TOKEN
