@@ -407,26 +407,65 @@ section.section-spacer {
     }
 }
 
-.message.camp {
+.card.camp {
 
-    .message-header {
-        background-color: $primary;
-
-        .title {
-            color: #fff;
-        }
+    &:not(:last-child) {
+        margin-bottom: 1rem;
     }
 
-    .message-body {
+    .card-header-title {
+        background-color: $primary;
+        color: #fff;
+        font-size: 1.25rem;
+    }
 
-        .meta {
-            font-style: italic;
-            font-weight: bold;
+    .card-content {
+
+        .media {
+            align-items: center;
+
+            .media-left {
+                margin-right: 2rem;
+
+                .image img{
+                    width: 150px;
+                }
+
+                .image.annual-camp img {
+                    width: 250px;
+                }
+            }
+
+            @include mobile() {
+                flex-direction: column;
+
+                .media-left {
+                    margin-bottom: 1rem;
+                    margin-right: 0;
+
+                    .image.annual-camp img {
+                        width: 100%;
+                    }
+                }
+
+                .media-content .meta {
+                    text-align: center;
+                }
+
+            }
+
+            .media-content {
+                .meta {
+                    font-style: italic;
+                    font-weight: bold;
+                }
+            }
         }
 
-        p {
-            margin-top: 1rem;
+        .content {
+
         }
+
     }
 }
 
@@ -481,4 +520,11 @@ section.section-spacer {
             }
         }
     }
+}
+
+.phone.is-primary {
+    color: lighten($rbi-red, 10%);
+}
+.phone.is-secondary {
+    color: $rbi-blue;
 }
