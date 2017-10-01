@@ -458,7 +458,7 @@ section.section-spacer {
     margin-right: 0;
 }
 
-#private-lesson-signup,
+#private-instruction-signup,
 #recruiting-video-signup {
     background: linear-gradient(90deg, $rbi-blue, darken($rbi-blue, 10%));
     .hero-body {
@@ -470,6 +470,17 @@ section.section-spacer {
         &:hover {
             color: lighten($rbi-red, 10%);
             text-decoration: underline;
+        }
+    }
+
+    #private-instruction-form {
+        overflow: hidden;
+    }
+
+    .responses {
+        .notification {
+            display: none;
+            overflow: hidden;
         }
     }
 
