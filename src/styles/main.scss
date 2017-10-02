@@ -7,6 +7,7 @@
 // RBI CUSTOM VARIABLES
 $rbi-red: #cc0010;
 $rbi-blue: #092462;
+$rbi-green: #1a7138;
 $rbi-light-grey: #f7f8fc;
 $rbi-font: 'Montserrat', sans-serif;
 $rbi-nav-bg: #333;
@@ -22,6 +23,9 @@ $navbar-item-active-color: $rbi-red;
 $navbar-dropdown-background-color: rgba(0, 0, 0, .8);
 $navbar-dropdown-item-hover-color: $rbi-red;
 $navbar-dropdown-border-top: $rbi-nav-bg;
+$red: $rbi-red;
+$green: $rbi-green;
+$blue: $rbi-blue;
 
 $navbar-dropdown-item-hover-background-color: transparent;
 $navbar-dropdown-item-active-background-color: transparent;
@@ -86,6 +90,11 @@ a:hover {
     .title, .subtitle {
         color: #fff;
     }
+}
+
+.is-secondary {
+    background-color: $rbi-blue;
+    color: #fff;
 }
 
 //  RBI CSS COMPONENTS
@@ -497,11 +506,11 @@ section.section-spacer {
     margin-right: 0;
 }
 
-#private-instruction-signup,
-#recruiting-video-signup {
+.rbi-form {
     background: linear-gradient(90deg, $rbi-blue, darken($rbi-blue, 10%));
-    .hero-body {
-        //padding: 1rem; take out after form is added
+
+    &.is-narrow .hero-body {
+        padding: 1rem;
     }
 
     a {
@@ -512,14 +521,36 @@ section.section-spacer {
         }
     }
 
-    #private-instruction-form {
+    .private-instruction-form {
         overflow: hidden;
     }
 
     .responses {
         .notification {
+            position: relative;
             display: none;
             overflow: hidden;
+            margin: 0;
+
+            &::after {
+                content: "\f12a";
+                font-family: FontAwesome;
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                width: 20px;
+                text-align: center;
+                border-radius: 5px;
+            }
+
+            &.is-success::after {
+                content: "\f00c";
+                background: darken($rbi-green, 20%);
+            }
+            &.is-danger::after {
+                content: "\f12a";
+                background: darken($rbi-red, 20%);
+            }
         }
     }
 

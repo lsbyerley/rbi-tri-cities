@@ -12,9 +12,7 @@ module.exports = function(app, cache) {
 
 	app.post('/private-instruction-request', function(req, res) {
 
-		return res.json({status: 500, errors: ['error'], message: "There was a problem sending your request, please contact us by phone at 423-202-3228"})
-
-		/*req.checkBody("playerName", "Player name is required").notEmpty();
+		req.checkBody("playerName", "Player name is required").notEmpty();
 		req.checkBody("parentEmail", "Invalid email address").isEmail();
 		req.checkBody("parentPhone", "Invalid phone number").isMobilePhone('any');
 		req.checkBody("rbi_b1e623405f2c_23909403", "Missing check").exists();
@@ -53,7 +51,7 @@ module.exports = function(app, cache) {
 		        })
 
 			}
-		})*/
+		})
 
 	})
 

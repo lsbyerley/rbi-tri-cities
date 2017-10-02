@@ -60,46 +60,46 @@ require('gsap/ScrollToPlugin');
 		}
 
 		// Private instruction form submissions
-		var $piForms = Array.prototype.slice.call(document.querySelectorAll('#private-instruction-form'), 0);
+		var $piForms = Array.prototype.slice.call(document.querySelectorAll('.private-instruction-form'), 0);
 		if ($piForms.length > 0) {
-			console.log('beforeform')
-			document.getElementById('private-instruction-form').addEventListener("submit", function(e) {
-				console.log('afterformsubmit')
-				e.preventDefault()
+			$piForms.forEach(function($el) {
+				$el.addEventListener("submit", function(e) {
+					e.preventDefault()
 
-				/*var form = e.target
-	        	var formData = $(form).serialize();
-				var request = new XMLHttpRequest();
-				var successNote = $('#private-instruction-signup .notification.is-success');
-				var errorNote = $('#private-instruction-signup .notification.is-danger');
+					var form = e.target
+		        	var formData = $(form).serialize();
+					var request = new XMLHttpRequest();
+					var successNote = $('.rbi-form .notification.is-success');
+					var errorNote = $('.rbi-form .notification.is-danger');
 
-				request.open(form.method, form.action)
-				request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	        	request.send(formData)
+					request.open(form.method, form.action)
+					request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		        	request.send(formData)
 
-				request.onreadystatechange = function(){
+					request.onreadystatechange = function(){
 
-					if (request.readyState === 4) {
-						var response = JSON.parse(request.responseText)
+						if (request.readyState === 4) {
+							var response = JSON.parse(request.responseText)
 
-						// Form good, email sent
-						if (request.status === 200 && response.status === 200) {
+							// Form good, email sent
+							if (request.status === 200 && response.status === 200) {
 
-							successNote.html(response.message)
+								successNote.html(response.message)
 
-							TweenLite.to(form, 0.5, {height:0})
-							TweenLite.fromTo(successNote, 0.5, {opacity:0}, {opacity:1, display:'block'}).delay(0.5)
+								TweenLite.to(form, 0.5, {height:0})
+								TweenLite.fromTo(successNote, 0.5, {opacity:0}, {opacity:1, display:'block'}).delay(0.5)
 
-						} else {
-							errorNote.html(response.message)
+							} else {
+								errorNote.html(response.message)
 
-							TweenLite.to(form, 0.5, {height:0})
-							TweenLite.fromTo(errorNote , 0.5, {opacity:0}, {opacity:1, display:'block'}).delay(0.5)
+								TweenLite.to(form, 0.5, {height:0})
+								TweenLite.fromTo(errorNote , 0.5, {opacity:0}, {opacity:1, display:'block'}).delay(0.5)
+							}
 						}
 					}
-				}*/
 
-			});
+				});
+			})
 		}
 
 	}
@@ -158,8 +158,10 @@ require('gsap/ScrollToPlugin');
 		$('.navbar .navbar-menu').removeClass('is-active');
 		updateActiveNavItems(currentStatus);
 	});
-	Barba.Dispatcher.on('newPageReady', function(currentStatus, prevStatus, HTMLElementContainer, newPageRawHTML) {
+	Barba.Dispatcher.on('transitionCompleted', function() {
 		attachClickHandlers();
+	});
+	Barba.Dispatcher.on('newPageReady', function(currentStatus, prevStatus, HTMLElementContainer, newPageRawHTML) {
 		// For Google Analytics tracking, make sure ga() exists first.
         if ( typeof ga === "function" ) {
             ga('set', {
