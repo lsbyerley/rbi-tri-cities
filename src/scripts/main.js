@@ -102,6 +102,18 @@ require('gsap/ScrollToPlugin');
 			})
 		}
 
+		// Private instruction form - custom error message for parent phone
+		var parentPhone = document.getElementById("parentPhone");
+		if (parentPhone) {
+			parentPhone.addEventListener("input", function (event) {
+				if (parentPhone.validity.patternMismatch) {
+					parentPhone.setCustomValidity("Phone format: XXX-XXX-XXXX");
+				} else {
+					parentPhone.setCustomValidity("");
+				}
+			});
+		}
+
 	}
 
 	function insertYoutubeIframe() {
