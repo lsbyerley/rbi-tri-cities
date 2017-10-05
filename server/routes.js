@@ -72,7 +72,7 @@ module.exports = function(app, cache) {
 		return res.render('pages/about.hbs');
 	});
 
-	app.get('/annual-camps', function(req, res) {
+	app.get('/annual-camps', cache(300), function(req, res) {
 		utils.getAnnualCamps()
 			.then(function(camps) {
 				app.locals.camps = camps;

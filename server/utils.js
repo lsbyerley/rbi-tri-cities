@@ -58,7 +58,8 @@ module.exports = {
     getAnnualCamps: function() {
         return new Promise(function (resolve, reject) {
             contentful_client.getEntries({
-                content_type: 'annualCamps'
+                content_type: 'annualCamps',
+                order: 'sys.createdAt'
             })
             .then(function(response) {
                 if (response.items) {
