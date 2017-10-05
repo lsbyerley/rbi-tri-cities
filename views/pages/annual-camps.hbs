@@ -10,6 +10,34 @@
 
         <div class="columns is-multiline">
 
+            {{#if camps}}
+                {{# camps }}
+                <div class="column is-half">
+                    <div class="card camp">
+                        <div class="card-image">
+                            <figure class="image is-16by9">
+                                <img src="{{ fields.campImage.fields.file.url }}" alt="{{ fields.campImage.fields.file.title }}">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4">{{ fields.campName }}</p>
+                                    <div class="meta">{{ fields.campDates }}</div>
+                                    <div class="meta">{{ fields.ageRange }}</div>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <p>{{ fields.campDescription }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/ camps }}
+            {{else}}
+                <div class="no-events">No annual camps at this time</div>
+            {{/if}}
+
             <div class="column is-half">
                 <div class="card camp">
                     <div class="card-image">

@@ -73,7 +73,16 @@ module.exports = function(app, cache) {
 	});
 
 	app.get('/annual-camps', function(req, res) {
-		return res.render('pages/annual-camps.hbs');
+		utils.getAnnualCamps()
+			.then(function(camps) {
+				app.locals.camps = camps;
+				return res.render('pages/annual-camps.hbs');
+			})
+			.catch(function(err) {
+				console.error(err)
+				app.locals.camps = [];
+				return res.render('pages/annual-camps.hbs');
+			})
 	});
 
 	//need to figure out why cage-schedules is so slow
