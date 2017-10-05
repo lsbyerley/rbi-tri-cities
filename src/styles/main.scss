@@ -445,6 +445,17 @@ section.section-spacer {
                 }
             }
 
+            .media-content {
+                .title {
+                    color: $rbi-blue;
+                }
+                .meta {
+                    font-style: italic;
+                    font-weight: bold;
+                    color: $rbi-green;
+                }
+            }
+
             @include mobile() {
                 flex-direction: column;
 
@@ -462,17 +473,6 @@ section.section-spacer {
                 }
 
             }
-
-            .media-content {
-                .meta {
-                    font-style: italic;
-                    font-weight: bold;
-                }
-            }
-        }
-
-        .content {
-
         }
 
     }

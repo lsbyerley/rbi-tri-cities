@@ -94,7 +94,7 @@ gulp.task('dev-server', () => {
     });
 
     //watch the scss files
-    gulp.watch(`${global.srcPath}styles/**/*.scss`, ['styles', 'lint-styles']);
+    gulp.watch(`${global.srcPath}styles/**/*.scss`, ['styles'/*, 'lint-styles'*/]);
     gulp.watch(`${global.buildPath}styles/**/*.css`, file => {
         server.notify(...[file]);
     });
