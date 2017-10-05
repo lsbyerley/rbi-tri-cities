@@ -55,6 +55,27 @@ function formatTweetText(tweet) {
 
 module.exports = {
 
+    getAnnualCamps: function() {
+        return new Promise(function (resolve, reject) {
+            contentful_client.getEntries({
+                content_type: 'annualCamps',
+                order: 'sys.createdAt'
+            })
+            .then(function(response) {
+                if (response.items) {
+                    var camps = response.items
+                    resolve(camps)
+                } else {
+                    reject({})
+                }
+            })
+            .catch(function(err) {
+                console.error(err)
+                reject(err)
+            })
+        })
+    },
+
     getEvent: function(id) {
 
         return new Promise(function (resolve, reject) {
