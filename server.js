@@ -35,11 +35,11 @@ const cache = function cache(duration) {
 		var key = '__rbi-cache-express__' + req.originalUrl || req.url;
 		var cachedBody = mcache.get(key);
 		if (cachedBody) {
-			console.log('HITTIN CACHE');
+			if (env === 'development') { console.log('HITTIN CACHE') }
 			res.send(cachedBody);
 			return;
 		} else {
-			console.log('FRESH RESPONSE');
+			if (env === 'development') { console.log('FRESH RESPONSE') }
 			res.sendResponse = res.send;
 			res.send = function(body) {
 				mcache.put(key, body, duration * 1000);

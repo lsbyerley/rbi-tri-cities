@@ -83,7 +83,6 @@ module.exports = {
                 content_type: 'drillVideos'
             })
             .then(function(response) {
-                console.log(JSON.stringify(response.items));
                 var drillVideos = response.items;
                 resolve(drillVideos)
             })

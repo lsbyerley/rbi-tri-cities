@@ -47,82 +47,83 @@
 	}
 
 	function buildPageMeta(path) {
-		var title = "RBI Tri-Cities",
+		var title = "RBI Tri-Cities: Premier Indoor Baseball & Softball Training Facility",
+			shortTitle = "RBI Tri-Cities",
 			description = "Indoor Baseball & Softball Facility offering professional instruction on hitting, pitching & defense as well as memberships, camps, and clinics in Johnson City, TN";
 
 		switch (path) {
 			case '/our-facility':
-				title = "Our Facility | " + title;
-				//description = "";
-				break;
+			    title = "Our Facility | " + shortTitle;
+			    //description = "";
+			    break;
 			case '/memberships':
-				title = "Memberships | " + title;
-				//description = "";
-				break;
+			    title = "Memberships | " + shortTitle;
+			    //description = "";
+			    break;
 			case '/team-practices':
-				title = "Team Practices | " + title;
-				//description = "";
-				break;
+			    title = "Team Practices | " + shortTitle;
+			    //description = "";
+			    break;
 			case '/cage-schedule':
-				title = "Cage Schedule | " + title;
-				//description = "";
-				break;
+			    title = "Cage Schedule | " + shortTitle;
+			    //description = "";
+			    break;
 			case '/private-instruction':
-				title = "Private Instruction | " + title;
-				//description = "";
-				break;
+			    title = "Private Instruction | " + shortTitle;
+			    //description = "";
+			    break;
 			case '/strength-agility':
-				title = "RBIron Strength and Agility | " + title;
-				//description = "";
-				break;
+			    title = "RBIron Strength and Agility | " + shortTitle;
+			    //description = "";
+			    break;
 			case '/events':
-				title = "Events | " + title;
-				//description = "";
-				break;
+			    title = "Events | " + shortTitle;
+			    //description = "";
+			    break;
 			case '/annual-camps':
-				title = "Annual Camps | " + title;
-				//description = "";
-				break;
+			    title = "Annual Camps | " + shortTitle;
+			    //description = "";
+			    break;
 			case '/recruiting-videos':
-				title = "Recruiting Videos | " + title;
-				//description = "";
-				break;
+			    title = "Recruiting Videos | " + shortTitle;
+			    //description = "";
+			    break;
 			case '/showcases':
-				title = "Showcases | " + title;
-				//description = "";
-				break;
+			    title = "Showcases | " + shortTitle;
+			    //description = "";
+			    break;
 			case '/college-signees':
-				title = "College Signees | " + title;
-				//description = "";
-				break;
+			    title = "College Signees | " + shortTitle;
+			    //description = "";
+			    break;
 			case '/rbi-teams':
-				title = "RBI Teams | " + title;
-				//description = "";
-				break;
+			    title = "RBI Teams | " + shortTitle;
+			    //description = "";
+			    break;
 			case '/rbi-pride-teams':
-				title = "RBI Pride Teams | " + title;
-				//description = "";
-				break;
+			    title = "RBI Pride Teams | " + shortTitle;
+			    //description = "";
+			    break;
 			case '/shop':
-				title = "Equipment Shop | " + title;
-				//description = "";
-				break;
+			    title = "Equipment Shop | " + shortTitle;
+			    //description = "";
+			    break;
 			case '/about':
-				title = "About Us | " + title;
-				//description = "";
-				break;
+			    title = "About Us | " + shortTitle;
+			    //description = "";
+			    break;
 			case '/instructors':
-				title = "Instructors | " + title;
-				//description = "";
-				break;
+			    title = "Instructors | " + shortTitle;
+			    //description = "";
+			    break;
 			case '/directory':
-				title = "Staff Directory | " + title;
-				//description = "";
-				break;
+			    title = "Staff Directory | " + shortTitle;
+			    //description = "";
+			    break;
 			case '/contact':
-				title = "Contact Us | " + title;
-				//description = "";
-				break;
+			    title = "Contact Us | " + shortTitle;
+			    //description = "";
+			    break;
 		}
 
 		return {
