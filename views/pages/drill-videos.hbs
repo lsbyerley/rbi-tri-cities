@@ -1,0 +1,23 @@
+<section class="section" id="drill-videos">
+    <div class="container">
+
+        <h1 class="title is-spaced">Drill Videos</h1>
+        <h2 class="subtitle">Collection of positional drill videos</h2>
+        <hr>
+
+        {{#if drillVideos}}
+            <div class="columns is-multiline">
+                {{# drillVideos }}
+
+                    <div class="column is-half">
+                        <div class="youtube-player" data-id="{{ fields.youtubeId }}"></div>
+                    </div>
+
+                {{/ drillVideos }}
+            </div>
+        {{else}}
+            <div class="no-videos">No drill videos at this time</div>
+        {{/if}}
+
+    </div>
+</section>

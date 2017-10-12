@@ -76,6 +76,25 @@ module.exports = {
         })
     },
 
+    getDrillVideos: function() {
+
+        return new Promise(function (resolve, reject) {
+            contentful_client.getEntries({
+                content_type: 'drillVideos'
+            })
+            .then(function(response) {
+                console.log(JSON.stringify(response.items));
+                var drillVideos = response.items;
+                resolve(drillVideos)
+            })
+            .catch(function(err) {
+                console.error(err)
+                reject(err)
+            })
+        });
+
+    },
+
     getEvent: function(id) {
 
         return new Promise(function (resolve, reject) {

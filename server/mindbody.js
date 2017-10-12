@@ -4,46 +4,6 @@ const appointmentService = "https://api.mindbodyonline.com/0_5/AppointmentServic
 const siteService = "https://api.mindbodyonline.com/0_5/SiteService.asmx";
 const config = require('./config');
 
-var sourceCredentials = {
-    "SourceName": "RBITriCities",
-    "Password": "hXyMUftL8XrY7jhftfge/+NCIC0=",
-    "SiteIDs": {
-        "int": [192033]
-    }
-}
-
-var sourceCredentials_sandbox = {
-    "SourceName": "RBITriCities",
-    "Password": "hXyMUftL8XrY7jhftfge/+NCIC0=",
-    "SiteIDs": {
-        "int": [-99]
-    }
-}
-
-var userCredentials = {
-    "Username": "lsbyerley",
-    "Password": "mindbody88",
-    "SiteIDs": {
-        "int": [192033]
-    }
-}
-
-var userCredentials_sandbox = {
-    "Username": "Siteowner",
-    "Password": "apitest1234",
-    "SiteIDs": {
-        "int": [-99]
-    }
-}
-
-var staffCredentials = {
-    "Username": "_RBITriCities",
-    "Password": "hXyMUftL8XrY7jhftfge/+NCIC0=",
-    "SiteIDs": {
-        "int": [192033]
-    }
-}
-
 module.exports = {
     getResources: function() {
 

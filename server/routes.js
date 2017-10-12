@@ -133,6 +133,19 @@ module.exports = function(app, cache) {
 		return res.render('pages/directory.hbs');
 	});
 
+	app.get('/drill-videos', cache(300), function(req, res) {
+		utils.getDrillVideos()
+			.then(function(drillVideos) {
+				app.locals.drillVideos = drillVideos;
+				return res.render('pages/drill-videos.hbs');
+			})
+			.catch(function(err) {
+				console.error(err);
+				app.locals.drillVideos = [];
+				return res.render('pages/drill-videos.hbs');
+			})
+	});
+
 	app.get('/event/:id', cache(300), function(req, res) {
 
 		var id = req.params.id;
@@ -167,10 +180,6 @@ module.exports = function(app, cache) {
 				app.locals.events = [];
 				return res.render('pages/events.hbs');
 			})
-	});
-
-	app.get('/high-school-leagues', function(req, res) {
-		return res.render('pages/high-school-leagues.hbs');
 	});
 
 	app.get('/instructors', cache(300), function(req, res) {
@@ -232,17 +241,8 @@ module.exports = function(app, cache) {
 		return res.render('pages/strength-agility.hbs');
 	});
 
-	app.get('/swing-analytics', function(req, res) {
-		return res.render('pages/swing-analytics.hbs');
-	});
-
 	app.get('/team-practices', function(req, res) {
-		// google doc api?
 		return res.render('pages/team-practices.hbs');
-	});
-
-	app.get('/youth-leagues', function(req, res) {
-		return res.render('pages/youth-leagues.hbs');
 	});
 
 	//Error handling
