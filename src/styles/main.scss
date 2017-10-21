@@ -570,3 +570,30 @@ section.section-spacer {
 .phone.is-secondary {
     color: $rbi-blue;
 }
+
+#shop.section {
+
+    .column {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:first-child {
+            display: block;
+            border-right: 1px solid #dbdbdb;
+        }
+    }
+
+    .button {
+        transition: transform 0.2s ease-in, box-shadow 0.2 ease-in;
+        width:80%;
+        padding: 4rem 1rem;
+        border: none;
+
+        &:hover {
+            //transition: background-color 0.5s ease, opacity 0.5s ease;
+            transform: scale(1.1);
+            box-shadow: inset 0px 0px 60px -10px $rbi-blue;
+        }
+    }
+}

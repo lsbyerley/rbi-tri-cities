@@ -12,11 +12,13 @@ let config;
 // for all dates
 process.env.TZ = 'America/New_York';
 
-var app = express();
-app.use(helmet());
+const app = express();
+const is_dev = (env === 'development');
 app.use(compression());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({
+	type: ['json', 'application/csp-report']
+}));
 app.use(expressValidator());
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', '.hbs');
@@ -50,30 +52,81 @@ const cache = function cache(duration) {
 	};
 };
 
+// Security Settings
+app.use(helmet());
+app.use(helmet.referrerPolicy())		// Sets "Referrer-Policy: no-referrer".
+
+// Content Security Policy
+//   http://content-security-policy.com/
+//   http://www.html5rocks.com/en/tutorials/security/content-security-policy/
+//   http://www.html5rocks.com/en/tutorials/security/sandboxed-iframes/
+app.use(helmet.contentSecurityPolicy({
+	directives: {
+		defaultSrc: [ "'self'" ],
+		scriptSrc: [
+			"'self'",
+			"'unsafe-eval'",
+			"'unsafe-inline'",
+			'localhost:* 127.0.0.1:*',
+			'ajax.googleapis.com',
+			'www.google-analytics.com',
+			'cdnjs.cloudflare.com',
+			'maps.googleapis.com'
+		],
+		styleSrc: [
+			"'self'",
+			"'unsafe-inline'",
+			'fonts.googleapis.com',
+			'cdnjs.cloudflare.com'
+		],
+		fontSrc: [
+			"'self'",
+			'fonts.googleapis.com',
+			'fonts.gstatic.com',
+			'cdnjs.cloudflare.com'
+		],
+		imgSrc: [
+			"'self'",
+			'data:',
+			'www.google-analytics.com',
+			'twemoji.maxcdn.com',
+			'scontent.cdninstagram.com',
+			'i.imgur.com',
+			'i.ytimg.com',
+			'images.contentful.com',
+			'maps.googleapis.com',
+			'maps.gstatic.com',
+			'csi.gstatic.com'
+		],
+		mediaSrc: [ "'self'" ],
+		connectSrc: [ // limit the origins (via XHR, WebSockets, and EventSource)
+			"'self'",
+			//'ws://localhost:8000',
+			'ws://localhost:* 127.0.0.1:*',
+			'api.github.com'
+		],
+		objectSrc: [ "'none'" ],// allows control over Flash and other plugins
+		frameSrc: [ 'www.youtube.com' ], // origins that can be embedded as frames
+		sandbox: [ 'allow-same-origin', 'allow-forms', 'allow-scripts', 'allow-popups', 'allow-presentation'],
+		reportUri: '/report-violation' // error reporting
+	}
+}))
+
+app.post('/report-violation', function (req, res) {
+	if (is_dev) {
+		if (req.body) {
+			const violation = eval(req.body);
+			console.log('Violation:', violation['csp-report']['violated-directive'] + ' - ', violation['csp-report']['blocked-uri'])
+		} else {
+			console.log('CSP Violation: No data received!')
+		}
+	}
+	res.status(204).end()
+})
+
 app.use(function(req, res, next) {
 
 	config = require('./server/locals')(req.path);
-
-	// Set secure http header settings from https://www.smashingmagazine.com/2017/04/secure-web-app-http-headers/
-	// https://www.html5rocks.com/en/tutorials/security/content-security-policy/
-	// these should be used on routes returning sensitive user information
-	//res.set('Cache-Control','no-cache,no-store,max-age=0,must-revalidate');
-	//res.set('Pragma','no-cache');
-	//res.set('Expires','-1');
-
-	const contentSecurityPolicy = (process.env.NODE_ENV === 'development') ?
-		"script-src 'self' http://localhost:35729 maps.googleapis.com cdnjs.cloudflare.com www.google-analytics.com" :
-		"script-src 'self' maps.googleapis.com cdnjs.cloudflare.com www.google-analytics.com";
-
-	res.set({
-		'Access-Control-Allow-Origin': '*',
-		'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
-		//'Strict-Transport-Security','max-age=31536000; includeSubDomains; preload', //taking out for now, https not ready
-		'X-XSS-Protection': '1; mode=block',
-		'X-Frame-Options': 'SAMEORIGIN',
-		'Content-Security-Policy': contentSecurityPolicy,
-		'X-Content-Type-Options': 'nosniff'
-	});
 
 	// Global hogan-express variables
 	let namespace = (req.path === '/' || req.path === '/robots.txt') ? 'home' : req.path;
@@ -81,10 +134,10 @@ app.use(function(req, res, next) {
 	if (namespace.includes('event/')) {
 		namespace = 'event';
 	}
+	app.locals.is_dev = is_dev;
 	app.locals.namespace = namespace;
 	app.locals.reqPath = req.path;
 	app.locals.year = new Date().getFullYear();
-	app.locals.is_dev = (env === 'development');
 	app.locals.navLinks = config.navLinks;
 	app.locals.pageMeta = config.pageMeta;
 
