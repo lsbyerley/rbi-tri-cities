@@ -124,6 +124,9 @@
 			    title = "Contact Us | " + shortTitle;
 			    //description = "";
 			    break;
+			case '/hittrax':
+				title = "HitTrax | " + shortTitle;
+				break;
 		}
 
 		return {

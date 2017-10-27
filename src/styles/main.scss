@@ -90,6 +90,12 @@ a:hover {
     .title, .subtitle {
         color: #fff;
     }
+
+    @include mobile() {
+        .title, .subtitle {
+            text-align: center;
+        }
+    }
 }
 
 .is-secondary {
@@ -97,12 +103,18 @@ a:hover {
     color: #fff;
 }
 
-//  RBI CSS COMPONENTS
+// RBI LAYOUT COMPONENTS
 @import './partials/header';
 @import './partials/footer';
+
+// RBI PAGES
+@import './pages/hittrax';
+
+// RBI COMPONENTS
 @import './partials/pricing-component';
 @import './partials/googleMap';
 @import './partials/video-player';
+
 
 // TODO: MOVE THESE STYLES TO SEPARATE FILES
 .hero.is-home {

@@ -10,8 +10,11 @@
 	}
 
 	.pricing-header {
-		background-color: rgba(0, 0, 0, .1);
+		//background-color: rgba(204, 204, 204, .8);
 		//background-image: -webkit-radial-gradient(center top, ellipse cover, $rbi-red 0%, $rbi-blue 100%);
+		background: #FFFFFF;
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
+		transition: opacity 0.5s ease;
 		padding: 1rem;
 		border-radius: 5px;
 		display: flex;

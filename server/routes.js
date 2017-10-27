@@ -182,6 +182,10 @@ module.exports = function(app, cache) {
 			})
 	});
 
+	app.get('/hittrax', function(req, res) {
+		return res.render('pages/hittrax.hbs');
+	})
+
 	app.get('/instructors', cache(300), function(req, res) {
 
 		utils.getInstructors()
