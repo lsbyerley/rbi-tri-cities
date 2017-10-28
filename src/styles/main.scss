@@ -20,12 +20,16 @@ $navbar-item-color: $white;
 $navbar-item-hover-color: $rbi-red;
 $navbar-item-hover-background-color: transparent;
 $navbar-item-active-color: $rbi-red;
+$navbar-dropdown-item-active-color: $rbi-red;
 $navbar-dropdown-background-color: rgba(0, 0, 0, .8);
 $navbar-dropdown-item-hover-color: $rbi-red;
 $navbar-dropdown-border-top: $rbi-nav-bg;
 $red: $rbi-red;
 $green: $rbi-green;
 $blue: $rbi-blue;
+$info: $rbi-blue;
+$danger: $rbi-red;
+$link: $rbi-red;
 
 $navbar-dropdown-item-hover-background-color: transparent;
 $navbar-dropdown-item-active-background-color: transparent;
@@ -101,6 +105,16 @@ a:hover {
 .is-secondary {
     background-color: $rbi-blue;
     color: #fff;
+}
+
+.content {
+    p {
+        font-size: 1.25rem;
+
+        @include mobile() {
+            font-size: 1rem;
+        }
+    }
 }
 
 // RBI LAYOUT COMPONENTS
@@ -221,6 +235,10 @@ section.section-spacer {
         .card-content {
             background: $rbi-light-grey;
 
+            .content p {
+                font-size: 1rem;
+            }
+
             .date {
                 text-align: center;
             }
@@ -239,7 +257,10 @@ section.section-spacer {
 		.media-content {
 
 			.content {
-				font-size: 14px;
+
+                p {
+                    font-size: 1rem;
+                }
 
 				.tweet-link,
                 .tweet-url {
@@ -371,32 +392,52 @@ section.section-spacer {
     }
 }
 
-.media.instructor {
+.card.instructor {
+    display: flex;
 
-	.media-left {
-		.image {
-			max-width: 128px;
+    .info, .bio {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        width: 50%;
+    }
 
-			.headshot {
-				width: 100%;
-			}
-		}
-	}
+    .info {
+        flex-direction: column;
+        border-right: 2px dashed #EEEEEE;
 
-	.media-content .info {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
+        .headshot {
+            width: 150px;
+            max-height: 150px;
+            margin: 0 0 10px 0;
+            border-radius: 30px;
+        }
+        .name {
+            margin: 0 0 5px 0;
+        }
+    }
 
-		.name {
-			font-weight: 700;
-			font-size: 2rem;
-		}
+    .bio {
+        p {
+            font-size: .9rem;
+        }
+    }
 
-		.tag {
-			margin-left: 1rem;
-		}
-	}
+    @include mobile() {
+        //flex-direction: row;
+        flex-flow: column nowrap;
+
+        .info, .bio {
+            //flex-direction: row;
+            width: 100%;
+        }
+
+        .info {
+            border-right: none;
+            border-bottom: 2px dashed #EEEEEE;
+        }
+    }
 
 }
 

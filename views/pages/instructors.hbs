@@ -8,27 +8,24 @@
             <p>Each instructor below is available for private lesson scheduling throughout the year. Some instructors are gone throughout the summer and only with us in the offseason. Most instructors work with players on a weekly basis. For availability and scheduling, just give us a call!</p>
         </div>
 
-        <div class="columns">
-            <div class="column">
-                <div class="title is-5">Instructors</div>
-                {{#each instructors }}
-                    <article class="media instructor">
-                        <div class="media-left">
-                            <div class="image">
-                                <img class="headshot" src="{{ fields.headshot.fields.file.url }}" alt="{{ fields.headshot.fields.title }}">
-                            </div>
-                        </div>
-                        <div class="media-content">
-                            <div class="info">
-                                <div class="name">{{ fields.name }}</div>
+        <div class="columns is-multiline">
+            {{#each instructors }}
+                <div class="column is-half">
+                    <div class="card instructor">
+                        <div class="info">
+                            <img class="headshot" src="{{ fields.headshot.fields.file.url }}" alt="{{ fields.headshot.fields.title }}">
+                            <div class="title is-4 name">{{ fields.name }}</div>
+                            <div class="specialties">
                                 {{# each fields.specialties}}
                                     <span class="tag is-info">{{ . }}</span>
                                 {{/each}}
                             </div>
-                            <div class="accolades">{{ fields.accolades }}</div>
                         </div>
-                    </article>
-                {{/each}}
-            </div>
+                        <div class="bio">
+                            <p>{{ fields.accolades }}</p>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
     </div>
 </section>
