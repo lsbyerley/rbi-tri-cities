@@ -108,7 +108,7 @@ gulp.task('dev-server', () => {
 
 });
 
-gulp.task('build-dev', callback => {
+gulp.task('start', callback => {
 	runSequence(
 		'styles',
 		//'lint-styles',
