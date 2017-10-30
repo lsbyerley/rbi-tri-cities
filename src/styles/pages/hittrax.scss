@@ -15,6 +15,20 @@
 
 .section.hittrax-info {
 
+    &.desc {
+        .columns {
+            align-items: start;
+            
+            .column {
+                text-align: center;
+                .fa {
+                    margin-bottom: 1.5rem;
+                }
+
+            }
+        }
+    }
+
     &:nth-child(even) {
         background: $white;
     }
