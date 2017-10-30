@@ -96,8 +96,7 @@ app.use(helmet.contentSecurityPolicy({
 			'images.contentful.com',
 			'maps.googleapis.com',
 			'maps.gstatic.com',
-			'csi.gstatic.com',
-			'www.hittraxbaseball.com'
+			'csi.gstatic.com'
 		],
 		mediaSrc: [ "'self'" ],
 		connectSrc: [ // limit the origins (via XHR, WebSockets, and EventSource)
