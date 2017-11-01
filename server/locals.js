@@ -19,7 +19,8 @@
 			] },
 			{ title: 'Player Development', dropdown: [
 				{ title: 'Private Instruction', link: '/private-instruction' },
-				{ title: 'Strength & Agility', link: '/strength-agility' }
+				{ title: 'Strength & Agility', link: '/strength-agility' },
+				{ title: 'HitTrax', link: '/hittrax' }
 			] },
 			{ title: 'Camps & Events', dropdown: [
 				{ title: 'Upcoming Events', link: '/events' },
