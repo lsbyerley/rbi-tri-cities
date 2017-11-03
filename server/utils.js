@@ -119,11 +119,14 @@ module.exports = {
 
     getEvents: function() {
 
+        var startDate = moment().subtract(1, "days").format();
+
         return new Promise(function (resolve, reject) {
             contentful_client.getEntries({
                 content_type: 'events',
                 limit: 10,
-                order: 'fields.startDate'
+                order: 'fields.startDate',
+                'fields.startDate[gt]': startDate
             })
             .then(function(response) {
                 //console.log(JSON.stringify(response.items));
@@ -203,10 +206,13 @@ module.exports = {
     			},
     		    events: function(parallelCb) {
 
+                    var startDate = moment().subtract(1, "days").format();
+
                     contentful_client.getEntries({
                         content_type: 'events',
                         limit: 4,
-                        order: 'fields.startDate'
+                        order: 'fields.startDate',
+                        'fields.startDate[gt]': startDate
                     })
                     .then(function(response) {
                         //console.log(JSON.stringify(response.items[0]));
