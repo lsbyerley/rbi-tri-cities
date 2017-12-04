@@ -249,6 +249,42 @@ module.exports = function(app, cache) {
 		return res.render('pages/team-practices.hbs');
 	});
 
+	app.get('/vhl-about', function(req, res) {
+		return res.render('pages/vhl-about.hbs');
+	});
+
+	app.get('/vhl-schedules', function(req, res) {
+		return res.render('pages/vhl-schedules.hbs');
+	});
+
+	app.get('/vhl-standings-stats', function(req, res) {
+
+		app.locals.leagueData = [
+			{
+				name: "Virtual Hitting Leagues - High School Baseball",
+				date: "January 7th - February 5th, 2018",
+				link: ""
+			},
+			{
+				name: "Virtual Hitting Leagues - Middle School Baseball",
+				date: "January 8th - February 5th, 2018",
+				link: ""
+			},
+			{
+				name: "Virtual Hitting Leagues - High School Softball",
+				date: "January 10th - February 7th, 2018",
+				link: ""
+			},
+			{
+				name: "Virtual Hitting Leagues - 10U & 12U Baseball",
+				date: "January 27th - February 24th, 2018",
+				link: ""
+			}
+		]
+
+		return res.render('pages/vhl-standings-stats.hbs');
+	});
+
 	//Error handling
 	app.use(function (err, req, res, next) {
 		console.error(err.stack)

@@ -22,6 +22,11 @@
 				{ title: 'Strength & Agility', link: '/strength-agility' },
 				{ title: 'HitTrax', link: '/hittrax' }
 			] },
+			/*{ title: 'Virtual Hitting Leagues', dropdown: [
+				{ title: 'About VHL', link: '/vhl-about' },
+				{ title: 'VHL Schedules', link: '/vhl-schedules' },
+				{ title: 'Standings & Stats', link: '/vhl-standings-stats' }
+			] },*/
 			{ title: 'Camps & Events', dropdown: [
 				{ title: 'Upcoming Events', link: '/events' },
 				{ title: 'Annual Camps', link: '/annual-camps' },

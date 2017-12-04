@@ -1,0 +1,33 @@
+<section class="section" id="vhl-standings-stats">
+    <div class="container">
+
+        <h1 class="title is-spaced">VHL Standings & Stats</h1>
+        <hr>
+
+        <div class="columns is-multiline">
+            {{#each leagueData }}
+                <div class="column is-half">
+                    <div class="card vhl-league">
+                        <header class="card-header">
+                            <p class="card-header-title">{{ name }}</p>
+                        </header>
+                        <div class="card-content">
+                            <div class="date">
+                                <span class="icon">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                                {{ date }}
+                            </div>
+                        </div>
+                        {{#if link}}
+                            <footer class="card-footer">
+                                <a href="{{link}}" class="card-footer-item" target="_blank">Standings & Stats</a>
+                            </footer>
+                        {{/if}}
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+
+    </div>
+</section>
