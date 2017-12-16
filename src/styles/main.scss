@@ -123,6 +123,7 @@ a:hover {
 
 // RBI PAGES
 @import './pages/hittrax';
+@import './pages/vhl';
 
 // RBI COMPONENTS
 @import './partials/pricing-component';
@@ -339,7 +340,8 @@ section.section-spacer {
     }
 }
 
-#events.section {
+#events.section,
+#vhl-schedules.section {
 
     .media.event {
 

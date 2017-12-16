@@ -1,0 +1,25 @@
+.vhl-logo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+
+    .title {
+        margin: 1px;
+    }
+    .logo {
+        margin-left: auto;
+        width: 200px;
+    }
+
+    @include mobile() {
+        flex-direction: column;
+        align-items: center;
+
+        .title {
+            margin-bottom: 1rem;
+        }
+        .logo {
+            margin: inherit;
+        }
+    }
+}

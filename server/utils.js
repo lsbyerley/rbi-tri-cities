@@ -141,6 +141,29 @@ module.exports = {
 
     },
 
+    getVHLEvents: function() {
+
+        var startDate = moment().subtract(1, "days").format();
+
+        return new Promise(function (resolve, reject) {
+            contentful_client.getEntries({
+                content_type: 'events',
+                order: 'fields.startDate',
+                'fields.startDate[gt]': startDate,
+                'fields.isVhlEvent[ne]': 'no' // where isVhlEvent equals yes
+            })
+            .then(function(response) {
+                var events = response.items;
+                resolve(events)
+            })
+            .catch(function(err) {
+                console.error(err)
+                reject(err)
+            })
+        });
+
+    },
+
     getUpcomingVideoShoots: function() {
 
         return new Promise(function (resolve, reject) {

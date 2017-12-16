@@ -1,7 +1,10 @@
 <section class="section" id="vhl-standings-stats">
     <div class="container">
 
-        <h1 class="title is-spaced">VHL Standings & Stats</h1>
+        <div class="vhl-logo">
+            <h1 class="title">Standings & Stats</h1>
+            <img class="logo" src="/images/vhl-logo.png" alt="Virtual Hitting Leagues"/>
+        </div>
         <hr>
 
         <div class="columns is-multiline">
@@ -19,11 +22,13 @@
                                 {{ date }}
                             </div>
                         </div>
+                        <footer class="card-footer">
                         {{#if link}}
-                            <footer class="card-footer">
-                                <a href="{{link}}" class="card-footer-item" target="_blank">Standings & Stats</a>
-                            </footer>
+                            <a href="{{link}}" class="card-footer-item" target="_blank">Standings & Stats</a>
+                        {{else}}
+                            <div class="card-footer-item">Standings & Stats Coming Soon</div>
                         {{/if}}
+                        </footer>
                     </div>
                 </div>
             {{/each}}

@@ -1,12 +1,42 @@
 <section class="section" id="vhl-schedules">
     <div class="container">
 
-        <h1 class="title is-spaced">VHL Schedules</h1>
+        <div class="vhl-logo">
+            <h1 class="title">Schedules</h1>
+            <img class="logo" src="/images/vhl-logo.png" alt="Virtual Hitting Leagues"/>
+        </div>
         <hr>
 
         <div class="content">
             <p>Each league will run for five weeks. Weeks 1-4 will makeup the Regular Season in which teams will each play two 6-inning games against different opponents. Week 5 will be for the indidual Home Run Derby, Hitting Contest, and Team Playoffs. Please see the <a href="/vhl-about">About VHL</a> page for more information. To register for an upcoming League, either click through below or check out our <a href="/events">Upcoming Events</a> page.</p>
         </div>
+
+        {{#if vhlEvents}}
+            {{# vhlEvents }}
+                <article class="media event">
+                    <div class="media-left">
+                        <div class="date">
+                            <span class="month">{{{formatDate date=fields.startDate format='MMM'}}}</span>
+                            <span class="day">{{{formatDate date=fields.startDate format='D'}}}</span>
+                            <span class="dayofweek">{{{formatDate date=fields.startDate format='ddd'}}}</span>
+                        </div>
+                    </div>
+                    <div class="media-content">
+                        <div class="info">
+                            {{#ifCond fields.eventCost '>' 0}}
+                                <span class="tag is-success">${{ fields.eventCost }}</span>
+                            {{else}}
+                                <span class="tag is-success">Free</span>
+                            {{/ifCond}}
+                            <a class="title name is-4" href="/event/{{ sys.id }}">{{ fields.eventName }}</a>
+                        </div>
+                        <div class="content">{{ fields.introText }}</div>
+                    </div>
+                </article>
+            {{/ vhlEvents }}
+        {{else}}
+            <div class="no-events">There are no upcoming Virtual Hitting Leagues at this time.</div>
+        {{/if}}
 
     </div>
 </section>

@@ -253,8 +253,19 @@ module.exports = function(app, cache) {
 		return res.render('pages/vhl-about.hbs');
 	});
 
-	app.get('/vhl-schedules', function(req, res) {
-		return res.render('pages/vhl-schedules.hbs');
+	app.get('/vhl-schedules', cache(300), function(req, res) {
+
+		utils.getVHLEvents()
+			.then(function(events) {
+				app.locals.vhlEvents = events;
+				return res.render('pages/vhl-schedules.hbs');
+			})
+			.catch(function(err) {
+				console.error(err)
+				app.locals.vhlEvents = [];
+				return res.render('pages/vhl-schedules.hbs');
+			})
+
 	});
 
 	app.get('/vhl-standings-stats', function(req, res) {
