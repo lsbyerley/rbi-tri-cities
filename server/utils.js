@@ -195,14 +195,15 @@ module.exports = {
     		        var params = { screen_name: 'rbitricities', count: 5 };
     		        twitter_client.get('statuses/user_timeline', params)
     		            .then(function(tweets) {
-    						//console.log(tweets)
     						tweets = _.map(tweets, function(tweet) {
+                                var tweetLink = 'https://twitter.com/'+tweet.user.screen_name+'/status/'+tweet.id_str;
     							var date = moment(tweet.created_at, 'ddd MMM DD HH:mm:ss Z YYYY').fromNow()
     							return {
     								favorites: tweet.favorite_count,
     								retweets: tweet.retweet_count,
     								text: formatTweetText(tweet),
-    								date: date
+    								date: date,
+                                    tweetLink: tweetLink
     							}
     						});
     		                parallelCb(null, tweets);

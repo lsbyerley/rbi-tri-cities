@@ -35,6 +35,9 @@ $navbar-dropdown-item-hover-background-color: transparent;
 $navbar-dropdown-item-active-background-color: transparent;
 $family-sans-serif: $rbi-font;
 
+// increaes desktop breakpoint to 1110 to prevent navbar items from being hidden
+$desktop: 1046px + (2 * $gap);
+
 $link-hover: $rbi-blue;
 
 //IMPORT REST OF BULMA
