@@ -1,4 +1,4 @@
-.vhl-logo {
+.vhl-heading {
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
@@ -6,9 +6,16 @@
     .title {
         margin: 1px;
     }
-    .logo {
+
+    .logo-bg {
         margin-left: auto;
-        width: 200px;
+        background-image: radial-gradient(top, circle cover, #4c4c4c 0%, #000 80%);
+        padding: 15px;
+        border-radius: 5px;
+
+        .logo {
+            width: 215px;
+        }
     }
 
     @include mobile() {
