@@ -118,6 +118,20 @@ gulp.task('dev', callback => {
 	);
 });
 
+gulp.task('build-scripts', callback => {
+    runSequence(
+        'scripts',
+        callback
+    );
+})
+
+gulp.task('build-styles', callback => {
+    runSequence(
+        'styles',
+        callback
+    );
+})
+
 gulp.task('build-prod', callback => {
     runSequence(
 		'styles',
