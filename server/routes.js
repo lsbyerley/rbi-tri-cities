@@ -192,7 +192,9 @@ module.exports = function(app, cache) {
 
 	app.get('/hittrax-monthly-leaders', function(req, res) {
 
-		utils.getVHLLeaders()
+		app.locals.month = moment().format('MMMM YYYY');
+
+		utils.getHittraxLeaders()
 			.then(function(leaders) {
 				app.locals.leaders = leaders;
 				return res.render('pages/hittrax-leaders.hbs');

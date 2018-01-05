@@ -1,45 +1,56 @@
 <section class="section" id="hittrax-monthly-leaders">
     <div class="container">
 
-        <h1 class="title is-spaced">HitTrax Monthly Leaders</h1>
-        <h2 class="subtitle">Whose hitting the best this month?</h2>
+        <h1 class="title is-spaced">HitTrax Monthly Leaders - Top 25</h1>
+        <h2 class="subtitle">Who's leading at RBI this month?</h2>
         <hr>
 
-        <table class="table">
-            <thead>
-                <th>Player</th>
-                <th>Level</th>
-                <th>At Bats</th>
-                <th>Avg</th>
-                <th>SLG</th>
-                <th>HHA</th>
-                <th>AvgVel</th>
-                <th>MaxVel</th>
-            </thead>
-            <tbody>
-                {{#if leaders}}
-                    {{# leaders }}
-                        <tr>
-                            <td>{{ name }}</td>
-                            <td>{{ level }}</td>
-                            <td>{{ atBats }}</td>
-                            <td>{{ avg }}</td>
-                            <td>{{ slg }}</td>
-                            <td>{{ hha }}</td>
-                            <td>{{ avgvel }}</td>
-                            <td>{{ maxvel }}</td>
-                        </tr>
-                    {{/ leaders }}
-                {{else}}
-                    <tr class="no-leaders">No leaders at this time</tr>
-                {{/if}}
-            </tbody>
-        </table>
+        <h3 class="title is-4">{{ month }}</h3>
+
+        <div class="table-responsive">
+            <table class="table hittrax-leaders is-hoverable is-fullwidth is-bordered">
+                <thead>
+                    <th>Player</th>
+                    <th>Level</th>
+                    <th title="At Bats">AB</th>
+                    <th title="Batting Average">Avg</th>
+                    <th title="Slugging Percentage">SLG</th>
+                    <th title="Extra Base Hits">EBH</th>
+                    <th title="Hard Hit Average">HHA</th>
+                    <th title="Average Velocity">AvgVel</th>
+                    <th title="Max Velocity">MaxVel</th>
+                    <th title="Max Distance">MaxDist</th>
+                </thead>
+                <tbody>
+                    {{#if leaders}}
+                        {{# leaders }}
+                            <tr>
+                                <td>{{ name }}</td>
+                                <td>{{ level }}</td>
+                                <td>{{ atBats }}</td>
+                                <td>{{ avg }}</td>
+                                <td>{{ slg }}</td>
+                                <td>{{ ebh }}</td>
+                                <td>{{ hha }}</td>
+                                <td>{{ avgvel }}</td>
+                                <td>{{ maxvel }}</td>
+                                <td>{{ maxdist }}</td>
+                            </tr>
+                        {{/ leaders }}
+                    {{else}}
+                        <tr class="no-leaders"><td colspan="10">No leaders at this time</td></tr>
+                    {{/if}}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="10"><p>* To Qualify, a player must have atleast 30 At Bats</p></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
 
         <div class="content">
-            <p>Each month, the RBI hitting instructors will choose a different statistic to track for our Monthly Leaderboards. This will allow different types of hitters with different strengths to stand out throughout the year. We will also elaborate on the statistical category in focus each month so that players will have a better understanding of their stats and measurables in HitTrax.</p>
-
-            <p>These statistics will be taken from the HitTrax database and only be pulled from swings and training sessions from the month in focus. Each statistic chosen and corresponding leaders will be separated by the age/skill level attached to the player's profile in HitTrax.</p>
+            <p>These statistics are taken from RBI's HitTrax database. Feel free to sort by player name, statistical category, or age group to compare this month's batting leaders at RBI Tri-Cities</p>
         </div>
     </div>
 </section>

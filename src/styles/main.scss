@@ -656,3 +656,18 @@ section.section-spacer {
         }
     }
 }
+
+.table-responsive {
+    @include mobile() {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        margin-bottom: 1.5rem;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+
+        .table {
+            margin-bottom:0;
+        }
+    }
+}

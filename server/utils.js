@@ -348,14 +348,14 @@ module.exports = {
 
     },
 
-    getVHLLeaders: function() {
+    getHittraxLeaders: function() {
         return new Promise(function (resolve, reject) {
 
-            const statOfMonthTitle = 'Slugging Percentage'
-            const statOfMonthSlug = 'slg'
+            const statOfMonthTitle = 'Batting Average'
+            const statOfMonthSlug = 'avg'
             const statOfMonthToFixed = 3
             const statField = 'gsx$'+statOfMonthSlug
-            const leadersUrl = 'https://spreadsheets.google.com/feeds/list/10HTYBCgCbN17gGHvK_4-BlPqMqGpvPdVi3FCjErKIRI/2/public/values?alt=json';
+            const leadersUrl = 'https://spreadsheets.google.com/feeds/list/10HTYBCgCbN17gGHvK_4-BlPqMqGpvPdVi3FCjErKIRI/3/public/values?alt=json';
 
             axios.get(leadersUrl).then((res) => {
 
@@ -367,11 +367,13 @@ module.exports = {
                         name: entry.gsx$user.$t,
                         level: entry.gsx$level.$t,
                         atBats: parseFloat(entry.gsx$ab.$t).toFixed(0),
-                        avg: entry.gsx$avg.$t,
-                        slg: entry.gsx$slg.$t,
-                        hha: entry.gsx$hha.$t,
-                        avgvel: entry.gsx$avgvel.$t,
-                        maxvel: entry.gsx$maxvel.$t
+                        avg: parseFloat(entry.gsx$avg.$t).toFixed(3),
+                        slg: parseFloat(entry.gsx$slg.$t).toFixed(3),
+                        ebh: parseFloat(entry.gsx$ebh.$t).toFixed(0),
+                        hha: parseFloat(entry.gsx$hha.$t).toFixed(3),
+                        avgvel: parseFloat(entry.gsx$avgvel.$t).toFixed(1),
+                        maxvel: parseFloat(entry.gsx$maxvel.$t).toFixed(1),
+                        maxdist: parseFloat(entry.gsx$maxdist.$t).toFixed(0)
                         //statOfMonthTitle: statOfMonthTitle,
                         //statOfMonthSlug: statOfMonthSlug,
                         //statOfMonthStat: parseFloat(entry[statField]['$t']).toFixed(statOfMonthToFixed)
@@ -380,15 +382,21 @@ module.exports = {
                 .filter((e) => {
                     return e.atBats > 29
                 })
-                /*.sort((a, b) => {
-                    if (b.statOfMonthStat < a.statOfMonthStat)
+                .sort((a, b) => {
+                    if (b[statOfMonthSlug] < a[statOfMonthSlug])
                         return -1;
-                    if (b.statOfMonthStat > a.statOfMonthStat)
+                    if (b[statOfMonthSlug] > a[statOfMonthSlug])
                         return 1;
                     return 0;
-                })*/
+                })
 
                 //leaders = removeDuplicates(leaders, 'level');
+
+                console.log(leaders.length)
+
+                leaders.splice(25, leaders.length - 1);
+
+                console.log(leaders.length)
 
                 resolve(leaders);
 
