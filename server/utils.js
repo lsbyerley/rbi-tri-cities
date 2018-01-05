@@ -8,7 +8,7 @@ const twitterText = require('twitter-text');
 const twemoji = require('twemoji');
 const Contentful = require('contentful');
 const config = require('./config');
-const request = require('request');
+const axios = require('axios');
 //https://jelled.com/instagram/access-token
 
 var contentful_client = Contentful.createClient({
@@ -17,6 +17,12 @@ var contentful_client = Contentful.createClient({
 });
 var twitter_client = new Twitter(config.twitter);
 var instagram_client = new Instagram(config.instagram);
+
+function removeDuplicates( myArr, prop ) {
+	return myArr.filter( ( obj, pos, arr ) => {
+		return arr.map( mapObj => mapObj[prop] ).indexOf( obj[prop] ) === pos;
+	})
+}
 
 function formatTweetText(tweet) {
 
@@ -197,13 +203,17 @@ module.exports = {
     		            .then(function(tweets) {
     						tweets = _.map(tweets, function(tweet) {
                                 var tweetLink = 'https://twitter.com/'+tweet.user.screen_name+'/status/'+tweet.id_str;
+                                var retweetLink = 'http://twitter.com/intent/retweet?lang=en&tweet_id='+tweet.id_str;
+                                var favoriteLink = 'http://twitter.com/intent/favorite?lang=en&tweet_id='+tweet.id_str;
     							var date = moment(tweet.created_at, 'ddd MMM DD HH:mm:ss Z YYYY').fromNow()
     							return {
     								favorites: tweet.favorite_count,
     								retweets: tweet.retweet_count,
     								text: formatTweetText(tweet),
     								date: date,
-                                    tweetLink: tweetLink
+                                    tweetLink: tweetLink,
+                                    retweetLink: retweetLink,
+                                    favoriteLink: favoriteLink
     							}
     						});
     		                parallelCb(null, tweets);
@@ -338,28 +348,79 @@ module.exports = {
 
     },
 
+    getVHLLeaders: function() {
+        return new Promise(function (resolve, reject) {
+
+            const statOfMonthTitle = 'Slugging Percentage'
+            const statOfMonthSlug = 'slg'
+            const statOfMonthToFixed = 3
+            const statField = 'gsx$'+statOfMonthSlug
+            const leadersUrl = 'https://spreadsheets.google.com/feeds/list/10HTYBCgCbN17gGHvK_4-BlPqMqGpvPdVi3FCjErKIRI/2/public/values?alt=json';
+
+            axios.get(leadersUrl).then((res) => {
+
+                const entries = res.data.feed.entry
+
+                // 1. Normalize entries, filter by at bats, sort by stat of month
+                let leaders = entries.map((entry) => {
+                    return {
+                        name: entry.gsx$user.$t,
+                        level: entry.gsx$level.$t,
+                        atBats: parseFloat(entry.gsx$ab.$t).toFixed(0),
+                        avg: entry.gsx$avg.$t,
+                        slg: entry.gsx$slg.$t,
+                        hha: entry.gsx$hha.$t,
+                        avgvel: entry.gsx$avgvel.$t,
+                        maxvel: entry.gsx$maxvel.$t
+                        //statOfMonthTitle: statOfMonthTitle,
+                        //statOfMonthSlug: statOfMonthSlug,
+                        //statOfMonthStat: parseFloat(entry[statField]['$t']).toFixed(statOfMonthToFixed)
+                    }
+                })
+                .filter((e) => {
+                    return e.atBats > 29
+                })
+                /*.sort((a, b) => {
+                    if (b.statOfMonthStat < a.statOfMonthStat)
+                        return -1;
+                    if (b.statOfMonthStat > a.statOfMonthStat)
+                        return 1;
+                    return 0;
+                })*/
+
+                //leaders = removeDuplicates(leaders, 'level');
+
+                resolve(leaders);
+
+            }).catch((err) => {
+                reject(err)
+            })
+
+        });
+    },
+
     getCollegeSignees: function() {
 
         return new Promise(function (resolve, reject) {
 
-            var url = 'https://spreadsheets.google.com/feeds/list/1bl9c_HhR5OpKpjTq9ZVno592ML02ouiO-w22Gg3IMkQ/1/public/values?alt=json';
+            var signeesUrl = 'https://spreadsheets.google.com/feeds/list/1bl9c_HhR5OpKpjTq9ZVno592ML02ouiO-w22Gg3IMkQ/1/public/values?alt=json';
 
-    		request.get({ url: url, json: true, headers: {'User-Agent': 'request'} }, (err, res, data) => {
-    			if (err || res.statusCode !== 200) {
-    				reject(err)
-    			} else {
-    				var entries = data.feed.entry;
-    				var signees = _.map(entries, function(entry) {
-                        return {
-                            name: entry.gsx$name.$t,
-                            highSchool: entry.gsx$highschool.$t,
-                            college: entry.gsx$college.$t,
-                            year: entry.gsx$yearsigned.$t
-                        }
-                    })
-                    resolve(signees);
-    			}
-    		});
+            axios.get(signeesUrl).then((res) => {
+
+                var entries = res.data.feed.entry;
+                var signees = _.map(entries, function(entry) {
+                    return {
+                        name: entry.gsx$name.$t,
+                        highSchool: entry.gsx$highschool.$t,
+                        college: entry.gsx$college.$t,
+                        year: entry.gsx$yearsigned.$t
+                    }
+                })
+                resolve(signees);
+
+            }).catch((err) => {
+                reject(err)
+            })
 
         });
 

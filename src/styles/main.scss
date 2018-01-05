@@ -141,12 +141,13 @@ a:hover {
     /*background-color: $rbi-blue;
     background: radial-gradient(top, $rbi-red, $rbi-blue);
     background: -ms-radial-gradient(top, $rbi-red, $rbi-blue);*/
-    background-image: url('/images/rbi-hero-main.jpg');
+    background-image: url('/images/rbi-hero-main-two.jpg');
     background-repeat: no-repeat;
-    background-size: 100% 700px;
+    background-size: cover;
+    background-position: center center;
 
     @include mobile() {
-        background-size: 100% 100%;
+        //background-size: 100% 100%;
     }
 
     .hero-body {

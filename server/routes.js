@@ -186,6 +186,24 @@ module.exports = function(app, cache) {
 		return res.render('pages/hittrax.hbs');
 	})
 
+	app.get('/hittrax-faq', function(req, res) {
+		return res.render('pages/hittrax-faq.hbs');
+	})
+
+	app.get('/hittrax-monthly-leaders', function(req, res) {
+
+		utils.getVHLLeaders()
+			.then(function(leaders) {
+				app.locals.leaders = leaders;
+				return res.render('pages/hittrax-leaders.hbs');
+			})
+			.catch(function(err) {
+				console.error(err)
+				app.locals.leaders = [];
+				return res.render('pages/hittrax-leaders.hbs');
+			})
+	})
+
 	app.get('/instructors', cache(300), function(req, res) {
 
 		utils.getInstructors()

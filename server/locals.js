@@ -22,6 +22,11 @@
 				{ title: 'Strength & Agility', link: '/strength-agility' },
 				{ title: 'HitTrax', link: '/hittrax' }
 			] },
+			/*{ title: 'HitTrax', dropdown: [
+				{ title: 'HitTrax at RBI', link: '/hittrax' },
+				{ title: 'HitTrax FAQ', link: '/hittrax-faq' },
+				{ title: 'Monthly Leaders', link: '/hittrax-monthly-leaders' }
+			] },*/
 			{ title: 'VHL', dropdown: [
 				{ title: 'About VHL', link: '/vhl-about' },
 				{ title: 'VHL Schedules', link: '/vhl-schedules' },
