@@ -3,6 +3,7 @@ window.moment = require('moment');
 var Barba = require('barba.js');
 var venueMap = require('./googleMap.js');
 var loadScript = require('./util/loadScript.js');
+var Sortable = require('./sortable.js');
 
 // Greensock Animation Library
 require('gsap').TweenLite;
@@ -155,8 +156,19 @@ require('gsap/ScrollToPlugin');
 
 		}
 	});
-
 	eventPage.init();
+
+	// Custom hittrax-leaders event for table sorting
+	var hittraxLeadersPage = Barba.BaseView.extend({
+		namespace: 'hittrax-monthly-leaders',
+		onEnter: function() {
+			const leadersTable = document.querySelector('#hittrax-leaders');
+			if (leadersTable) {
+				Sortable.initTable(leadersTable)
+			}
+		}
+	})
+	hittraxLeadersPage.init();
 
 	// Barba.js page transitions
 	Barba.Prefetch.init();

@@ -1,5 +1,5 @@
 .ht-logo {
-    background: linear-gradient(90deg, #092462, #051333);
+    background: linear-gradient(90deg, rgba(9, 36, 98, .7), rgba(5, 19, 51, .9));
     padding: 5px 15px;
     border-radius: 5px;
     margin-bottom: 3rem;
@@ -18,7 +18,7 @@
     &.desc {
         .columns {
             align-items: start;
-            
+
             .column {
                 text-align: center;
                 .fa {

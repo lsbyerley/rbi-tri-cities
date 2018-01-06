@@ -1,0 +1,61 @@
+.table-responsive {
+    @include mobile() {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        margin-bottom: 1.5rem;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+
+        .table {
+            margin-bottom:0;
+        }
+    }
+}
+
+table[data-sortable] th:not([data-sortable="false"]) {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-touch-callout: none;
+    cursor: pointer;
+}
+
+table[data-sortable] th:after {
+    font-family: 'FontAwesome';
+    visibility: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0px;
+    margin-left: 6px;
+    font-size: 10px;
+    margin-top: 0px;
+}
+
+table[data-sortable] th[data-sorted="true"]:after {
+    visibility: visible;
+}
+
+table[data-sortable] th[data-sorted-direction="descending"]:after {
+    content: '\f063';
+}
+
+table[data-sortable] th[data-sorted-direction="ascending"]:after {
+    content: '\f062';
+}
+
+table[data-sortable].sortable-theme-light {
+  //color: #333333;
+  //background: #f2f2f2;
+}
+
+table[data-sortable].sortable-theme-light tbody td {
+  //border-top: 1px solid #e0e0e0;
+}
+
+table[data-sortable] th[data-sorted="true"] {
+    background: #e0e0e0;
+}

@@ -190,9 +190,9 @@ module.exports = function(app, cache) {
 		return res.render('pages/hittrax-faq.hbs');
 	})
 
-	app.get('/hittrax-monthly-leaders', function(req, res) {
+	app.get('/hittrax-monthly-leaders', cache(300), function(req, res) {
 
-		app.locals.month = moment().format('MMMM YYYY');
+		app.locals.month = moment().subtract(1, "month").format('MMMM YYYY');
 
 		utils.getHittraxLeaders()
 			.then(function(leaders) {

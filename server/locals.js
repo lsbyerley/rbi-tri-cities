@@ -19,14 +19,13 @@
 			] },
 			{ title: 'Player Development', dropdown: [
 				{ title: 'Private Instruction', link: '/private-instruction' },
-				{ title: 'Strength & Agility', link: '/strength-agility' },
-				{ title: 'HitTrax', link: '/hittrax' }
+				{ title: 'Strength & Agility', link: '/strength-agility' }
 			] },
-			/*{ title: 'HitTrax', dropdown: [
-				{ title: 'HitTrax at RBI', link: '/hittrax' },
+			{ title: 'HitTrax', dropdown: [
+				{ title: 'About HitTrax', link: '/hittrax' },
 				{ title: 'HitTrax FAQ', link: '/hittrax-faq' },
 				{ title: 'Monthly Leaders', link: '/hittrax-monthly-leaders' }
-			] },*/
+			] },
 			{ title: 'VHL', dropdown: [
 				{ title: 'About VHL', link: '/vhl-about' },
 				{ title: 'VHL Schedules', link: '/vhl-schedules' },
@@ -138,6 +137,14 @@
 			case '/hittrax':
 				title = "HitTrax | " + shortTitle;
 				break;
+			case '/hittrax-faq':
+				title = "HitTrax FAQ | " + shortTitle;
+				//description = "";
+				break;
+			case '/hittrax-monthly-leaders':
+			    title = "HitTrax Monthly Leaders | " + shortTitle;
+			    //description = "";
+			    break;
 			case '/vhl-about':
 				title = "About our Virtual Hitting Leagues | " + shortTitle;
 				break;

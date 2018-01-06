@@ -1,0 +1,35 @@
+.panel.cage-schedule {
+
+    .panel-heading {
+        background: linear-gradient(90deg, $rbi-blue, darken($rbi-blue, 10%));
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        color: white;
+        font-family: 'Titillium Web', Lato, sans-serif;
+    }
+    .panel-block {
+        justify-content: center;
+        line-height: 3rem;
+        font-size: 1.15rem;
+
+        &.available {
+            color: green;
+            background-color: rgba(0, 128, 0, .1);
+        }
+        &.reserved {
+            color: $rbi-red;
+            background-color: rgba(195, 27, 40, .1);
+        }
+    }
+}
+
+.panel.contact {
+
+    .panel-block {
+        border: 0;
+
+        .icon {
+            margin-right: 10px;
+        }
+    }
+}

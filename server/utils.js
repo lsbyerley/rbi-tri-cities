@@ -391,13 +391,7 @@ module.exports = {
                 })
 
                 //leaders = removeDuplicates(leaders, 'level');
-
-                console.log(leaders.length)
-
                 leaders.splice(25, leaders.length - 1);
-
-                console.log(leaders.length)
-
                 resolve(leaders);
 
             }).catch((err) => {

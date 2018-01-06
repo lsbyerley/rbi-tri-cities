@@ -1,0 +1,131 @@
+.card.instructor {
+    display: flex;
+
+    .info, .bio {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        width: 50%;
+    }
+
+    .info {
+        flex-direction: column;
+        border-right: 2px dashed #EEEEEE;
+
+        .headshot {
+            width: 150px;
+            max-height: 150px;
+            margin: 0 0 10px 0;
+            border-radius: 30px;
+        }
+        .name {
+            margin: 0 0 5px 0;
+        }
+    }
+
+    .bio {
+        p {
+            font-size: .9rem;
+        }
+    }
+
+    @include mobile() {
+        //flex-direction: row;
+        flex-flow: column nowrap;
+
+        .info, .bio {
+            //flex-direction: row;
+            width: 100%;
+        }
+
+        .info {
+            border-right: none;
+            border-bottom: 2px dashed #EEEEEE;
+        }
+    }
+
+}
+
+.card.camp {
+
+    &:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+
+    .card-header-title {
+        background-color: $primary;
+        color: #fff;
+        font-size: 1.25rem;
+    }
+
+    .card-content {
+
+        .media {
+            align-items: center;
+
+            .media-left {
+                margin-right: 2rem;
+
+                .image img{
+                    width: 150px;
+                }
+
+                .image.annual-camp img {
+                    width: 250px;
+                }
+            }
+
+            .media-content {
+                .title {
+                    color: $rbi-blue;
+                }
+                .meta {
+                    font-style: italic;
+                    font-weight: bold;
+                    color: $rbi-green;
+                }
+            }
+
+            @include mobile() {
+                flex-direction: column;
+
+                .media-left {
+                    margin-bottom: 1rem;
+                    margin-right: 0;
+
+                    .image.annual-camp img {
+                        width: 100%;
+                    }
+                }
+
+                .media-content .meta {
+                    text-align: center;
+                }
+
+            }
+        }
+
+    }
+}
+
+.card.video-shoot, .card.vhl-league {
+
+    .card-header-title {
+        justify-content: center;
+    }
+
+    .card-content {
+        text-align: center;
+    }
+
+    .tbd {
+        font-size: 3rem;
+        font-family: 'Titillium Web', Lato, sans-serif;
+    }
+
+    .date {
+        margin-bottom: 1rem;
+    }
+
+}

@@ -1,0 +1,227 @@
+.section {
+    background-color: $rbi-light-grey;
+
+    &.recruiting-video {
+        background: #f9f9f9;
+    	box-shadow: inset 0 0 20px rgba(0, 0, 0, .4);
+    }
+}
+
+#four0four.section, #error.section {
+    padding: 20vh 3rem;
+    @include mobile() {
+        padding: 10vh 3rem;
+    }
+}
+
+.section.recruiting-video {
+	background: #f9f9f9;
+	box-shadow: inset 0 0 20px rgba(0, 0, 0, .4);
+}
+
+.section.events {
+
+    .section-title {
+        &::before {
+            @include fa(1.5rem, 2rem);
+
+            margin-right: 10px;
+            content: '\f073';
+            display: inline-block;
+            font-family: 'FontAwesome';
+        }
+    }
+
+    .card.event {
+
+        .card-header {
+            background: linear-gradient(90deg, $rbi-blue, darken($rbi-blue, 10%));
+            padding: 1rem 0;
+            font-size: 1.25rem;
+
+            .card-header-title {
+                color: $white;
+                justify-content: center;
+                text-align: center;
+            }
+        }
+
+        .card-content {
+            background: $rbi-light-grey;
+
+            .content p {
+                font-size: 1rem;
+            }
+
+            .date {
+                text-align: center;
+            }
+        }
+
+    }
+
+}
+
+.section.social {
+	background: #f9f9f9;
+	box-shadow: inset 0 0 20px rgba(0, 0, 0, .4);
+
+	.media.tweet {
+
+		.media-content {
+
+			.content {
+
+                p {
+                    font-size: 1rem;
+                }
+
+				.tweet-link,
+                .tweet-url {
+					&:hover {
+						color: $rbi-red;
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+
+		.level {
+			font-size: 10px;
+
+			.fa {
+				font-size: 12px;
+			}
+
+			.fa-heart {
+				color: $rbi-red;
+			}
+		}
+	}
+
+	.card.instagram {
+
+		.card-image {
+			padding: 10px;
+
+			.image {
+				&:hover {
+					img {
+						//box-shadow: 0 0 20px rgba(0,0,0,0.4);
+		    		//transform: scale(1.1);
+					}
+				}
+
+				img {
+					//border-radius: 4px;
+				}
+			}
+		}
+
+		.card-footer {
+			font-size: 10px;
+
+			.fa {
+				font-size: 12px;
+			}
+		}
+	}
+}
+
+#events.section,
+#vhl-schedules.section {
+
+    .media.event {
+
+        .media-left {
+
+            .date {
+                background: $rbi-blue;
+                color: $white;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 1rem 2rem;
+                text-transform: uppercase;
+                font-weight: bold;
+                line-height: 1.25rem;
+
+                .month {
+
+                }
+
+                .day {
+
+                }
+
+                .dayofweek {
+                    opacity: .65;
+                }
+            }
+        }
+
+        .media-content {
+            .info {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                margin-bottom: 1rem;
+
+                .title {
+                    margin: 0;
+                }
+
+                .tag {
+                    font-size: 1rem;
+                    letter-spacing: 2px;
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}
+
+#event.section {
+
+    .level.event-details {
+        margin: 0;
+
+        .level-item {
+            flex-direction: column;
+        }
+
+        .tag.is-success {
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+    }
+
+}
+
+#shop.section {
+
+    .column {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:first-child {
+            display: block;
+            border-right: 1px solid #dbdbdb;
+        }
+    }
+
+    .button {
+        transition: transform 0.2s ease-in, box-shadow 0.2 ease-in;
+        width:80%;
+        padding: 4rem 1rem;
+        border: none;
+
+        &:hover {
+            //transition: background-color 0.5s ease, opacity 0.5s ease;
+            transform: scale(1.1);
+            box-shadow: inset 0px 0px 60px -10px $rbi-blue;
+        }
+    }
+}
