@@ -44,7 +44,6 @@
 			] },
 			{ title: 'RBI Teams', dropdown: [
 				{ title: 'RBI Tri-Cities Teams', link: '/rbi-teams' },
-				{ title: 'RBI Pride Teams', link: '/rbi-pride-teams' },
 				{ title: 'Equipment Shop', link: '/shop' }
 			] },
 			{ title: 'About', dropdown: [
@@ -109,10 +108,6 @@
 			    break;
 			case '/rbi-teams':
 			    title = "RBI Teams | " + shortTitle;
-			    //description = "";
-			    break;
-			case '/rbi-pride-teams':
-			    title = "RBI Pride Teams | " + shortTitle;
 			    //description = "";
 			    break;
 			case '/shop':

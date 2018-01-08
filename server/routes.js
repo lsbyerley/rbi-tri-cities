@@ -231,10 +231,6 @@ module.exports = function(app, cache) {
 		return res.render('pages/private-instruction.hbs');
 	});
 
-	app.get('/rbi-pride-teams', function(req, res) {
-		return res.render('pages/rbi-pride-teams.hbs');
-	});
-
 	app.get('/rbi-teams', function(req, res) {
 		return res.render('pages/rbi-teams.hbs');
 	});
