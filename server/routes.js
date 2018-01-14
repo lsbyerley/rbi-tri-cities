@@ -290,12 +290,12 @@ module.exports = function(app, cache) {
 			{
 				name: "Virtual Hitting Leagues - High School Baseball",
 				date: "January 7th - February 5th, 2018",
-				link: ""
+				link: "https://hittraxstatscenter.com/widget/tournament_widget.php?TId=1&TUId=552&SId=552&UId=552"
 			},
 			{
 				name: "Virtual Hitting Leagues - Middle School Baseball",
 				date: "January 8th - February 5th, 2018",
-				link: ""
+				link: "https://hittraxstatscenter.com/widget/tournament_widget.php?TId=2&TUId=552&SId=552&UId=552"
 			},
 			{
 				name: "Virtual Hitting Leagues - High School Softball",
