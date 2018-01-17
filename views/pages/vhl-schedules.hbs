@@ -13,6 +13,7 @@
             <p>Each league will run for five weeks. Weeks 1-4 will makeup the Regular Season in which teams will each play two 6-inning games against different opponents. Week 5 will be for the indidual Home Run Derby, Hitting Contest, and Team Playoffs. Please see the <a href="/vhl-about">About VHL</a> page for more information. To register for an upcoming League, either click through below or check out our <a href="/events">Upcoming Events</a> page.</p>
         </div>
 
+        <div class="title is-5">Upcoming VHL Events</div>
         {{#if vhlEvents}}
             {{# vhlEvents }}
                 <article class="media event">
@@ -39,6 +40,62 @@
         {{else}}
             <div class="no-events">There are no upcoming Virtual Hitting Leagues at this time.</div>
         {{/if}}
+
+        <hr>
+
+        <div class="columns">
+            <div class="column is-half">
+                {{#if hsGameSchedules}}
+                    <div class="title is-5">High-School Game Schedules</div>
+                    <table class="table is-hoverable is-fullwidth is-bordered">
+                        <thead>
+                            <th>Date</th>
+                            <th>Game Time</th>
+                            <th>Matchup</th>
+                            <th>Final</th>
+                        </thead>
+                        <tbody>
+                        {{# hsGameSchedules }}
+                            <tr>
+                                <td>{{ date }}</td>
+                                <td>{{ gameTime }}</td>
+                                <td>{{ matchup }}</td>
+                                <td>{{ final }}</td>
+                            </tr>
+                        {{/ hsGameSchedules }}
+                        </tbody>
+                    </table>
+                {{else}}
+                    <div class="no-game-schedules">There are High-School game schedules at this time.</div>
+                {{/if}}
+            </div>
+
+            <div class="column is-half">
+                {{#if msGameSchedules}}
+                    <div class="title is-5">Middle-School Game Schedules</div>
+                    <table class="table is-hoverable is-fullwidth is-bordered">
+                        <thead>
+                            <th>Date</th>
+                            <th>Game Time</th>
+                            <th>Matchup</th>
+                            <th>Final</th>
+                        </thead>
+                        <tbody>
+                        {{# msGameSchedules }}
+                            <tr>
+                                <td>{{ date }}</td>
+                                <td>{{ gameTime }}</td>
+                                <td>{{ matchup }}</td>
+                                <td>{{ final }}</td>
+                            </tr>
+                        {{/ msGameSchedules }}
+                        </tbody>
+                    </table>
+                {{else}}
+                    <div class="no-game-schedules">There are no Middle-School game schedules at this time.</div>
+                {{/if}}
+            </div>
+        </div>
 
     </div>
 </section>

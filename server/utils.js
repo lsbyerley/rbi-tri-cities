@@ -59,15 +59,31 @@ function formatTweetText(tweet) {
     return text;
 }
 
+function normalizeVHLGameSchedules(data) {
+    const entries = data.feed.entry
+
+    // 1. Normalize entries, filter by at bats, sort by stat of month
+    let schedule = entries.map((entry) => {
+        return {
+            date: entry.gsx$date.$t,
+            gameTime: entry.gsx$gametime.$t,
+            matchup: entry.gsx$awayvshome.$t,
+            final: entry.gsx$final.$t
+        }
+    })
+
+    return schedule
+}
+
 module.exports = {
 
     getAnnualCamps: function() {
-        return new Promise(function (resolve, reject) {
+        return new Promise((resolve, reject) => {
             contentful_client.getEntries({
                 content_type: 'annualCamps',
                 order: 'sys.createdAt'
             })
-            .then(function(response) {
+            .then((response) => {
                 if (response.items) {
                     var camps = response.items
                     resolve(camps)
@@ -75,7 +91,7 @@ module.exports = {
                     reject({})
                 }
             })
-            .catch(function(err) {
+            .catch((err) => {
                 console.error(err)
                 reject(err)
             })
@@ -84,15 +100,15 @@ module.exports = {
 
     getDrillVideos: function() {
 
-        return new Promise(function (resolve, reject) {
+        return new Promise((resolve, reject) => {
             contentful_client.getEntries({
                 content_type: 'drillVideos'
             })
-            .then(function(response) {
+            .then((response) => {
                 var drillVideos = response.items;
                 resolve(drillVideos)
             })
-            .catch(function(err) {
+            .catch((err) => {
                 console.error(err)
                 reject(err)
             })
@@ -102,12 +118,12 @@ module.exports = {
 
     getEvent: function(id) {
 
-        return new Promise(function (resolve, reject) {
+        return new Promise((resolve, reject) => {
             contentful_client.getEntries({
                 content_type: 'events',
                 'sys.id': id
             })
-            .then(function(response) {
+            .then((response) => {
                 if (response.items) {
                     var event = response.items[0]
                     resolve(event)
@@ -115,7 +131,7 @@ module.exports = {
                     reject({})
                 }
             })
-            .catch(function(err) {
+            .catch((err) => {
                 console.error(err)
                 reject(err)
             })
@@ -127,19 +143,19 @@ module.exports = {
 
         var startDate = moment().subtract(1, "days").format();
 
-        return new Promise(function (resolve, reject) {
+        return new Promise((resolve, reject) => {
             contentful_client.getEntries({
                 content_type: 'events',
                 limit: 10,
                 order: 'fields.startDate',
                 'fields.startDate[gt]': startDate
             })
-            .then(function(response) {
+            .then((response) => {
                 //console.log(JSON.stringify(response.items));
                 var events = response.items;
                 resolve(events)
             })
-            .catch(function(err) {
+            .catch((err) => {
                 console.error(err)
                 reject(err)
             })
@@ -151,18 +167,18 @@ module.exports = {
 
         var startDate = moment().subtract(1, "days").format();
 
-        return new Promise(function (resolve, reject) {
+        return new Promise((resolve, reject) => {
             contentful_client.getEntries({
                 content_type: 'events',
                 order: 'fields.startDate',
                 'fields.startDate[gt]': startDate,
                 'fields.isVhlEvent[ne]': 'no' // where isVhlEvent equals yes
             })
-            .then(function(response) {
+            .then((response) => {
                 var events = response.items;
                 resolve(events)
             })
-            .catch(function(err) {
+            .catch((err) => {
                 console.error(err)
                 reject(err)
             })
@@ -172,12 +188,12 @@ module.exports = {
 
     getUpcomingVideoShoots: function() {
 
-        return new Promise(function (resolve, reject) {
+        return new Promise((resolve, reject) => {
             contentful_client.getEntries({
                 content_type: 'videoShoots',
                 'sys.id': '3mN9xPIbao2AQcwKkg0omc'
             })
-            .then(function(response) {
+            .then((response) => {
                 if (response.items) {
                     var videoShoot = response.items[0]
                     resolve(videoShoot)
@@ -185,7 +201,7 @@ module.exports = {
                     reject({})
                 }
             })
-            .catch(function(err) {
+            .catch((err) => {
                 console.error(err)
                 reject(err)
             })
@@ -194,7 +210,7 @@ module.exports = {
     },
 
     homePageData: function() {
-    	return new Promise(function (resolve, reject) {
+    	return new Promise((resolve, reject) => {
     		async.parallel({
     		    tweets: function(parallelCb) {
 
@@ -218,7 +234,7 @@ module.exports = {
     						});
     		                parallelCb(null, tweets);
     		            })
-    		            .catch(function(err) {
+    		            .catch((err) => {
     		                console.error(err);
     						reject(err)
     		            });
@@ -228,11 +244,11 @@ module.exports = {
 
     				var params = { count: 6 };
     				instagram_client.get('users/self/media/recent', params)
-    					.then(function(response) {
+    					.then((response) => {
     						var instagramPics = response.data;
     						parallelCb(null, instagramPics)
     					})
-    					.catch(function(err) {
+    					.catch((err) => {
     						console.error(err)
     						reject(err)
     					})
@@ -248,12 +264,12 @@ module.exports = {
                         order: 'fields.startDate',
                         'fields.startDate[gt]': startDate
                     })
-                    .then(function(response) {
+                    .then((response) => {
                         //console.log(JSON.stringify(response.items[0]));
                         var events = response.items;
                         parallelCb(null, events)
                     })
-                    .catch(function(err) {
+                    .catch((err) => {
                         console.error(err)
                         reject(err)
                     })
@@ -266,7 +282,7 @@ module.exports = {
     },
 
     getCageSchedule: function() {
-        return new Promise(function (resolve, reject) {
+        return new Promise((resolve, reject) => {
             mindbody.getResources()
     			.then(function(resources) {
 
@@ -312,11 +328,11 @@ module.exports = {
                             })
 
     					})
-    					.catch(function(err) {
+    					.catch((err) => {
                             reject(err);
     					})
     			})
-    			.catch(function(err) {
+    			.catch((err) => {
                     reject(err);
     			})
         });
@@ -324,32 +340,49 @@ module.exports = {
 
     getInstructors: function() {
 
-        return new Promise(function (resolve, reject) {
+        return new Promise((resolve, reject) => {
             contentful_client.getEntries({
                 content_type: 'instructors',
                 order: 'sys.createdAt'
             })
-            .then(function(response) {
+            .then((response) => {
                 //console.log(JSON.stringify(response.items));
                 var instructors = response.items;
                 resolve(instructors);
             })
-            .catch(function(err) {
+            .catch((err) => {
                 console.error(err)
                 reject(err)
             })
         });
 
-        var options = {
-            sort: {
-                $dateCreated: 'ASC'
-            }
-        }
+    },
 
+    getVHLGameSchedules: function() {
+        return new Promise((resolve, reject) => {
+          const hsScheduleUrl = 'https://spreadsheets.google.com/feeds/list/1UVxkUIdjm6bkJtEu1ZzjSt_WC1IDmB5cCjRGhLu1KDU/1/public/values?alt=json';
+          const msScheduleUrl = 'https://spreadsheets.google.com/feeds/list/1UVxkUIdjm6bkJtEu1ZzjSt_WC1IDmB5cCjRGhLu1KDU/2/public/values?alt=json';
+
+          axios.all([
+              axios.get(hsScheduleUrl),
+              axios.get(msScheduleUrl),
+              this.getVHLEvents()
+          ]).then(axios.spread((hs, ms, vhlEvents) => {
+              const hsGameSchedules = normalizeVHLGameSchedules(hs.data);
+              const msGameSchedules = normalizeVHLGameSchedules(ms.data);
+
+              resolve({
+                  hsGameSchedules,
+                  msGameSchedules,
+                  vhlEvents
+              })
+          }));
+
+        })
     },
 
     getHittraxLeaders: function() {
-        return new Promise(function (resolve, reject) {
+        return new Promise((resolve, reject) => {
 
             const statOfMonthTitle = 'Batting Average'
             const statOfMonthSlug = 'avg'
@@ -403,7 +436,7 @@ module.exports = {
 
     getCollegeSignees: function() {
 
-        return new Promise(function (resolve, reject) {
+        return new Promise((resolve, reject) => {
 
             var signeesUrl = 'https://spreadsheets.google.com/feeds/list/1bl9c_HhR5OpKpjTq9ZVno592ML02ouiO-w22Gg3IMkQ/1/public/values?alt=json';
 

@@ -271,7 +271,23 @@ module.exports = function(app, cache) {
 
 	app.get('/vhl-schedules', cache(300), function(req, res) {
 
-		utils.getVHLEvents()
+		utils.getVHLGameSchedules()
+			.then(function(gameSchedules) {
+				//console.log(gameSchedules)
+				app.locals.hsGameSchedules = gameSchedules.hsGameSchedules
+				app.locals.msGameSchedules = gameSchedules.msGameSchedules
+				app.locals.vhlEvents = gameSchedules.vhlEvents
+				return res.render('pages/vhl-schedules.hbs');
+			})
+			.catch(function(err) {
+				console.error(err)
+				app.locals.hsGameSchedules = []
+				app.locals.msGameSchedules = []
+				app.locals.vhlEvents = []
+				return res.render('pages/vhl-schedules.hbs');
+			})
+
+		/*utils.getVHLEvents()
 			.then(function(events) {
 				app.locals.vhlEvents = events;
 				return res.render('pages/vhl-schedules.hbs');
@@ -280,7 +296,7 @@ module.exports = function(app, cache) {
 				console.error(err)
 				app.locals.vhlEvents = [];
 				return res.render('pages/vhl-schedules.hbs');
-			})
+			})*/
 
 	});
 
