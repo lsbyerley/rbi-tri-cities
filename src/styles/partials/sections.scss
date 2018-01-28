@@ -132,6 +132,7 @@
 #vhl-schedules.section {
 
     .media.event {
+        position: relative;
 
         .media-left {
 
@@ -179,7 +180,31 @@
                 }
             }
         }
+
+        @include mobile() {
+            flex-direction: column;
+            align-items: left;
+
+            .media-left {
+                margin-bottom: 1rem;
+            }
+
+            .media-left .date {
+                flex-direction: row;
+
+                .month, .day, .dayofweek {
+                    margin-right: 5px;
+                }
+            }
+
+            .media-content .info .tag.is-success {
+                position: absolute;
+                top: 0;
+                right: 5px;
+            }
+        }
     }
+
 }
 
 #event.section {

@@ -8,8 +8,8 @@
 		"url": "https://github.com/lsbyerley/rbi-tri-cities.git"
 	},
 	"scripts": {
-		"start": "gulp build-prod; node server.js",
-		"dev": "gulp dev"
+		"start": "gulp dev",
+		"build": "gulp build-prod; node server.js"
 	},
 	"resources": {
 		"slider": "https://codepen.io/nathantaylor/pen/JEXgpj"

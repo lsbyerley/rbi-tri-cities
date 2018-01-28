@@ -362,18 +362,23 @@ module.exports = {
         return new Promise((resolve, reject) => {
           const hsScheduleUrl = 'https://spreadsheets.google.com/feeds/list/1UVxkUIdjm6bkJtEu1ZzjSt_WC1IDmB5cCjRGhLu1KDU/1/public/values?alt=json';
           const msScheduleUrl = 'https://spreadsheets.google.com/feeds/list/1UVxkUIdjm6bkJtEu1ZzjSt_WC1IDmB5cCjRGhLu1KDU/2/public/values?alt=json';
+          const tenTwelveUrl = 'https://spreadsheets.google.com/feeds/list/1UVxkUIdjm6bkJtEu1ZzjSt_WC1IDmB5cCjRGhLu1KDU/3/public/values?alt=json';
 
           axios.all([
               axios.get(hsScheduleUrl),
               axios.get(msScheduleUrl),
-              this.getVHLEvents()
-          ]).then(axios.spread((hs, ms, vhlEvents) => {
+              axios.get(tenTwelveUrl)
+              //this.getVHLEvents()
+          ]).then(axios.spread((hs, ms, tenTwelve) => {
               const hsGameSchedules = normalizeVHLGameSchedules(hs.data);
               const msGameSchedules = normalizeVHLGameSchedules(ms.data);
+              const tenTwelveGameSchedules = normalizeVHLGameSchedules(tenTwelve.data);
+              const vhlEvents = []
 
               resolve({
                   hsGameSchedules,
                   msGameSchedules,
+                  tenTwelveGameSchedules,
                   vhlEvents
               })
           }));

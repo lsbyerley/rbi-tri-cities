@@ -276,6 +276,7 @@ module.exports = function(app, cache) {
 				//console.log(gameSchedules)
 				app.locals.hsGameSchedules = gameSchedules.hsGameSchedules
 				app.locals.msGameSchedules = gameSchedules.msGameSchedules
+				app.locals.tenTwelveGameSchedules = gameSchedules.tenTwelveGameSchedules
 				app.locals.vhlEvents = gameSchedules.vhlEvents
 				return res.render('pages/vhl-schedules.hbs');
 			})
@@ -283,6 +284,7 @@ module.exports = function(app, cache) {
 				console.error(err)
 				app.locals.hsGameSchedules = []
 				app.locals.msGameSchedules = []
+				app.locals.tenTwelveGameSchedules = []
 				app.locals.vhlEvents = []
 				return res.render('pages/vhl-schedules.hbs');
 			})
@@ -316,7 +318,7 @@ module.exports = function(app, cache) {
 			{
 				name: "Virtual Hitting Leagues - 10U & 12U Baseball",
 				date: "January 27th - February 24th, 2018",
-				link: ""
+				link: "https://hittraxstatscenter.com/widget/tournament_widget.php?TId=3&TUId=552&SId=552&UId=552"
 			}
 		]
 
