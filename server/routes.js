@@ -319,6 +319,11 @@ module.exports = function(app, cache) {
 				name: "Virtual Hitting Leagues - 10U & 12U Baseball",
 				date: "January 27th - February 24th, 2018",
 				link: "https://hittraxstatscenter.com/widget/tournament_widget.php?TId=3&TUId=552&SId=552&UId=552"
+			},
+			{
+				name: "Virtual Hitting Leagues - Men's League 21 & Up",
+				date: "March 4 - April 1, 2018",
+				link: ""
 			}
 		]
 
