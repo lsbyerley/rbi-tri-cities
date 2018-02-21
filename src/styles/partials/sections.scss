@@ -171,6 +171,11 @@
 
                 .title {
                     margin: 0;
+
+                    &:hover {
+                      color: $rbi-red;
+                      text-decoration: underline;
+                    }
                 }
 
                 .tag {
