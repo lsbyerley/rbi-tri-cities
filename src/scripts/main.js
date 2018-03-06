@@ -35,6 +35,21 @@ require('gsap/ScrollToPlugin');
 	// Any click handlers inside the .barba-container need to be re-added every time a new view is loaded
 	function attachClickHandlers() {
 
+		var $tabs = Array.prototype.slice.call(document.querySelectorAll('a'), 0);
+		if ($tabs.length > 0) {
+			$tabs.forEach(function($el) {
+				$el.addEventListener('click', function() {
+					var id = $(this).parent().attr("data-tab");
+					if (id) {
+					    $(".tabs ul li").removeClass("is-active");
+					    $(".tab-content").removeClass("current-tab");
+					    $(this).parent().addClass("is-active");
+					    $("#" + id).addClass("current-tab");
+					}
+				})
+			})
+		}
+
 		// Video player click handlers
 		var $videos = Array.prototype.slice.call(document.querySelectorAll('.youtube-player'), 0);
         if ($videos.length > 0) {

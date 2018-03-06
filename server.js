@@ -94,6 +94,7 @@ app.use(helmet.contentSecurityPolicy({
 			'i.imgur.com',
 			'i.ytimg.com',
 			'images.contentful.com',
+			'images.ctfassets.net',
 			'maps.googleapis.com',
 			'maps.gstatic.com',
 			'csi.gstatic.com'

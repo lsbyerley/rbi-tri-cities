@@ -128,6 +128,14 @@ a:hover {
 @import './partials/video-player';
 @import './partials/table-sortable';
 
+.tab-content {
+  display: none;
+}
+
+.tab-content.current-tab {
+  display: inherit;
+}
+
 
 // TODO: MOVE THESE STYLES TO SEPARATE FILES
 .hero.is-home {
