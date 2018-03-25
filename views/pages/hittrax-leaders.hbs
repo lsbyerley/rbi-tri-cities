@@ -10,16 +10,16 @@
         <div class="table-responsive">
             <table id="hittrax-leaders" class="table is-hoverable is-fullwidth is-bordered" data-sortable>
                 <thead>
-                    <th>Player</th>
-                    <th>Level</th>
-                    <th title="At Bats" class="has-text-centered">AB</th>
-                    <th title="Batting Average" class="has-text-centered">Avg</th>
-                    <th title="Slugging Percentage" class="has-text-centered">SLG</th>
-                    <th title="Extra Base Hits" class="has-text-centered">EBH</th>
-                    <th title="Hard Hit Average" class="has-text-centered">HHA</th>
-                    <th title="Average Velocity" class="has-text-centered">AvgVel</th>
-                    <th title="Max Velocity" class="has-text-centered">MaxVel</th>
-                    <th title="Max Distance" class="has-text-centered">MaxDist</th>
+                    <th data-sortable="false">Player</th>
+                    <th data-sortable="false">Level</th>
+                    <th data-sortable-type="numeric" title="At Bats" class="has-text-centered">AB</th>
+                    <th data-sortable-type="numeric" title="Batting Average" class="has-text-centered">Avg</th>
+                    <th data-sortable-type="numeric" title="Slugging Percentage" class="has-text-centered">SLG</th>
+                    <th data-sortable-type="numeric" title="Extra Base Hits" class="has-text-centered">EBH</th>
+                    <th data-sortable-type="numeric" title="Hard Hit Average" class="has-text-centered">HHA</th>
+                    <th data-sortable-type="numeric" title="Average Velocity" class="has-text-centered">AvgVel</th>
+                    <th data-sortable-type="numeric" title="Max Velocity" class="has-text-centered">MaxVel</th>
+                    <th data-sortable-type="numeric" title="Max Distance" class="has-text-centered">MaxDist</th>
                 </thead>
                 <tbody>
                     {{#if leaders}}
