@@ -140,7 +140,18 @@ app.use(function(req, res, next) {
 	app.locals.reqPath = req.path;
 	app.locals.year = new Date().getFullYear();
 	app.locals.navLinks = config.navLinks;
-	app.locals.pageMeta = config.pageMeta;
+
+	app.locals.metaDesc = config.pageMeta.description;
+
+	if (req.path === '/') {
+		app.locals.metaTitle = 'RBI Tri-Cities - Premier Indoor Baseball & Softball Training Facility'
+		app.locals.socialMetaTitle = 'RBI Tri-Cities'
+		app.locals.socialMetaDesc = 'Premier Indoor Baseball & Softball Training Facility';
+	} else {
+		app.locals.metaTitle = config.pageMeta.title + ' | RBI Tri-Cities';
+		app.locals.socialMetaTitle = config.pageMeta.title;
+		app.locals.socialMetaDesc = 'RBI Tri-Cities - Premier Indoor Baseball & Softball Training Facility';
+	}
 
 	next();
 });

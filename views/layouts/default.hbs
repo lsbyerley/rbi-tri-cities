@@ -2,20 +2,31 @@
 <html lang="en">
 
 <head>
+
 	<meta charset="utf-8">
-  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>{{ metaTitle }}</title>
+	<meta name="description" content="{{ metaDesc }}">
+
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:site" content="@rbitricities" />
+	<meta name="twitter:title" content="{{ socialMetaTitle }}" />
+	<meta name="twitter:description" content="{{ socialMetaDesc }}" />
+	<meta name="twitter:image" content="https://rbitricities.com/images/social-inside-view.png" />
+
 	<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32" />
 	<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16" />
-    <title>{{ pageMeta.title }}</title>
-    <meta name="description" content="{{ pageMeta.description }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    {{#if is_dev }}
-        <link rel="stylesheet" href="/styles/main.css"/>
-    {{else}}
-        <link rel="stylesheet" href="/styles/main.min.css"/>
-		<script async src="/scripts/google-analytics.js"></script>
-    {{/if}}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+  {{#if is_dev }}
+      <link rel="stylesheet" href="/styles/main.css"/>
+  {{else}}
+      <link rel="stylesheet" href="/styles/main.min.css"/>
+	<script async src="/scripts/google-analytics.js"></script>
+  {{/if}}
+
 </head>
 <body>
 

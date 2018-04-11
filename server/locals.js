@@ -57,103 +57,107 @@
 	}
 
 	function buildPageMeta(path) {
-		var title = "RBI Tri-Cities: Premier Indoor Baseball & Softball Training Facility",
-			shortTitle = "RBI Tri-Cities",
-			description = "Indoor Baseball & Softball Facility offering professional instruction on hitting, pitching & defense as well as memberships, camps, and clinics in Johnson City, TN";
+		var title = '',
+			shortDesc = 'Premier Indoor Baseball & Softball Training Facility',
+			description = 'Indoor Baseball & Softball Facility offering professional instruction on hitting, pitching & defense as well as memberships, camps, and clinics in Johnson City, TN';
 
 		switch (path) {
+			case '/':
+					title = 'RBI Tri-Cities'
+					break;
 			case '/our-facility':
-			    title = "Our Facility | " + shortTitle;
-			    //description = "";
+			    title = 'Our Facility'
+			    //description = '';
 			    break;
 			case '/memberships':
-			    title = "Memberships | " + shortTitle;
-			    //description = "";
+			    title = 'Memberships'
+			    //description = '';
 			    break;
 			case '/team-practices':
-			    title = "Team Practices | " + shortTitle;
-			    //description = "";
+			    title = 'Team Practices'
+			    //description = '';
 			    break;
 			case '/cage-schedule':
-			    title = "Cage Schedule | " + shortTitle;
-			    //description = "";
+			    title = 'Cage Schedule'
+			    //description = '';
 			    break;
 			case '/private-instruction':
-			    title = "Private Instruction | " + shortTitle;
-			    //description = "";
+			    title = 'Private Instruction'
+			    //description = '';
 			    break;
 			case '/strength-agility':
-			    title = "RBIron Strength and Agility | " + shortTitle;
-			    //description = "";
+			    title = 'RBIron Strength and Agility'
+			    //description = '';
 			    break;
 			case '/events':
-			    title = "Events | " + shortTitle;
-			    //description = "";
+			    title = 'Events'
+			    //description = '';
 			    break;
 			case '/annual-camps':
-			    title = "Annual Camps | " + shortTitle;
-			    //description = "";
+			    title = 'Annual Camps'
+			    //description = '';
 			    break;
 			case '/recruiting-videos':
-			    title = "Recruiting Videos | " + shortTitle;
-			    //description = "";
+			    title = 'Recruiting Videos'
+			    //description = '';
 			    break;
 			case '/showcases':
-			    title = "Showcases | " + shortTitle;
-			    //description = "";
+			    title = 'Showcases'
+			    //description = '';
 			    break;
 			case '/college-signees':
-			    title = "College Signees | " + shortTitle;
-			    //description = "";
+			    title = 'College Signees'
+			    //description = '';
 			    break;
 			case '/rbi-teams':
-			    title = "RBI Teams | " + shortTitle;
-			    //description = "";
+			    title = 'RBI Teams'
+			    //description = '';
 			    break;
 			case '/shop':
-			    title = "Equipment Shop | " + shortTitle;
-			    //description = "";
+			    title = 'Equipment Shop'
+			    //description = '';
 			    break;
 			case '/about':
-			    title = "About Us | " + shortTitle;
-			    //description = "";
+			    title = 'About Us'
+			    //description = '';
 			    break;
 			case '/instructors':
-			    title = "Instructors | " + shortTitle;
-			    //description = "";
+			    title = 'Instructors'
+			    //description = '';
 			    break;
 			case '/directory':
-			    title = "Staff Directory | " + shortTitle;
-			    //description = "";
+			    title = 'Staff Directory'
+			    //description = '';
 			    break;
 			case '/contact':
-			    title = "Contact Us | " + shortTitle;
-			    //description = "";
+			    title = 'Contact Us'
+			    //description = '';
 			    break;
 			case '/hittrax':
-				title = "HitTrax | " + shortTitle;
+				title = 'HitTrax'
 				break;
 			case '/hittrax-faq':
-				title = "HitTrax FAQ | " + shortTitle;
-				//description = "";
+				title = 'HitTrax FAQ'
+				//description = '';
 				break;
 			case '/hittrax-monthly-leaders':
-			    title = "HitTrax Monthly Leaders | " + shortTitle;
-			    //description = "";
+			    title = 'HitTrax Monthly Leaders'
+			    //description = '';
 			    break;
 			case '/vhl-about':
-				title = "About our Virtual Hitting Leagues | " + shortTitle;
+				title = 'About our Virtual Hitting Leagues'
 				break;
 			case '/vhl-schedules':
-				title = "VHL Schedules | " + shortTitle;
+				title = 'VHL Schedules'
 				break;
 			case '/vhl-standings-stats':
-				title = "VHL Standings & Stats | " + shortTitle;
+				title = 'VHL Standings & Stats'
 				break;
 		}
 
 		return {
 			title: title,
+			shortDesc: shortDesc,
 			description: description
 		};
 	}
