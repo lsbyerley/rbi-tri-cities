@@ -19,7 +19,6 @@
 			] },
 			{ title: 'Player Development', dropdown: [
 				{ title: 'Private Instruction', link: '/private-instruction' },
-				{ title: 'Strength & Agility', link: '/strength-agility' },
 				{ title: 'HitTrax', link: '/hittrax' }
 			] },
 			{ title: 'HitTrax', dropdown: [
@@ -83,10 +82,6 @@
 			    break;
 			case '/private-instruction':
 			    title = 'Private Instruction'
-			    //description = '';
-			    break;
-			case '/strength-agility':
-			    title = 'RBIron Strength and Agility'
 			    //description = '';
 			    break;
 			case '/events':

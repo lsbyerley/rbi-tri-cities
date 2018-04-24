@@ -257,10 +257,6 @@ module.exports = function(app, cache) {
 		return res.render('pages/showcases.hbs');
 	});
 
-	app.get('/strength-agility', function(req, res) {
-		return res.render('pages/strength-agility.hbs');
-	});
-
 	app.get('/team-practices', function(req, res) {
 		return res.render('pages/team-practices.hbs');
 	});
