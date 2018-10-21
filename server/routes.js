@@ -57,10 +57,13 @@ module.exports = function(app, cache) {
 
 	app.post('/equipment-request', function(req, res) {
 
-		req.checkBody("playerName", "Player name is required").notEmpty();
+		req.checkBody("firstName", "First name is required").notEmpty();
+		req.checkBody("lastName", "Last name is required").notEmpty();
 		req.checkBody("playerEmail", "Invalid email address").isEmail();
-		req.sanitize('playerName').escape();
-		req.sanitize('playerName').trim();
+		req.sanitize('firstName').escape();
+		req.sanitize('firstName').trim();
+		req.sanitize('lastName').escape();
+		req.sanitize('lastName').trim();
 
 		req.getValidationResult().then(function(result) {
 			if (!result.isEmpty()) {
@@ -72,7 +75,7 @@ module.exports = function(app, cache) {
 
 				// validation ok, send the email
 				var message = 'The following information was just submitted for equipment: \n\n' +
-				'Player Name: ' + req.body.playerName + '\n\n' +
+				'Player Name: ' + req.body.firstName + ' ' + req.body.lastName + '\n\n' +
 				'Player Email: ' + req.body.playerEmail + '\n\n';
 
 				var sendTo = (process.env.NODE_ENV === 'development') ? 'lsbyerley@gmail.com' : 'rbifrontdesk@gmail.com';
