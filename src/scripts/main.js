@@ -75,6 +75,49 @@ require('gsap/ScrollToPlugin');
 			})
 		}
 
+		//Equipment form submission
+		var $eqipForms = Array.prototype.slice.call(document.querySelectorAll('form.equipment-form'), 0);
+		if ($eqipForms.length > 0) {
+			$eqipForms.forEach(function($el) {
+				$el.addEventListener("submit", function(e) {
+					e.preventDefault()
+
+					var form = e.target
+		        	var formData = $(form).serialize();
+					var request = new XMLHttpRequest();
+					var successNote = $('.equip-form .notification.is-success');
+					var errorNote = $('.equip-form .notification.is-danger');
+
+					request.open(form.method, form.action)
+					request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		        	request.send(formData)
+
+					request.onreadystatechange = function(){
+
+						if (request.readyState === 4) {
+							var response = JSON.parse(request.responseText)
+
+							// Form good, email sent
+							if (request.status === 200 && response.status === 200) {
+
+								successNote.html(response.message)
+
+								TweenLite.to(form, 0.5, {height:0, display:'none'})
+								TweenLite.fromTo(successNote, 0.5, {opacity:0}, {opacity:1, display:'block'}).delay(0.5)
+
+							} else {
+								errorNote.html(response.message)
+
+								TweenLite.to(form, 0.5, {height:0, display:'none'})
+								TweenLite.fromTo(errorNote , 0.5, {opacity:0}, {opacity:1, display:'block'}).delay(0.5)
+							}
+						}
+					}
+
+				})
+			})
+		}
+
 		// Private instruction form submissions
 		var $piForms = Array.prototype.slice.call(document.querySelectorAll('.private-instruction-form'), 0);
 		if ($piForms.length > 0) {

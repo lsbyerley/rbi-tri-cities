@@ -55,6 +55,48 @@ module.exports = function(app, cache) {
 
 	})
 
+	app.post('/equipment-request', function(req, res) {
+
+		req.checkBody("playerName", "Player name is required").notEmpty();
+		req.checkBody("playerEmail", "Invalid email address").isEmail();
+		req.sanitize('playerName').escape();
+		req.sanitize('playerName').trim();
+
+		req.getValidationResult().then(function(result) {
+			if (!result.isEmpty()) {
+				var errors = result.array().map(function (elem) {
+					return elem.msg;
+		        });
+				return res.json({status: 400, errors: errors, message: "There was a problem sending your request, please contact us by phone at 423-202-3228"})
+			} else {
+
+				// validation ok, send the email
+				var message = 'The following information was just submitted for equipment: \n\n' +
+				'Player Name: ' + req.body.playerName + '\n\n' +
+				'Player Email: ' + req.body.playerEmail + '\n\n';
+
+				var sendTo = (process.env.NODE_ENV === 'development') ? 'lsbyerley@gmail.com' : 'rbifrontdesk@gmail.com';
+
+		        var mailgun_data = {
+		          from: 'RBI Tri-Cities <no-reply@rbitricities.com>',
+		          to: sendTo,
+		          subject: 'Equipment Form Submission',
+		          text: message
+		        }
+
+		        mailgun.messages().send(mailgun_data, function (error, body) {
+					 if (error) {
+						 return res.json({status: 500, errors: ['error'], message: "There was a problem sending your equipment request, please contact us by phone at 423-202-3228"})
+					 } else {
+						 return res.json({status: 200, errors: [], message: "Thank you! Your equipment request has been received, Wilson will be in touch with you within 24 hours!"})
+					 }
+		        })
+
+			}
+		})
+
+	})
+
 	app.get('/', cache(300), function(req, res) {
 		utils.homePageData()
 			.then(function(result) {

@@ -204,6 +204,43 @@ a:hover {
     margin-right: 0;
 }
 
+.equip-form {
+
+	.equipment-form {
+		overflow: hidden;
+		width: 70%;
+	}
+
+	.responses {
+        .notification {
+            position: relative;
+            display: none;
+            overflow: hidden;
+            margin: 0;
+
+            &::after {
+                content: "\f12a";
+                font-family: FontAwesome;
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                width: 20px;
+                text-align: center;
+                border-radius: 5px;
+            }
+
+            &.is-success::after {
+                content: "\f00c";
+                background: darken($rbi-green, 20%);
+            }
+            &.is-danger::after {
+                content: "\f12a";
+                background: darken($rbi-red, 20%);
+            }
+        }
+    }
+}
+
 .rbi-form {
     background: linear-gradient(90deg, $rbi-blue, darken($rbi-blue, 10%));
 

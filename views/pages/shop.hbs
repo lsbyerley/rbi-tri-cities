@@ -5,17 +5,57 @@
         <hr>
 
         <div class="columns">
+
             <div class="column is-half">
                 <p>Through RBI Tri-Cities, all of our customers are able to receive discounted prices on equipment from <strong>Wilson</strong>, <strong>DeMarini</strong> & <strong>Louisville Slugger</strong>. This includes all of the latest gloves from Wilson and bats from both DeMarini and Louisville Slugger.</p>
                 <br>
-                <p>If you don't know the Sale Code to get in, just give us a call or send us an email!</p>
+                <p>If you'd like to browse the latest gear, equipment and discounts, put your information in the form on this page and hit submit. Wilson will email you within 24 hours, and then you're free to browse all the latest equipment and discounts.</p>
             </div>
-            <div class="column is-half">
-                <a class="button is-primary is-medium margin-bottom" href="https://rbitricities.itemorder.com/" target="_blank">
-                    <span class="icon is-medium">
-                      <i class="fa fa-shopping-cart"></i>
-                  </span><span>Equipment Shop</span>
-                </a>
+            <div class="column is-half equip-form">
+				<div class="responses">
+					<div class="notification is-danger"></div>
+					<div class="notification is-success"></div>
+				</div>
+				<form action="/equipment-request" method="post" class="equipment-form" class="validate">
+					<div id="form_wrap_scroll">
+						<div class="field is-horizontal">
+							<div class="field-body">
+								<div class="field">
+									<div class="is-expanded control has-icons-left">
+										<input type="text" name="playerName" class="input is-flat required name" placeholder="player name" aria-required="true" required>
+										<span class="icon is-small is-left">
+											<i class="fa fa-user-o"></i>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="field is-horizontal">
+							<div class="field-body">
+								<div class="field">
+									<div class="is-expanded control has-icons-left">
+										<input type="email" name="playerEmail" class="input is-flat required email" placeholder="email" aria-required="true" required>
+										<span class="icon is-small is-left">
+											<i class="fa fa-envelope"></i>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="field is-horizontal no-margin">
+							<div class="field-body">
+								<div class="field">
+									<div class="control is-expanded has-text-centered">
+										<input id="eqipformsubmit" type="submit" value="Contact Me" name="submit-form" class="button is-warning">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div style="position: absolute; left: -5000px;" aria-hidden="true">
+							<input type="text" name="rbi_b1e623405f2c_23909403" tabindex="-1" value="chk">
+						</div>
+					</div>
+				</form>
             </div>
         </div>
 
