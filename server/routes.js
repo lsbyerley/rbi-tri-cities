@@ -276,6 +276,10 @@ module.exports = function(app, cache) {
 		return res.render('pages/private-instruction.hbs');
 	});
 
+	app.get('/rapsodo', function(req, res) {
+		return res.render('pages/rapsodo.hbs');
+	})
+
 	app.get('/rbi-teams', function(req, res) {
 		return res.render('pages/rbi-teams.hbs');
 	});

@@ -19,7 +19,8 @@
 			] },
 			{ title: 'Player Development', dropdown: [
 				{ title: 'Private Instruction', link: '/private-instruction' },
-				{ title: 'HitTrax', link: '/hittrax' }
+				{ title: 'HitTrax', link: '/hittrax' },
+				{ title: 'Rapsodo', link: '/rapsodo' }
 			] },
 			{ title: 'HitTrax', dropdown: [
 				{ title: 'About HitTrax', link: '/hittrax' },
@@ -147,6 +148,9 @@
 				break;
 			case '/vhl-standings-stats':
 				title = 'VHL Standings & Stats'
+				break;
+			case '/rapsodo':
+				title = 'Rapsodo'
 				break;
 		}
 
