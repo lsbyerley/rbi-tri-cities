@@ -60,19 +60,23 @@ function formatTweetText(tweet) {
 }
 
 function normalizeVHLGameSchedules(data) {
-    const entries = data.feed.entry
+	if (data.feed.entry) {
+		const entries = data.feed.entry
 
-    // 1. Normalize entries, filter by at bats, sort by stat of month
-    let schedule = entries.map((entry) => {
-        return {
-            date: entry.gsx$date.$t,
-            gameTime: entry.gsx$gametime.$t,
-            matchup: entry.gsx$awayvshome.$t,
-            final: entry.gsx$final.$t
-        }
-    })
+	    // 1. Normalize entries, filter by at bats, sort by stat of month
+	    let schedule = entries.map((entry) => {
+	        return {
+	            date: entry.gsx$date.$t,
+	            gameTime: entry.gsx$gametime.$t,
+	            matchup: entry.gsx$awayvshome.$t,
+	            final: entry.gsx$final.$t
+	        }
+	    })
 
-    return schedule
+	    return schedule
+	} else {
+		return []
+	}
 }
 
 module.exports = {
