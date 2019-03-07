@@ -152,6 +152,9 @@
 			case '/rapsodo':
 				title = 'Rapsodo'
 				break;
+			case '/mindbody-widgets':
+				title = 'MindBody Profile and Events Registration'
+				break;
 		}
 
 		return {

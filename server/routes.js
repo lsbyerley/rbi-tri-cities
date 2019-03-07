@@ -268,6 +268,10 @@ module.exports = function(app, cache) {
 		return res.render('pages/memberships.hbs');
 	});
 
+	app.get('/mindbody-widgets', function(req, res)  {
+		return res.render('pages/mindbody-widgets.hbs')
+	})
+
 	app.get('/our-facility', function(req, res) {
 		return res.render('pages/our-facility.hbs');
 	});

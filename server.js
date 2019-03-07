@@ -67,23 +67,27 @@ app.use(helmet.contentSecurityPolicy({
 			"'self'",
 			"'unsafe-eval'",
 			"'unsafe-inline'",
-			'localhost:* 127.0.0.1:*',
+			'http://localhost:35729/livereload.js',
 			'ajax.googleapis.com',
 			'www.google-analytics.com',
 			'cdnjs.cloudflare.com',
-			'maps.googleapis.com'
+			'maps.googleapis.com',
+			'https://*.healcode.com',
+			'https://*.amplitude.com'
 		],
 		styleSrc: [
 			"'self'",
 			"'unsafe-inline'",
 			'fonts.googleapis.com',
-			'cdnjs.cloudflare.com'
+			'cdnjs.cloudflare.com',
+			'https://*.healcode.com'
 		],
 		fontSrc: [
 			"'self'",
 			'fonts.googleapis.com',
 			'fonts.gstatic.com',
-			'cdnjs.cloudflare.com'
+			'cdnjs.cloudflare.com',
+			'https://*.healcode.com'
 		],
 		imgSrc: [
 			"'self'",
@@ -97,17 +101,20 @@ app.use(helmet.contentSecurityPolicy({
 			'images.ctfassets.net',
 			'maps.googleapis.com',
 			'maps.gstatic.com',
-			'csi.gstatic.com'
+			'csi.gstatic.com',
+			'https://*.healcode.com'
 		],
 		mediaSrc: [ "'self'" ],
 		connectSrc: [ // limit the origins (via XHR, WebSockets, and EventSource)
 			"'self'",
 			//'ws://localhost:8000',
 			'ws://localhost:* 127.0.0.1:*',
-			'api.github.com'
+			'api.github.com',
+			'https://*.healcode.com',
+			'https://*.amplitude.com'
 		],
 		objectSrc: [ "'none'" ],// allows control over Flash and other plugins
-		frameSrc: [ 'www.youtube.com' ], // origins that can be embedded as frames
+		frameSrc: [ 'www.youtube.com', 'https://*.healcode.com', 'https://*.amplitude.com' ], // origins that can be embedded as frames
 		sandbox: [ 'allow-same-origin', 'allow-forms', 'allow-scripts', 'allow-popups', 'allow-presentation'],
 		reportUri: '/report-violation' // error reporting
 	}
