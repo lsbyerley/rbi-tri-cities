@@ -53,8 +53,8 @@ const cache = function cache(duration) {
 };
 
 // Security Settings
-app.use(helmet());
-app.use(helmet.referrerPolicy())		// Sets "Referrer-Policy: no-referrer".
+//app.use(helmet());
+//app.use(helmet.referrerPolicy())		// Sets "Referrer-Policy: no-referrer".
 
 // Content Security Policy
 //   http://content-security-policy.com/
@@ -71,19 +71,23 @@ app.use(helmet.contentSecurityPolicy({
 			'ajax.googleapis.com',
 			'www.google-analytics.com',
 			'cdnjs.cloudflare.com',
-			'maps.googleapis.com'
+			'maps.googleapis.com',
+			'*.healcode.com',
+			'*.amplitude.com'
 		],
 		styleSrc: [
 			"'self'",
 			"'unsafe-inline'",
 			'fonts.googleapis.com',
-			'cdnjs.cloudflare.com'
+			'cdnjs.cloudflare.com',
+			'*.healcode.com'
 		],
 		fontSrc: [
 			"'self'",
 			'fonts.googleapis.com',
 			'fonts.gstatic.com',
-			'cdnjs.cloudflare.com'
+			'cdnjs.cloudflare.com',
+			'*.healcode.com'
 		],
 		imgSrc: [
 			"'self'",
@@ -97,17 +101,19 @@ app.use(helmet.contentSecurityPolicy({
 			'images.ctfassets.net',
 			'maps.googleapis.com',
 			'maps.gstatic.com',
-			'csi.gstatic.com'
+			'csi.gstatic.com',
+			'*.healcode.com'
 		],
 		mediaSrc: [ "'self'" ],
 		connectSrc: [ // limit the origins (via XHR, WebSockets, and EventSource)
 			"'self'",
 			//'ws://localhost:8000',
 			'ws://localhost:* 127.0.0.1:*',
-			'api.github.com'
+			'api.github.com',
+			'*.healcode.com'
 		],
 		objectSrc: [ "'none'" ],// allows control over Flash and other plugins
-		frameSrc: [ 'www.youtube.com' ], // origins that can be embedded as frames
+		frameSrc: [ 'www.youtube.com', '*.healcode.com' ], // origins that can be embedded as frames
 		sandbox: [ 'allow-same-origin', 'allow-forms', 'allow-scripts', 'allow-popups', 'allow-presentation'],
 		reportUri: '/report-violation' // error reporting
 	}
