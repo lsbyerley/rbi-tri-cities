@@ -1,7 +1,7 @@
 <section class="section" id="event">
     <div class="container">
 
-        {{#if event}}
+        {{#if (isNotEmpty event)}}
             <h1 class="title is-spaced has-text-centered">{{ event.fields.eventName }}</h1>
             <h2 class="subtitle has-text-centered">{{ event.fields.introText }}</h2>
             <hr>
@@ -39,14 +39,14 @@
         {{else}}
 
             <h1 class="title is-spaced has-text-centered" style="padding:2rem;">Sorry, that event doesn't exist.</h1>
-            <h2 class="subtitle is-5 has-text-centered">Check out our <a href="/camps-showcases">Camps and Showcases</a> page</h2>
+            <h2 class="subtitle is-5 has-text-centered">Check out our <a href="/events">Events</a> page</h2>
 
         {{/if}}
 
     </div>
 </section>
 
-{{#if event}}
+{{#if (isNotEmpty event)}}
     <section class="section" id="google-map-event">
         <h4 class="title is-5">The Venue: {{ event.fields.venue.fields.venueName }}</h4>
         <div class="map" data-longitude="{{ event.fields.venue.fields.venueLocation.lon }}" data-latitude="{{ event.fields.venue.fields.venueLocation.lat }}">

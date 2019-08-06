@@ -194,7 +194,13 @@ module.exports = function(app, cache) {
 	app.get('/event/:id', cache(300), function(req, res) {
 
 		var id = req.params.id;
-		utils.getEvent(id)
+
+		let isPreview = false;
+		if (req.query.isPreview && req.query.isPreview === 'true') {
+			isPreview = true
+		}
+
+		utils.getEvent(id, isPreview)
 			.then(function(event) {
 
 				var eventDesc = marked(event.fields.eventDescription);

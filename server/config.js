@@ -24,7 +24,8 @@ module.exports = {
     },
     contentful: {
         space_id: process.env.CONTENTFUL_SPACE_ID,
-        access_token: process.env.CONTENFUL_TOKEN
+        access_token: process.env.CONTENTFUL_TOKEN,
+				preview_access_token: process.env.CONTENTFUL_PREVIEW_TOKEN
     },
 	twitter: {
 		consumer_key: process.env.TWITTER_CONSUMER_KEY,

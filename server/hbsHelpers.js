@@ -1,4 +1,5 @@
 const moment = require('moment');
+const _isEmpty = require('lodash/isEmpty')
 
 module.exports = function () {
 
@@ -8,6 +9,10 @@ module.exports = function () {
         if (path === link) { return 'is-active'; }
         return '';
     };
+
+		_helpers.isNotEmpty = function(object) {
+			return !_isEmpty(object);
+		};
 
 	_helpers.ifCond = function(v1, operator, v2, options) {
 		switch (operator) {

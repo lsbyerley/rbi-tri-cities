@@ -12,9 +12,14 @@ const axios = require('axios');
 //https://jelled.com/instagram/access-token
 
 var contentful_client = Contentful.createClient({
-    space: config.contentful.space_id,
-    accessToken: config.contentful.access_token
+	space: config.contentful.space_id,
+	accessToken: config.contentful.access_token
 });
+var contentful_preview_client = Contentful.createClient({
+	space: config.contentful.space_id,
+	accessToken: config.contentful.preview_access_token,
+	host: 'preview.contentful.com'
+})
 var twitter_client = new Twitter(config.twitter);
 var instagram_client = new Instagram(config.instagram);
 
@@ -120,23 +125,21 @@ module.exports = {
 
     },
 
-    getEvent: function(id) {
+    getEvent: function(id, isPreview) {
+
+			let client = (isPreview) ? contentful_preview_client : contentful_client;
 
         return new Promise((resolve, reject) => {
-            contentful_client.getEntries({
-                content_type: 'events',
-                'sys.id': id
-            })
-            .then((response) => {
-                if (response.items) {
-                    var event = response.items[0]
+						client.getEntry(id)
+            .then((entry) => {
+                if (entry) {
+                    var event = entry
                     resolve(event)
                 } else {
                     reject({})
                 }
             })
             .catch((err) => {
-                console.error(err)
                 reject(err)
             })
         });
