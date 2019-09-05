@@ -127,13 +127,18 @@ module.exports = {
 
     getEvent: function(id, isPreview) {
 
-			let client = (isPreview) ? contentful_preview_client : contentful_client;
+		let client = (isPreview) ? contentful_preview_client : contentful_client;
 
         return new Promise((resolve, reject) => {
-						client.getEntry(id)
-            .then((entry) => {
-                if (entry) {
-                    var event = entry
+            //client.getEntry(id)
+            
+            client.getEntries({
+                content_type: 'events',
+                'sys.id': id
+            })
+            .then((response) => {
+                if (response.items) {
+                    var event = response.items[0]
                     resolve(event)
                 } else {
                     reject({})
