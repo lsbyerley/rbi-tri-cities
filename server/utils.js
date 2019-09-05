@@ -137,7 +137,7 @@ module.exports = {
                 'sys.id': id
             })
             .then((response) => {
-                if (response.items) {
+                if (response.items && response.items.length > 0) {
                     var event = response.items[0]
                     resolve(event)
                 } else {
