@@ -147,7 +147,7 @@ module.exports = function(app, cache) {
 		// Get all Cages and Mounds
 		utils.getCageSchedule()
 			.then(function(result) {
-				app.locals.cageSchedules = result.cageSchedules;
+				app.locals.cageSchedules = result.cageSchedule;
 				app.locals.scheduleDate = result.scheduleDate;
 				return res.render('pages/cage-schedule.hbs');
 			})

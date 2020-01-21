@@ -295,59 +295,14 @@ module.exports = {
 
     getCageSchedule: function() {
         return new Promise((resolve, reject) => {
-            mindbody.getResources()
-    			.then(function(resources) {
-
-    				var cageSchedules = [];
-
-    				// Get all appointments for the day
-    				var scheduleDate = moment().format('YYYY-MM-DD');
-    				mindbody.getStaffAppointments(scheduleDate)
-    					.then(function(appointments) {
-
-    						// Loop through each resource
-    						_.forEach(resources, function(resource) {
-    							var rMap = {
-    								id: resource.ID,
-    								name: resource.Name,
-    								appointments: []
-    							};
-
-    							// loop through each appointment and match it to a cage/mound
-    							if (appointments) {
-    								_.forEach(appointments, function(appointment) {
-    									if (appointment.Resources) {
-    										if ( _.find(appointment.Resources.Resource, { 'ID': resource.ID }) ) {
-    											var startTime = moment(appointment.StartDateTime).utc().format("h:mm a");
-    											var endTime = moment(appointment.EndDateTime).utc().format("h:mm a");
-    											var aMap = {
-    												startTime: startTime,
-    												endTime: endTime
-    											}
-    											rMap.appointments.push(aMap);
-    										}
-    									}
-
-    								})
-    							}
-    							cageSchedules.push(rMap);
-    						});
-
-                            var displayDate = moment(scheduleDate).format('MMMM D, YYYY')
-                            resolve({
-                                cageSchedules: cageSchedules,
-                                scheduleDate: displayDate
-                            })
-
-    					})
-    					.catch((err) => {
-                            reject(err);
-    					})
-    			})
-    			.catch((err) => {
-                    reject(err);
-    			})
-        });
+            axios.get('https://8cyg4vibnb.execute-api.us-east-1.amazonaws.com/prod/v1/cageSchedule')
+            .then(function(res) {
+                resolve(res.data)
+            })
+            .catch((err) => {
+                reject(err);
+            })
+        })
     },
 
     getInstructors: function() {
