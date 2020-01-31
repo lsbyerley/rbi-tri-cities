@@ -295,7 +295,7 @@ module.exports = {
 
     getCageSchedule: function() {
         return new Promise((resolve, reject) => {
-            axios.get('https://8cyg4vibnb.execute-api.us-east-1.amazonaws.com/prod/v1/cageSchedule')
+            axios.get('https://ol2kpy1qhj.execute-api.us-east-1.amazonaws.com/prod/v1/cageSchedule')
             .then(function(res) {
                 resolve(res.data)
             })
