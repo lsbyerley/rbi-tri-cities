@@ -19,44 +19,73 @@
         <div class="columns">
             <div class="column is-4 pricing-component">
                 <a href="/private-instruction">
-                  <div class="pricing-header">
-                      <div class="pricing-title">Private Instruction</div>
-                      <div class="pricing-teaser">starting at</div>
-                      <div class="pricing-cost"><i class="fa fa-usd"></i><div class="cost">40</div></div>
-                  </div>
+                    <div class="pricing-header">
+                        <div class="pricing-title">Private Instruction</div>
+                        <div class="pricing-teaser">starting at</div>
+                        <div class="pricing-cost"><i class="fa fa-usd"></i>
+                            <div class="cost">40</div>
+                        </div>
+                    </div>
                 </a>
                 <div class="pricing-attrs">
-                    <div class="attr"><i class="fa fa-check"></i><div class="text">One-on-one instruction for hitting, pitching or defense with a qualified instructor</div></div>
-                    <div class="attr"><i class="fa fa-check"></i><div class="text">Lesson packages are available and can be used for any type of lesson of the same duration</div></div>
-                    <div class="attr"><i class="fa fa-check"></i><div class="text">Lessons are typically done on a weekly basis for each player, though scheduling can be flexible</div></div>
+                    <div class="attr"><i class="fa fa-check"></i>
+                        <div class="text">One-on-one instruction for hitting, pitching or defense with a qualified
+                            instructor</div>
+                    </div>
+                    <div class="attr"><i class="fa fa-check"></i>
+                        <div class="text">Lesson packages are available and can be used for any type of lesson of the
+                            same duration</div>
+                    </div>
+                    <div class="attr"><i class="fa fa-check"></i>
+                        <div class="text">Lessons are typically done on a weekly basis for each player, though
+                            scheduling can be flexible</div>
+                    </div>
                 </div>
             </div>
             <div class="column is-4 pricing-component">
                 <a href="/memberships">
-                  <div class="pricing-header">
-                      <div class="pricing-title">Memberships</div>
-                      <div class="pricing-teaser">starting at</div>
-                      <div class="pricing-cost"><i class="fa fa-usd"></i><div class="cost">35</div></div>
-                  </div>
+                    <div class="pricing-header">
+                        <div class="pricing-title">Memberships</div>
+                        <div class="pricing-teaser">starting at</div>
+                        <div class="pricing-cost"><i class="fa fa-usd"></i>
+                            <div class="cost">35</div>
+                        </div>
+                    </div>
                 </a>
                 <div class="pricing-attrs">
-                    <div class="attr"><i class="fa fa-check"></i><div class="text">Access to all facility cages, mounds & equipment</div></div>
-                    <div class="attr"><i class="fa fa-check"></i><div class="text">Discounted pricing on all lessons and lesson packages</div></div>
-                    <div class="attr"><i class="fa fa-check"></i><div class="text">Half-price memberships available for any member's siblings</div></div>
+                    <div class="attr"><i class="fa fa-check"></i>
+                        <div class="text">Access to all facility cages, mounds & equipment</div>
+                    </div>
+                    <div class="attr"><i class="fa fa-check"></i>
+                        <div class="text">Discounted pricing on all lessons and lesson packages</div>
+                    </div>
+                    <div class="attr"><i class="fa fa-check"></i>
+                        <div class="text">Half-price memberships available for any member's siblings</div>
+                    </div>
                 </div>
             </div>
             <div class="column is-4 pricing-component">
                 <a href="/team-practices">
-                  <div class="pricing-header">
-                      <div class="pricing-title">Team Practices</div>
-                      <div class="pricing-teaser">starting at</div>
-                      <div class="pricing-cost"><i class="fa fa-usd"></i><div class="cost">50</div></div>
-                  </div>
+                    <div class="pricing-header">
+                        <div class="pricing-title">Team Practices</div>
+                        <div class="pricing-teaser">starting at</div>
+                        <div class="pricing-cost"><i class="fa fa-usd"></i>
+                            <div class="cost">50</div>
+                        </div>
+                    </div>
                 </a>
                 <div class="pricing-attrs">
-                    <div class="attr"><i class="fa fa-check"></i><div class="text">Private team practice space available for reservation throughout the year</div></div>
-                    <div class="attr"><i class="fa fa-check"></i><div class="text">Team Practice Packages available for recurring weekly practice slots</div></div>
-                    <div class="attr"><i class="fa fa-check"></i><div class="text">Call us to check on private team practice space availability for the week</div></div>
+                    <div class="attr"><i class="fa fa-check"></i>
+                        <div class="text">Private team practice space available for reservation throughout the year
+                        </div>
+                    </div>
+                    <div class="attr"><i class="fa fa-check"></i>
+                        <div class="text">Team Practice Packages available for recurring weekly practice slots</div>
+                    </div>
+                    <div class="attr"><i class="fa fa-check"></i>
+                        <div class="text">Call us to check on private team practice space availability for the week
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -72,36 +101,37 @@
 
         <div class="columns is-multiline">
             {{#if events}}
-                {{# events }}
-                    <div class="column is-half">
-                        <div class="card event">
-                            <div class="card-header">
-                                <div class="card-header-title">{{ fields.eventName }}</div>
-                            </div>
-                            <div class="card-content">
-                                <div class="content">
-                                    <div class="title is-6 date">{{{formatDate date=fields.startDate format='MMMM D, YYYY - h:mm a'}}}</div>
-                                    <p>{{ fields.introText }}</p>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <a class="card-footer-item" href="/event/{{ sys.id }}">More Info</a>
-                                {{#if fields.registrationLink}}
-                                    <a class="card-footer-item" href="{{ fields.registrationLink }}" target="_blank">Register</a>
-                                {{/if}}
-                            </div>
+            {{# events }}
+            <div class="column is-half">
+                <div class="card event">
+                    <div class="card-header">
+                        <div class="card-header-title">{{ fields.eventName }}</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            <div class="title is-6 date">
+                                {{{formatDate date=fields.startDate format='MMMM D, YYYY - h:mm a'}}}</div>
+                            <p>{{ fields.introText }}</p>
                         </div>
                     </div>
-                {{/ events }}
+                    <div class="card-footer">
+                        <a class="card-footer-item" href="/event/{{ sys.id }}">More Info</a>
+                        {{#if fields.registrationLink}}
+                        <a class="card-footer-item" href="{{ fields.registrationLink }}" target="_blank">Register</a>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            {{/ events }}
             {{else}}
-                <div class="no-events">There are no upcoming events at this time</div>
+            <div class="no-events">There are no upcoming events at this time</div>
             {{/if}}
         </div>
 
     </div>
 </section>
 
-<section class="section social">
+<!--<section class="section social">
     <div class="container">
 
         <div class="columns">
@@ -174,4 +204,4 @@
         </div>
 
     </div>
-</section>
+</section>-->
