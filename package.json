@@ -9,7 +9,11 @@
 	},
 	"scripts": {
 		"dev": "gulp dev",
-		"build": "gulp build-prod; node server.js"
+		"build": "gulp build-prod; node server.js",
+		"preinstall": "npx npm-force-resolutions"
+	},
+	"resolutions": {
+		"graceful-fs": "^4.2.4"
 	},
 	"resources": {
 		"slider": "https://codepen.io/nathantaylor/pen/JEXgpj"
