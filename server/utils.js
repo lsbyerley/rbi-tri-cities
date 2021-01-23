@@ -1,9 +1,9 @@
 const async = require("async");
 const _ = require("lodash");
-const mindbody = require("./mindbody.js");
+// const mindbody = require("./mindbody.js");
 const moment = require("moment");
-const Twitter = require("twitter");
-const Instagram = require("node-instagram").default;
+// const Twitter = require("twitter");
+// const Instagram = require("node-instagram").default;
 const twitterText = require("twitter-text");
 const twemoji = require("twemoji");
 const Contentful = require("contentful");
@@ -20,8 +20,8 @@ var contentful_preview_client = Contentful.createClient({
 	accessToken: config.contentful.preview_access_token,
 	host: "preview.contentful.com",
 });
-var twitter_client = new Twitter(config.twitter);
-var instagram_client = new Instagram(config.instagram);
+// var twitter_client = new Twitter(config.twitter);
+// var instagram_client = new Instagram(config.instagram);
 
 function removeDuplicates(myArr, prop) {
 	return myArr.filter((obj, pos, arr) => {
@@ -330,39 +330,61 @@ module.exports = {
 				"https://spreadsheets.google.com/feeds/list/1UVxkUIdjm6bkJtEu1ZzjSt_WC1IDmB5cCjRGhLu1KDU/1/public/values?alt=json";
 			const msScheduleUrl =
 				"https://spreadsheets.google.com/feeds/list/1UVxkUIdjm6bkJtEu1ZzjSt_WC1IDmB5cCjRGhLu1KDU/2/public/values?alt=json";
-			const tenTwelveUrl =
-				"https://spreadsheets.google.com/feeds/list/1UVxkUIdjm6bkJtEu1ZzjSt_WC1IDmB5cCjRGhLu1KDU/3/public/values?alt=json";
+			// const tenTwelveUrl =
+			//	"https://spreadsheets.google.com/feeds/list/1UVxkUIdjm6bkJtEu1ZzjSt_WC1IDmB5cCjRGhLu1KDU/3/public/values?alt=json";
 			const mensLeagueUrl =
 				"https://spreadsheets.google.com/feeds/list/1UVxkUIdjm6bkJtEu1ZzjSt_WC1IDmB5cCjRGhLu1KDU/4/public/values?alt=json";
+
+			const nineTenUrl =
+				"https://spreadsheets.google.com/feeds/list/1UVxkUIdjm6bkJtEu1ZzjSt_WC1IDmB5cCjRGhLu1KDU/5/public/values?alt=json";
+			const elevenTwelveUrl =
+				"https://spreadsheets.google.com/feeds/list/1UVxkUIdjm6bkJtEu1ZzjSt_WC1IDmB5cCjRGhLu1KDU/6/public/values?alt=json";
 
 			axios
 				.all([
 					axios.get(hsScheduleUrl),
 					axios.get(msScheduleUrl),
-					axios.get(tenTwelveUrl),
+					// axios.get(tenTwelveUrl),
 					axios.get(mensLeagueUrl),
+					axios.get(nineTenUrl),
+					axios.get(elevenTwelveUrl),
 					//this.getVHLEvents()
 				])
 				.then(
-					axios.spread((hs, ms, tenTwelve, mensLeague) => {
-						const hsGameSchedules = normalizeVHLGameSchedules(hs.data);
-						const msGameSchedules = normalizeVHLGameSchedules(ms.data);
-						const tenTwelveGameSchedules = normalizeVHLGameSchedules(
-							tenTwelve.data
-						);
-						const mensLeagueSchedules = normalizeVHLGameSchedules(
-							mensLeague.data
-						);
-						const vhlEvents = [];
+					axios.spread(
+						(
+							hs,
+							ms,
+							/*tenTwelve,*/
+							mensLeague,
+							nineTen,
+							elevenTwelve
+						) => {
+							const hsGameSchedules = normalizeVHLGameSchedules(hs.data);
+							const msGameSchedules = normalizeVHLGameSchedules(ms.data);
+							/*const tenTwelveGameSchedules = normalizeVHLGameSchedules(
+								tenTwelve.data
+							);*/
+							const mensLeagueSchedules = normalizeVHLGameSchedules(
+								mensLeague.data
+							);
+							const nineTenSchedules = normalizeVHLGameSchedules(nineTen.data);
+							const elevenTwelveSchedules = normalizeVHLGameSchedules(
+								elevenTwelve.data
+							);
+							const vhlEvents = [];
 
-						resolve({
-							hsGameSchedules,
-							msGameSchedules,
-							tenTwelveGameSchedules,
-							mensLeagueSchedules,
-							vhlEvents,
-						});
-					})
+							resolve({
+								hsGameSchedules,
+								msGameSchedules,
+								// tenTwelveGameSchedules,
+								mensLeagueSchedules,
+								nineTenSchedules,
+								elevenTwelveSchedules,
+								vhlEvents,
+							});
+						}
+					)
 				);
 		});
 	},

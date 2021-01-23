@@ -4,13 +4,16 @@
         <div class="vhl-heading">
             <h1 class="title">Schedules</h1>
             <div class="logo-bg">
-                <img class="logo" src="/images/vhl-logo-colored.png" alt="Virtual Hitting Leagues"/>
+                <img class="logo" src="/images/vhl-logo-colored.png" alt="Virtual Hitting Leagues" />
             </div>
         </div>
         <hr>
 
         <div class="content">
-            <p>Each league will run for five weeks. Weeks 1-4 will makeup the Regular Season in which teams will each play two 6-inning games against different opponents. Week 5 will be for the individual Home Run Derby and Team Playoffs. Please see the <a href="/vhl-about">About VHL</a> page for more information. To register for an upcoming League, check out our <a href="/events">Upcoming Events</a> page.</p>
+            <p>Each league will run for five weeks. Weeks 1-4 will makeup the Regular Season in which teams will each
+                play two 6-inning games against different opponents. Week 5 will be for the individual Home Run Derby
+                and Team Playoffs. Please see the <a href="/vhl-about">About VHL</a> page for more information. To
+                register for an upcoming League, check out our <a href="/events">Upcoming Events</a> page.</p>
         </div>
 
         <div class="tabs is-boxed">
@@ -21,11 +24,17 @@
                 <li data-tab="middle-school">
                     <a><span>Middle-School</span></a>
                 </li>
-                <li data-tab="10u-12u">
+                <!--<li data-tab="10u-12u">
                     <a><span>10U-12U</span></a>
-                </li>
+                </li>-->
                 <li data-tab="mens21">
                     <a><span>Mens 21+</span></a>
+                </li>
+                <li data-tab="9-10age">
+                    <a><span>Ages 9-10</span></a>
+                </li>
+                <li data-tab="11-12age">
+                    <a><span>Ages 11-12</span></a>
                 </li>
             </ul>
         </div>
@@ -34,29 +43,29 @@
             <div class="columns">
                 <div class="column">
                     {{#if hsGameSchedules}}
-                        <div class="title is-5">High-School Game Schedules</div>
-                        <div class="table-responsive">
-                            <table class="table is-hoverable is-fullwidth is-bordered">
-                                <thead>
-                                    <th>Date</th>
-                                    <th>Game Time</th>
-                                    <th>Matchup</th>
-                                    <th>Final</th>
-                                </thead>
-                                <tbody>
+                    <div class="title is-5">High-School Game Schedules</div>
+                    <div class="table-responsive">
+                        <table class="table is-hoverable is-fullwidth is-bordered">
+                            <thead>
+                                <th>Date</th>
+                                <th>Game Time</th>
+                                <th>Matchup</th>
+                                <th>Final</th>
+                            </thead>
+                            <tbody>
                                 {{# hsGameSchedules }}
-                                    <tr>
-                                        <td>{{ date }}</td>
-                                        <td>{{ gameTime }}</td>
-                                        <td>{{ matchup }}</td>
-                                        <td>{{ final }}</td>
-                                    </tr>
+                                <tr>
+                                    <td>{{ date }}</td>
+                                    <td>{{ gameTime }}</td>
+                                    <td>{{ matchup }}</td>
+                                    <td>{{ final }}</td>
+                                </tr>
                                 {{/ hsGameSchedules }}
-                                </tbody>
-                            </table>
-                        </div>
+                            </tbody>
+                        </table>
+                    </div>
                     {{else}}
-                        <div class="no-game-schedules">There are High-School game schedules at this time.</div>
+                    <div class="no-game-schedules">There are High-School game schedules at this time.</div>
                     {{/if}}
                 </div>
             </div>
@@ -66,29 +75,29 @@
             <div class="columns">
                 <div class="column">
                     {{#if msGameSchedules}}
-                        <div class="title is-5">Middle-School Game Schedules</div>
-                        <div class="table-responsive">
-                            <table class="table is-hoverable is-fullwidth is-bordered">
-                                <thead>
-                                    <th>Date</th>
-                                    <th>Game Time</th>
-                                    <th>Matchup</th>
-                                    <th>Final</th>
-                                </thead>
-                                <tbody>
+                    <div class="title is-5">Middle-School Game Schedules</div>
+                    <div class="table-responsive">
+                        <table class="table is-hoverable is-fullwidth is-bordered">
+                            <thead>
+                                <th>Date</th>
+                                <th>Game Time</th>
+                                <th>Matchup</th>
+                                <th>Final</th>
+                            </thead>
+                            <tbody>
                                 {{# msGameSchedules }}
-                                    <tr>
-                                        <td>{{ date }}</td>
-                                        <td>{{ gameTime }}</td>
-                                        <td>{{ matchup }}</td>
-                                        <td>{{ final }}</td>
-                                    </tr>
+                                <tr>
+                                    <td>{{ date }}</td>
+                                    <td>{{ gameTime }}</td>
+                                    <td>{{ matchup }}</td>
+                                    <td>{{ final }}</td>
+                                </tr>
                                 {{/ msGameSchedules }}
-                                </tbody>
-                            </table>
-                        </div>
+                            </tbody>
+                        </table>
+                    </div>
                     {{else}}
-                        <div class="no-game-schedules">There are no Middle-School game schedules at this time.</div>
+                    <div class="no-game-schedules">There are no Middle-School game schedules at this time.</div>
                     {{/if}}
                 </div>
             </div>
@@ -96,65 +105,129 @@
 
         <div class="tab-content" id="10u-12u">
             <div class="columns">
-              <div class="column">
-                  {{#if tenTwelveGameSchedules}}
-                      <div class="title is-5">10U-12U Game Schedules</div>
-                      <div class="table-responsive">
-                          <table class="table is-hoverable is-fullwidth is-bordered">
-                              <thead>
-                                  <th>Date</th>
-                                  <th>Game Time</th>
-                                  <th>Matchup</th>
-                                  <th>Final</th>
-                              </thead>
-                              <tbody>
-                              {{# tenTwelveGameSchedules }}
-                                  <tr>
-                                      <td>{{ date }}</td>
-                                      <td>{{ gameTime }}</td>
-                                      <td>{{ matchup }}</td>
-                                      <td>{{ final }}</td>
-                                  </tr>
-                              {{/ tenTwelveGameSchedules }}
-                              </tbody>
-                          </table>
-                      </div>
-                  {{else}}
-                      <div class="no-game-schedules">There are no 10U-12U game schedules at this time.</div>
-                  {{/if}}
+                <div class="column">
+                    {{#if tenTwelveGameSchedules}}
+                    <div class="title is-5">10U-12U Game Schedules</div>
+                    <div class="table-responsive">
+                        <table class="table is-hoverable is-fullwidth is-bordered">
+                            <thead>
+                                <th>Date</th>
+                                <th>Game Time</th>
+                                <th>Matchup</th>
+                                <th>Final</th>
+                            </thead>
+                            <tbody>
+                                {{# tenTwelveGameSchedules }}
+                                <tr>
+                                    <td>{{ date }}</td>
+                                    <td>{{ gameTime }}</td>
+                                    <td>{{ matchup }}</td>
+                                    <td>{{ final }}</td>
+                                </tr>
+                                {{/ tenTwelveGameSchedules }}
+                            </tbody>
+                        </table>
+                    </div>
+                    {{else}}
+                    <div class="no-game-schedules">There are no 10U-12U game schedules at this time.</div>
+                    {{/if}}
                 </div>
-              </div>
-          </div>
+            </div>
+        </div>
 
-         <div class="tab-content" id="mens21">
-             <div class="columns">
-              <div class="column">
-                  {{#if mensLeagueSchedules}}
-                      <div class="title is-5">Men's 21+ Game Schedules</div>
-                      <div class="table-responsive">
-                          <table class="table is-hoverable is-fullwidth is-bordered">
-                              <thead>
-                                  <th>Date</th>
-                                  <th>Game Time</th>
-                                  <th>Matchup</th>
-                                  <th>Final</th>
-                              </thead>
-                              <tbody>
-                              {{# mensLeagueSchedules }}
-                                  <tr>
-                                      <td>{{ date }}</td>
-                                      <td>{{ gameTime }}</td>
-                                      <td>{{ matchup }}</td>
-                                      <td>{{ final }}</td>
-                                  </tr>
-                              {{/ mensLeagueSchedules }}
-                              </tbody>
-                          </table>
-                      </div>
-                  {{else}}
-                      <div class="no-game-schedules">There are no Men's 21+ game schedules at this time.</div>
-                  {{/if}}
-              </div>
+        <div class="tab-content" id="mens21">
+            <div class="columns">
+                <div class="column">
+                    {{#if mensLeagueSchedules}}
+                    <div class="title is-5">Men's 21+ Game Schedules</div>
+                    <div class="table-responsive">
+                        <table class="table is-hoverable is-fullwidth is-bordered">
+                            <thead>
+                                <th>Date</th>
+                                <th>Game Time</th>
+                                <th>Matchup</th>
+                                <th>Final</th>
+                            </thead>
+                            <tbody>
+                                {{# mensLeagueSchedules }}
+                                <tr>
+                                    <td>{{ date }}</td>
+                                    <td>{{ gameTime }}</td>
+                                    <td>{{ matchup }}</td>
+                                    <td>{{ final }}</td>
+                                </tr>
+                                {{/ mensLeagueSchedules }}
+                            </tbody>
+                        </table>
+                    </div>
+                    {{else}}
+                    <div class="no-game-schedules">There are no Men's 21+ game schedules at this time.</div>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="9-10age">
+            <div class="columns">
+                <div class="column">
+                    {{#if nineTenSchedules}}
+                    <div class="title is-5">9-10 Game Schedules</div>
+                    <div class="table-responsive">
+                        <table class="table is-hoverable is-fullwidth is-bordered">
+                            <thead>
+                                <th>Date</th>
+                                <th>Game Time</th>
+                                <th>Matchup</th>
+                                <th>Final</th>
+                            </thead>
+                            <tbody>
+                                {{# nineTenSchedules }}
+                                <tr>
+                                    <td>{{ date }}</td>
+                                    <td>{{ gameTime }}</td>
+                                    <td>{{ matchup }}</td>
+                                    <td>{{ final }}</td>
+                                </tr>
+                                {{/ nineTenSchedules }}
+                            </tbody>
+                        </table>
+                    </div>
+                    {{else}}
+                    <div class="no-game-schedules">There are no 9-10 age game schedules at this time.</div>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="11-12age">
+            <div class="columns">
+                <div class="column">
+                    {{#if elevenTwelveSchedules}}
+                    <div class="title is-5">11-12 Game Schedules</div>
+                    <div class="table-responsive">
+                        <table class="table is-hoverable is-fullwidth is-bordered">
+                            <thead>
+                                <th>Date</th>
+                                <th>Game Time</th>
+                                <th>Matchup</th>
+                                <th>Final</th>
+                            </thead>
+                            <tbody>
+                                {{# elevenTwelveSchedules }}
+                                <tr>
+                                    <td>{{ date }}</td>
+                                    <td>{{ gameTime }}</td>
+                                    <td>{{ matchup }}</td>
+                                    <td>{{ final }}</td>
+                                </tr>
+                                {{/ elevenTwelveSchedules }}
+                            </tbody>
+                        </table>
+                    </div>
+                    {{else}}
+                    <div class="no-game-schedules">There are no 11-12 age game schedules at this time.</div>
+                    {{/if}}
+                </div>
             </div>
         </div>
 
