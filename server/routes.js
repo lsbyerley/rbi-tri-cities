@@ -378,9 +378,10 @@ module.exports = function (app, cache) {
 				//console.log(gameSchedules)
 				app.locals.hsGameSchedules = gameSchedules.hsGameSchedules;
 				app.locals.msGameSchedules = gameSchedules.msGameSchedules;
-				app.locals.tenTwelveGameSchedules =
-					gameSchedules.tenTwelveGameSchedules;
+				// app.locals.tenTwelveGameSchedules = gameSchedules.tenTwelveGameSchedules;
 				app.locals.mensLeagueSchedules = gameSchedules.mensLeagueSchedules;
+				app.locals.nineTenSchedules = gameSchedules.nineTenSchedules;
+				app.locals.elevenTwelveSchedules = gameSchedules.elevenTwelveSchedules;
 				app.locals.vhlEvents = gameSchedules.vhlEvents;
 				return res.render("pages/vhl-schedules.hbs");
 			})
@@ -388,8 +389,10 @@ module.exports = function (app, cache) {
 				console.error(err);
 				app.locals.hsGameSchedules = [];
 				app.locals.msGameSchedules = [];
-				app.locals.tenTwelveGameSchedules = [];
+				// app.locals.tenTwelveGameSchedules = [];
 				app.locals.mensLeagueSchedules = [];
+				app.locals.nineTenSchedules = [];
+				app.locals.elevenTwelveSchedules = [];
 				app.locals.vhlEvents = [];
 				return res.render("pages/vhl-schedules.hbs");
 			});
